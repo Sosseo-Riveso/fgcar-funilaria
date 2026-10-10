@@ -839,6 +839,8 @@ body {
     border-radius: 16px;
     padding: 32px 24px;
     position: relative;
+    display: flex;
+    flex-direction: column;
 }
 
 .step-number {
@@ -869,10 +871,11 @@ body {
     color: var(--text-secondary);
     line-height: 1.55;
     margin-bottom: 16px;
+    flex-grow: 1;
 }
 
 .step-img-box {
-    margin-top: 14px;
+    margin-top: auto;
     border-radius: 12px;
     overflow: hidden;
     aspect-ratio: 16 / 11;
