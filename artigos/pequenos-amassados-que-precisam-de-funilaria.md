@@ -21,6 +21,8 @@
 
 ## Identificar a extensão estrutural e a integridade da tinta é a chave para evitar a corrosão precoce: descubra como avaliar pequenos amassados que precisam de funilaria antes que danifiquem a chapa e desvalorizem o veículo.
 
+> **Por FG Car Funilaria e Pintura - Publicado em 09/10/2026 - Atualizado em 09/10/2026**
+
 ![Técnico inspecionando pequenos amassados que precisam de funilaria com luminária de LED em oficina automotiva em Osasco](images/pequenos-amassados-funilaria-osasco-capa.jpg)
 *Inspeção técnica de pequenos amassados com luminária linear de LED na oficina FG Car em Osasco*
 
