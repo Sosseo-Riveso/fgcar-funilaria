@@ -1592,3 +1592,424 @@ body {
     }
 }
 
+/* ==========================================================================
+   PÁGINAS DE SERVIÇOS AUTOMOTIVOS (LANDING PAGES DE ALTA CONVERSÃO)
+   ========================================================================== */
+
+.service-hero-section {
+    position: relative;
+    padding: 60px 0 70px 0;
+    background: radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.18) 0%, rgba(7, 11, 20, 0.98) 75%);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+}
+
+.service-hero-grid {
+    display: grid;
+    grid-template-columns: 1.15fr 0.85fr;
+    gap: 48px;
+    align-items: center;
+}
+
+.service-hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(2, 132, 199, 0.15);
+    border: 1px solid rgba(56, 189, 248, 0.4);
+    padding: 7px 18px;
+    border-radius: 30px;
+    margin-bottom: 20px;
+    color: var(--brand-cyan);
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.service-hero-title {
+    font-family: var(--font-heading);
+    font-size: 42px;
+    font-weight: 900;
+    line-height: 1.2;
+    letter-spacing: -1px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.service-hero-subtitle {
+    font-size: 18px;
+    color: #cbd5e1;
+    line-height: 1.65;
+    margin-bottom: 32px;
+}
+
+.service-hero-subtitle strong {
+    color: #ffffff;
+}
+
+.service-hero-cta-group {
+    display: flex;
+    gap: 16px;
+    flex-wrap: wrap;
+    margin-bottom: 36px;
+}
+
+.service-hero-trust-bar {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    padding-top: 24px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-hero-media {
+    position: relative;
+}
+
+.service-hero-img-wrap {
+    position: relative;
+    border-radius: 16px;
+    overflow: hidden;
+    border: 1px solid rgba(56, 189, 248, 0.35);
+    box-shadow: 0 20px 45px rgba(0, 0, 0, 0.6), 0 0 25px rgba(2, 132, 199, 0.2);
+}
+
+.service-hero-img {
+    width: 100%;
+    height: 100%;
+    max-height: 480px;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.4s ease;
+}
+
+.service-hero-img-wrap:hover .service-hero-img {
+    transform: scale(1.03);
+}
+
+.service-hero-badge-overlay {
+    position: absolute;
+    bottom: 16px;
+    left: 16px;
+    right: 16px;
+    background: rgba(7, 11, 20, 0.88);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 12px 18px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.badge-overlay-icon {
+    font-size: 24px;
+}
+
+.badge-overlay-text strong {
+    display: block;
+    color: #ffffff;
+    font-size: 14px;
+    font-weight: 800;
+}
+
+.badge-overlay-text span {
+    color: #94a3b8;
+    font-size: 12px;
+}
+
+/* Seção de Processo Passo a Passo */
+.service-steps-section {
+    padding: 70px 0;
+    background-color: #0b1120;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.service-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+    margin-top: 40px;
+}
+
+.service-step-card {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 28px 22px;
+    position: relative;
+    transition: all var(--transition-fast);
+}
+
+.service-step-card:hover {
+    border-color: var(--brand-cyan);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.service-step-num {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.15);
+    color: var(--brand-cyan);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    width: 36px;
+    height: 36px;
+    line-height: 34px;
+    border-radius: 50%;
+    text-align: center;
+    font-weight: 900;
+    font-size: 15px;
+    margin-bottom: 16px;
+}
+
+.service-step-title {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 10px;
+}
+
+.service-step-desc {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.6;
+}
+
+/* Seção de Detalhamento Técnico & Engenharia */
+.service-details-section {
+    padding: 80px 0;
+    background-color: #070b14;
+}
+
+.service-detail-row {
+    display: grid;
+    grid-template-columns: 1.05fr 0.95fr;
+    gap: 50px;
+    align-items: center;
+    margin-bottom: 70px;
+}
+
+.service-detail-row.reverse {
+    grid-template-columns: 0.95fr 1.05fr;
+}
+
+.service-detail-text h3 {
+    font-family: var(--font-heading);
+    font-size: 28px;
+    font-weight: 800;
+    color: #ffffff;
+    margin-bottom: 18px;
+    line-height: 1.3;
+}
+
+.service-detail-text p {
+    font-size: 16px;
+    color: #cbd5e1;
+    line-height: 1.7;
+    margin-bottom: 16px;
+}
+
+.service-detail-text ul {
+    list-style: none;
+    margin: 20px 0 25px 0;
+}
+
+.service-detail-text ul li {
+    position: relative;
+    padding-left: 28px;
+    margin-bottom: 12px;
+    font-size: 15px;
+    color: #e2e8f0;
+}
+
+.service-detail-text ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: var(--brand-cyan);
+    font-weight: 900;
+}
+
+.service-detail-img-box {
+    border-radius: 14px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.5);
+}
+
+.service-detail-img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.service-detail-caption {
+    background: #0f172a;
+    padding: 12px 18px;
+    font-size: 13px;
+    color: #94a3b8;
+    border-top: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+/* Seção de Tabela Comparativa de Alta Densidade */
+.service-table-section {
+    padding: 70px 0;
+    background-color: #0b1120;
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.service-table-wrap {
+    overflow-x: auto;
+    margin-top: 35px;
+}
+
+.service-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #0f172a;
+    border-radius: 12px;
+    overflow: hidden;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.service-table th {
+    background: #1e293b;
+    padding: 16px 20px;
+    text-align: left;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+    border-bottom: 2px solid rgba(56, 189, 248, 0.4);
+}
+
+.service-table th.highlight-col {
+    background: rgba(2, 132, 199, 0.25);
+    color: var(--brand-cyan);
+}
+
+.service-table td {
+    padding: 16px 20px;
+    font-size: 14px;
+    color: #cbd5e1;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    vertical-align: middle;
+}
+
+.service-table tr:hover td {
+    background: rgba(255, 255, 255, 0.02);
+}
+
+.service-table td.highlight-col {
+    background: rgba(2, 132, 199, 0.08);
+    font-weight: 600;
+    color: #ffffff;
+}
+
+/* Bloco de Interlinking de Serviços Correlacionados */
+.related-services-section {
+    padding: 70px 0;
+    background-color: #070b14;
+}
+
+.related-services-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    margin-top: 35px;
+}
+
+.related-service-card {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 12px;
+    padding: 24px;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+}
+
+.related-service-card:hover {
+    border-color: rgba(56, 189, 248, 0.4);
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.4);
+}
+
+.related-service-card h4 {
+    font-family: var(--font-heading);
+    font-size: 18px;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.related-service-card h4 a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.related-service-card h4 a:hover {
+    color: var(--brand-cyan);
+}
+
+.related-service-card p {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 18px;
+    flex-grow: 1;
+}
+
+.related-service-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    color: var(--brand-cyan);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.related-service-link:hover {
+    text-decoration: underline;
+}
+
+/* Responsividade de Serviços */
+@media (max-width: 992px) {
+    .service-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 36px;
+    }
+    .service-steps-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .service-detail-row,
+    .service-detail-row.reverse {
+        grid-template-columns: 1fr;
+        gap: 32px;
+    }
+    .service-detail-row.reverse .service-detail-img-box {
+        order: -1;
+    }
+    .related-services-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .service-hero-title {
+        font-size: 30px;
+    }
+    .service-hero-trust-bar {
+        grid-template-columns: 1fr;
+    }
+    .service-steps-grid {
+        grid-template-columns: 1fr;
+    }
+    .related-services-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
