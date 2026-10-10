@@ -1,23 +1,9 @@
 // FG Car Oficina e Funilaria e Pintura - Scripts Principais & Lead Tracker
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Menu Mobile Toggle
-    const mobileToggle = document.getElementById('mobileToggle');
-    const mobileDrawer = document.getElementById('mobileDrawer');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
-
-    if (mobileToggle && mobileDrawer) {
-        mobileToggle.addEventListener('click', () => {
-            const isVisible = mobileDrawer.style.display === 'block';
-            mobileDrawer.style.display = isVisible ? 'none' : 'block';
-        });
-
-        mobileLinks.forEach(link => {
-            link.addEventListener('click', () => {
-                mobileDrawer.style.display = 'none';
-            });
-        });
-    }
+    // 1. Menu Mobile Toggle & Subbar
+    initMobileNav();
+    initMobileHeaderSubbar();
 
     // 2. Video Background Handling (Garante reprodução contínua e silenciosa)
     const heroVideo = document.getElementById('heroVideo');
@@ -59,6 +45,76 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 // ==========================================================================
+// MENU MOBILE & SUB-BARRA DE AVISO
+// ==========================================================================
+
+function initMobileNav() {
+    const mobileToggle = document.getElementById('mobileToggle');
+    const mobileDrawer = document.getElementById('mobileDrawer');
+    const mobileLinks = document.querySelectorAll('.mobile-link');
+
+    if (mobileToggle && mobileDrawer) {
+        mobileToggle.addEventListener('click', (e) => {
+            e.stopPropagation();
+            const isOpen = mobileDrawer.classList.contains('active') || mobileDrawer.style.display === 'block';
+            if (isOpen) {
+                mobileDrawer.classList.remove('active');
+                mobileDrawer.style.display = 'none';
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            } else {
+                mobileDrawer.classList.add('active');
+                mobileDrawer.style.display = 'block';
+                mobileToggle.setAttribute('aria-expanded', 'true');
+            }
+        });
+
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', () => {
+                mobileDrawer.classList.remove('active');
+                mobileDrawer.style.display = 'none';
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            });
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
+                mobileDrawer.classList.remove('active');
+                mobileDrawer.style.display = 'none';
+                mobileToggle.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+}
+
+function initMobileHeaderSubbar() {
+    const mainHeader = document.querySelector('.main-header');
+    if (!mainHeader) return;
+
+    if (!mainHeader.querySelector('.mobile-subbar')) {
+        const subbarHtml = `
+        <div class="mobile-subbar">
+            <div class="container mobile-subbar-container">
+                <p class="mobile-subbar-text">
+                    <strong>Bateu ou arranhou o carro em Osasco e Região?</strong>
+                    Envie as fotos no WhatsApp para uma estimativa rápida!
+                </p>
+                <div class="mobile-subbar-btn-wrap">
+                    <a href="https://wa.me/5511940047324?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="btn btn-primary btn-mobile-whatsapp" target="_blank" rel="noopener">
+                        <span>⚡ WhatsApp Orçamento</span>
+                    </a>
+                </div>
+            </div>
+        </div>`;
+        const headerContainer = mainHeader.querySelector('.header-container');
+        if (headerContainer) {
+            headerContainer.insertAdjacentHTML('afterend', subbarHtml);
+        } else {
+            mainHeader.insertAdjacentHTML('beforeend', subbarHtml);
+        }
+    }
+}
+
+// ==========================================================================
 // SISTEMA DE CAPTURA DE LEADS & LEAD GATE (WHATSAPP POPUP)
 // ==========================================================================
 
@@ -66,8 +122,8 @@ function initLeadGateSystem() {
     // Cria o modal no DOM se não existir
     if (!document.getElementById('fgLeadModal')) {
         const modalHtml = `
-        <div id="fgLeadModal" class="lead-modal-backdrop" aria-hidden="true">
-            <div class="lead-modal-content" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle">
+        <div id="fgLeadModal" class="lead-modal-backdrop" aria-hidden="true" style="position: fixed; inset: 0; width: 100vw; height: 100vh; background: rgba(3, 7, 18, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); z-index: 9999999; display: flex; align-items: center; justify-content: center; padding: 24px; box-sizing: border-box; opacity: 0; visibility: hidden; pointer-events: none; transition: opacity 0.3s ease, visibility 0.3s ease;">
+            <div class="lead-modal-content" role="dialog" aria-modal="true" aria-labelledby="leadModalTitle" style="position: relative; background: #0f172a; border: 1px solid rgba(56, 189, 248, 0.45); box-shadow: 0 30px 80px rgba(0, 0, 0, 0.95), 0 0 45px rgba(2, 132, 199, 0.3); border-radius: 22px; width: 100%; max-width: 460px; padding: 38px 32px 32px; color: #ffffff; margin: auto; box-sizing: border-box;">
                 <button type="button" class="lead-modal-close" id="fgLeadModalClose" aria-label="Fechar Modal">&times;</button>
                 <div class="lead-modal-header">
                     <span class="lead-modal-badge">⚡ Atendimento Imediato</span>
@@ -122,9 +178,15 @@ function initLeadGateSystem() {
         pendingUrl = destUrl || 'https://wa.me/5511940047324';
         modal.classList.add('active');
         modal.setAttribute('aria-hidden', 'false');
+        modal.style.opacity = '1';
+        modal.style.visibility = 'visible';
+        modal.style.pointerEvents = 'auto';
+        document.body.style.overflow = 'hidden'; // Trava rolagem de fundo
         setTimeout(() => {
             const nomeInput = document.getElementById('fgLeadNome');
-            if (nomeInput) nomeInput.focus();
+            if (nomeInput) {
+                nomeInput.focus({ preventScroll: true }); // Foca sem mover ou rolar a página
+            }
         }, 150);
     }
 
@@ -132,6 +194,10 @@ function initLeadGateSystem() {
     function closeModal() {
         modal.classList.remove('active');
         modal.setAttribute('aria-hidden', 'true');
+        modal.style.opacity = '0';
+        modal.style.visibility = 'hidden';
+        modal.style.pointerEvents = 'none';
+        document.body.style.overflow = ''; // Restaura rolagem de fundo
     }
 
     if (closeBtn) closeBtn.addEventListener('click', closeModal);
