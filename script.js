@@ -180,6 +180,9 @@ function initLeadGateSystem() {
     }
 }
 
+// Webhook Central Oficial (Google Apps Script / Planilha de Leads FG Car)
+window.FG_DEFAULT_WEBHOOK_URL = 'https://script.google.com/macros/s/AKfycbw_GPpVjP3810KNsqvgAY1pG3jYb9jh6nUcIZ8eDatWZ6pnTLG3TAXSKvYCVZHO1UtXQQ/exec';
+
 // Função Global de Gravação de Leads
 window.fgTrackLead = function(leadData) {
     const now = new Date();
@@ -204,8 +207,8 @@ window.fgTrackLead = function(leadData) {
         console.error('Erro ao salvar lead localmente:', err);
     }
 
-    // 2. Dispara para o Webhook do Google Sheets (se configurado)
-    const webhookUrl = localStorage.getItem('fg_webhook_url');
+    // 2. Dispara para o Webhook do Google Sheets (Oficial em Nuvem)
+    const webhookUrl = localStorage.getItem('fg_webhook_url') || window.FG_DEFAULT_WEBHOOK_URL;
     if (webhookUrl) {
         try {
             fetch(webhookUrl, {

@@ -614,6 +614,7 @@
     <!-- Scripts do Painel -->
     <script>
         const DEFAULT_PASS = 'fgcar2026';
+        const DEFAULT_WEBHOOK = 'https://script.google.com/macros/s/AKfycbw_GPpVjP3810KNsqvgAY1pG3jYb9jh6nUcIZ8eDatWZ6pnTLG3TAXSKvYCVZHO1UtXQQ/exec';
 
         // 1. Checagem de Autenticação Inicial
         document.addEventListener('DOMContentLoaded', () => {
@@ -652,7 +653,7 @@
         }
 
         async function loadRemoteLeads() {
-            const webhookUrl = localStorage.getItem('fg_webhook_url');
+            const webhookUrl = localStorage.getItem('fg_webhook_url') || DEFAULT_WEBHOOK;
             if (!webhookUrl) return;
             try {
                 const res = await fetch(webhookUrl);
@@ -663,6 +664,23 @@
                         const existingKeys = new Set(localLeads.map(l => (l.telefone + '_' + l.data + '_' + l.hora)));
                         let hasNew = false;
                         data.forEach(remoteLead => {
+                            let formattedDate = remoteLead.data;
+                            if (typeof formattedDate === 'string' && formattedDate.includes('T')) {
+                                try {
+                                    const d = new Date(formattedDate);
+                                    formattedDate = d.toLocaleDateString('pt-BR');
+                                } catch (e) {}
+                            }
+                            let formattedHora = remoteLead.hora;
+                            if (typeof formattedHora === 'string' && formattedHora.includes('T')) {
+                                try {
+                                    const d = new Date(formattedHora);
+                                    formattedHora = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                                } catch (e) {}
+                            }
+                            remoteLead.data = formattedDate || 'Hoje';
+                            remoteLead.hora = formattedHora || 'Recente';
+
                             const key = remoteLead.telefone + '_' + remoteLead.data + '_' + remoteLead.hora;
                             if (!existingKeys.has(key)) {
                                 localLeads.unshift(remoteLead);
@@ -872,7 +890,7 @@
 
         // 11. Modal de Configurações
         function openConfigModal() {
-            document.getElementById('webhookUrlInput').value = localStorage.getItem('fg_webhook_url') || '';
+            document.getElementById('webhookUrlInput').value = localStorage.getItem('fg_webhook_url') || DEFAULT_WEBHOOK;
             document.getElementById('newAdminPass').value = '';
             document.getElementById('configModal').classList.add('active');
         }
