@@ -3,6 +3,8 @@
 
 User-agent: *
 Allow: /
+Disallow: /painel-leads
+Disallow: /painel-leads.html
 
 # Permitir indexação completa para mecanismos de busca tradicionais
 User-agent: Googlebot
