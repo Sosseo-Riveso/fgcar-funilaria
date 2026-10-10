@@ -51,36 +51,73 @@ document.addEventListener('DOMContentLoaded', () => {
 function initMobileNav() {
     const mobileToggle = document.getElementById('mobileToggle');
     const mobileDrawer = document.getElementById('mobileDrawer');
-    const mobileLinks = document.querySelectorAll('.mobile-link');
 
     if (mobileToggle && mobileDrawer) {
+        // Assegura topbar com botão fechar se não existir
+        if (!mobileDrawer.querySelector('.mobile-drawer-topbar')) {
+            const topbarHtml = `
+            <div class="mobile-drawer-topbar">
+                <a href="index.html" class="mobile-drawer-brand" aria-label="FG Car - Início">
+                    <img src="images/logo-fgcar.png" alt="FG Car Oficina" style="height: 40px; width: auto;">
+                </a>
+                <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Fechar Menu">
+                    ✕ Fechar
+                </button>
+            </div>`;
+            mobileDrawer.insertAdjacentHTML('afterbegin', topbarHtml);
+        }
+
+        // Assegura respiro no final se não existir
+        if (!mobileDrawer.querySelector('.mobile-drawer-spacer')) {
+            mobileDrawer.insertAdjacentHTML('beforeend', '<div class="mobile-drawer-spacer"></div>');
+        }
+
+        function openDrawer() {
+            document.body.classList.add('mobile-nav-active');
+            mobileDrawer.classList.add('active');
+            mobileDrawer.style.display = 'flex';
+            mobileToggle.setAttribute('aria-expanded', 'true');
+            mobileDrawer.scrollTop = 0;
+        }
+
+        function closeDrawer() {
+            document.body.classList.remove('mobile-nav-active');
+            mobileDrawer.classList.remove('active');
+            mobileDrawer.style.display = 'none';
+            mobileToggle.setAttribute('aria-expanded', 'false');
+        }
+
         mobileToggle.addEventListener('click', (e) => {
             e.stopPropagation();
-            const isOpen = mobileDrawer.classList.contains('active') || mobileDrawer.style.display === 'block';
+            const isOpen = document.body.classList.contains('mobile-nav-active') || mobileDrawer.classList.contains('active');
             if (isOpen) {
-                mobileDrawer.classList.remove('active');
-                mobileDrawer.style.display = 'none';
-                mobileToggle.setAttribute('aria-expanded', 'false');
+                closeDrawer();
             } else {
-                mobileDrawer.classList.add('active');
-                mobileDrawer.style.display = 'block';
-                mobileToggle.setAttribute('aria-expanded', 'true');
+                openDrawer();
             }
         });
 
+        // Fechar pelo botão Fechar (✕)
+        const closeBtn = document.getElementById('mobileDrawerClose');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', (e) => {
+                e.stopPropagation();
+                closeDrawer();
+            });
+        }
+
+        // Fechar ao clicar em qualquer link interno
+        const mobileLinks = mobileDrawer.querySelectorAll('.mobile-link, a');
         mobileLinks.forEach(link => {
             link.addEventListener('click', () => {
-                mobileDrawer.classList.remove('active');
-                mobileDrawer.style.display = 'none';
-                mobileToggle.setAttribute('aria-expanded', 'false');
+                closeDrawer();
             });
         });
 
-        document.addEventListener('click', (e) => {
-            if (!mobileDrawer.contains(e.target) && !mobileToggle.contains(e.target)) {
-                mobileDrawer.classList.remove('active');
-                mobileDrawer.style.display = 'none';
-                mobileToggle.setAttribute('aria-expanded', 'false');
+        // Fechar com tecla ESC
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && document.body.classList.contains('mobile-nav-active')) {
+                closeDrawer();
             }
         });
     }

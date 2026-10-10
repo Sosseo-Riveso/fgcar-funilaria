@@ -1322,8 +1322,8 @@ body {
         justify-content: center !important;
         align-items: center !important;
         gap: 5px !important;
-        background: rgba(255, 255, 255, 0.08) !important;
-        border: 1px solid rgba(255, 255, 255, 0.2) !important;
+        background: #0284c7 !important; /* Azul do logo CAR */
+        border: 2px solid #38bdf8 !important;
         border-radius: 8px !important;
         width: 44px !important;
         height: 44px !important;
@@ -1331,12 +1331,15 @@ body {
         cursor: pointer !important;
         transition: all 0.25s ease !important;
         z-index: 1001 !important;
+        box-shadow: 0 3px 12px rgba(2, 132, 199, 0.5) !important;
     }
 
     .mobile-toggle:hover,
     .mobile-toggle:active {
-        background: rgba(2, 132, 199, 0.25) !important;
-        border-color: rgba(56, 189, 248, 0.5) !important;
+        background: #0369a1 !important;
+        border-color: #ffffff !important;
+        box-shadow: 0 5px 16px rgba(2, 132, 199, 0.7) !important;
+        transform: scale(1.03);
     }
 
     .mobile-toggle .bar {
@@ -1352,8 +1355,8 @@ body {
     .mobile-subbar {
         display: block !important;
         background: #0b1222 !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.08) !important;
-        border-bottom: 1px solid rgba(56, 189, 248, 0.25) !important;
+        border-top: 1px solid rgba(255, 255, 255, 0.08);
+        border-bottom: 1px solid rgba(56, 189, 248, 0.25);
         padding: 12px 16px 14px !important;
         text-align: center !important;
         width: 100% !important;
@@ -1397,12 +1400,74 @@ body {
         animation: glowPulse 2.5s infinite !important;
     }
 
+    /* Quando o menu está aberto, todo o cabeçalho original some e entra apenas o menu */
+    body.mobile-nav-active {
+        overflow: hidden !important;
+    }
+
+    body.mobile-nav-active .main-header .header-container,
+    body.mobile-nav-active .main-header .mobile-subbar,
+    body.mobile-nav-active .top-announcement {
+        display: none !important;
+    }
+
     .mobile-drawer {
-        background-color: #0c1322 !important;
-        border-top: 1px solid rgba(255, 255, 255, 0.1) !important;
-        max-height: calc(100vh - 130px) !important;
+        display: none;
+        position: fixed !important;
+        top: 0 !important;
+        left: 0 !important;
+        right: 0 !important;
+        bottom: 0 !important;
+        width: 100vw !important;
+        height: 100vh !important;
+        background-color: #070b14 !important;
+        z-index: 9999999 !important;
         overflow-y: auto !important;
         -webkit-overflow-scrolling: touch !important;
+        padding: 24px 20px 140px 20px !important; /* Respiro amplo no final */
+        box-sizing: border-box !important;
+    }
+
+    .mobile-drawer.active,
+    body.mobile-nav-active .mobile-drawer {
+        display: flex !important;
+        flex-direction: column !important;
+    }
+
+    .mobile-drawer-topbar {
+        display: flex !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        padding-bottom: 18px !important;
+        margin-bottom: 22px !important;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12) !important;
+        width: 100% !important;
+    }
+
+    .mobile-drawer-close {
+        background: #0284c7 !important;
+        color: #ffffff !important;
+        border: 1px solid #38bdf8 !important;
+        padding: 8px 16px !important;
+        border-radius: 8px !important;
+        font-size: 14px !important;
+        font-weight: 800 !important;
+        cursor: pointer !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        gap: 6px !important;
+        box-shadow: 0 2px 10px rgba(2, 132, 199, 0.4) !important;
+        transition: all 0.2s ease !important;
+    }
+
+    .mobile-drawer-close:hover {
+        background: #0369a1 !important;
+    }
+
+    .mobile-drawer-spacer {
+        min-height: 80px !important;
+        height: 80px !important;
+        width: 100% !important;
     }
 
     .hero-title { font-size: 36px; }
