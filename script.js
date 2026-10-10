@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     // 1. Menu Mobile Toggle & Subbar
     initMobileNav();
     initMobileHeaderSubbar();
+    initServiceHeroBadges();
 
     // 2. Video Background Handling (Garante reprodução contínua e silenciosa)
     const heroVideo = document.getElementById('heroVideo');
@@ -161,6 +162,26 @@ function initMobileHeaderSubbar() {
             </div>
         </div>`;
         mainHeader.insertAdjacentHTML('afterend', subbarHtml);
+    }
+}
+
+function initServiceHeroBadges() {
+    // Garante que o card informativo nos banners de serviços fique posicionado abaixo da imagem
+    document.querySelectorAll('.service-hero-media').forEach(media => {
+        const wrap = media.querySelector('.service-hero-img-wrap');
+        const badge = media.querySelector('.service-hero-badge-overlay');
+        if (wrap && badge && wrap.contains(badge)) {
+            wrap.insertAdjacentElement('afterend', badge);
+        }
+    });
+
+    // Também garante que o badge na seção da Cabine da Home fique posicionado abaixo da imagem
+    const cabinFrame = document.querySelector('.cabin-img-frame');
+    if (cabinFrame) {
+        const cabinBadge = cabinFrame.querySelector('.cabin-floating-badge');
+        if (cabinBadge) {
+            cabinFrame.insertAdjacentElement('afterend', cabinBadge);
+        }
     }
 }
 
