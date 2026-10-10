@@ -1280,3 +1280,288 @@ body {
     .floating-whatsapp .whatsapp-label { display: none; }
     .floating-whatsapp { padding: 16px; border-radius: 50%; }
 }
+
+/* ==========================================================================
+   DROPDOWN DO MENU BLOG & PÁGINAS DE CATEGORIA
+   ========================================================================== */
+
+/* 1. Dropdown Desktop */
+.has-dropdown {
+    position: relative;
+}
+
+.dropdown-trigger {
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+    cursor: pointer;
+}
+
+.dropdown-arrow {
+    font-size: 11px;
+    transition: transform var(--transition-fast);
+}
+
+.has-dropdown:hover .dropdown-arrow {
+    transform: rotate(180deg);
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    min-width: 290px;
+    background: rgba(10, 15, 29, 0.98);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(56, 189, 248, 0.25);
+    border-radius: 12px;
+    padding: 8px 0;
+    list-style: none;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.65);
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(14px);
+    transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    z-index: 200;
+}
+
+.has-dropdown:hover .dropdown-menu {
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(4px);
+}
+
+.dropdown-menu li {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 11px 18px;
+    font-size: 14px;
+    font-weight: 600;
+    color: #cbd5e1;
+    text-decoration: none;
+    transition: all var(--transition-fast);
+    border-left: 3px solid transparent;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(56, 189, 248, 0.08);
+    color: var(--brand-cyan);
+    border-left-color: var(--brand-cyan);
+    padding-left: 22px;
+}
+
+/* 2. Submenu Mobile Drawer */
+.mobile-dropdown-group {
+    padding: 10px 0 6px 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.mobile-dropdown-title {
+    display: block;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 0.8px;
+    text-transform: uppercase;
+    color: var(--brand-gold);
+    margin-bottom: 8px;
+    padding-left: 6px;
+}
+
+.mobile-sublinks {
+    list-style: none;
+    padding-left: 14px;
+    margin: 0;
+}
+
+.mobile-sublinks li {
+    margin-bottom: 6px;
+}
+
+.mobile-sublinks a {
+    font-size: 14px !important;
+    color: #cbd5e1 !important;
+    font-weight: 600 !important;
+    display: block;
+    padding: 4px 0;
+}
+
+.mobile-sublinks a:hover {
+    color: var(--brand-cyan) !important;
+}
+
+/* 3. Layout de Páginas de Categoria */
+.category-page-header {
+    background: linear-gradient(135deg, #070b14 0%, #0c1527 100%);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.2);
+    padding: 55px 0 45px 0;
+    text-align: center;
+}
+
+.category-tag-badge {
+    display: inline-block;
+    background: rgba(56, 189, 248, 0.12);
+    color: var(--brand-cyan);
+    border: 1px solid rgba(56, 189, 248, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 800;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    margin-bottom: 14px;
+}
+
+.category-title {
+    font-family: var(--font-heading);
+    font-size: 36px;
+    font-weight: 900;
+    color: #ffffff;
+    line-height: 1.25;
+    margin-bottom: 14px;
+}
+
+.category-desc {
+    font-size: 17px;
+    color: #94a3b8;
+    max-width: 750px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+.category-main-content {
+    background-color: #070b14;
+    padding: 60px 0 90px 0;
+    min-height: 50vh;
+}
+
+.category-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 32px;
+}
+
+.blog-card {
+    background: #0f172a;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 14px;
+    overflow: hidden;
+    transition: all var(--transition-fast);
+    display: flex;
+    flex-direction: column;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.35);
+}
+
+.blog-card:hover {
+    transform: translateY(-6px);
+    border-color: rgba(56, 189, 248, 0.4);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.55), 0 0 20px rgba(56, 189, 248, 0.15);
+}
+
+.blog-card-img-link {
+    display: block;
+    overflow: hidden;
+    aspect-ratio: 16 / 9;
+    background: #1e293b;
+}
+
+.blog-card-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
+}
+
+.blog-card:hover .blog-card-img {
+    transform: scale(1.05);
+}
+
+.blog-card-body {
+    padding: 24px;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+}
+
+.blog-card-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #94a3b8;
+    margin-bottom: 12px;
+}
+
+.blog-card-cat-label {
+    background: rgba(56, 189, 248, 0.12);
+    color: #38bdf8;
+    padding: 3px 8px;
+    border-radius: 4px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 11px;
+}
+
+.blog-card-title {
+    font-family: var(--font-heading);
+    font-size: 20px;
+    font-weight: 800;
+    color: #ffffff;
+    line-height: 1.35;
+    margin-bottom: 12px;
+}
+
+.blog-card-title a {
+    color: #ffffff;
+    text-decoration: none;
+    transition: color var(--transition-fast);
+}
+
+.blog-card-title a:hover {
+    color: var(--brand-cyan);
+}
+
+.blog-card-excerpt {
+    font-size: 15px;
+    color: #94a3b8;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    flex-grow: 1;
+}
+
+.blog-card-cta {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--brand-cyan);
+    font-weight: 700;
+    font-size: 14px;
+    text-decoration: none;
+    transition: gap var(--transition-fast);
+}
+
+.blog-card-cta:hover {
+    gap: 12px;
+    color: #ffffff;
+}
+
+@media (max-width: 992px) {
+    .category-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 640px) {
+    .category-grid {
+        grid-template-columns: 1fr;
+    }
+    .category-title {
+        font-size: 26px;
+    }
+}
+
