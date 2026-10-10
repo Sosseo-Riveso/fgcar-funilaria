@@ -229,4 +229,42 @@
         <priority>0.7</priority>
     </url>
 
+    <!-- 10. Artigos de Blog - Categoria: Diferenciação e Valor de Pintura -->
+    <url>
+        <loc>https://fgcar-funilaria.pages.dev/por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda</loc>
+        <lastmod>2026-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://fgcar-funilaria.pages.dev/tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica</loc>
+        <lastmod>2026-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://fgcar-funilaria.pages.dev/o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo</loc>
+        <lastmod>2026-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://fgcar-funilaria.pages.dev/materiais-premium-secagem-em-estufa-repintura-excelencia</loc>
+        <lastmod>2026-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://fgcar-funilaria.pages.dev/colorimetria-digital-acerto-exato-da-cor-original</loc>
+        <lastmod>2026-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+    <url>
+        <loc>https://fgcar-funilaria.pages.dev/muito-alem-da-estetica-tintas-alta-performance-protegem-lataria</loc>
+        <lastmod>2026-10-10</lastmod>
+        <changefreq>monthly</changefreq>
+        <priority>0.7</priority>
+    </url>
+
 </urlset>
