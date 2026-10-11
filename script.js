@@ -137,31 +137,13 @@ function initMobileNav() {
 }
 
 function initMobileHeaderSubbar() {
+    // Sub-barra mobile temporariamente desativada para teste visual limpo
     const mainHeader = document.querySelector('.main-header');
     if (!mainHeader) return;
 
     let subbar = document.querySelector('.mobile-subbar');
-    if (subbar) {
-        // Se a subbar estiver dentro do header, move para fora (após o </header>) para rolar livremente
-        if (mainHeader.contains(subbar)) {
-            mainHeader.insertAdjacentElement('afterend', subbar);
-        }
-    } else {
-        const subbarHtml = `
-        <div class="mobile-subbar">
-            <div class="container mobile-subbar-container">
-                <p class="mobile-subbar-text">
-                    <strong>Bateu ou arranhou o carro em Osasco e Região?</strong>
-                    Envie as fotos no WhatsApp para uma estimativa rápida!
-                </p>
-                <div class="mobile-subbar-btn-wrap">
-                    <a href="https://wa.me/5511940047324?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="btn btn-primary btn-mobile-whatsapp" target="_blank" rel="noopener">
-                        <span>⚡ WhatsApp Orçamento</span>
-                    </a>
-                </div>
-            </div>
-        </div>`;
-        mainHeader.insertAdjacentHTML('afterend', subbarHtml);
+    if (subbar && mainHeader.contains(subbar)) {
+        mainHeader.insertAdjacentElement('afterend', subbar);
     }
 }
 
