@@ -1150,6 +1150,21 @@ body {
     display: grid;
     grid-template-columns: 1.5fr 1fr 1fr 1fr;
     gap: 40px;
+    padding-bottom: 50px;
+}
+
+.footer-divider {
+    border: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(56, 189, 248, 0.25), rgba(255, 255, 255, 0.08), transparent);
+    margin: 0 auto 50px auto;
+    width: 100%;
+}
+
+.footer-grid-sub {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 40px;
     padding-bottom: 60px;
 }
 
@@ -1526,6 +1541,7 @@ body {
     .about-grid { grid-template-columns: 1fr; }
     .location-card-wrapper { grid-template-columns: 1fr; }
     .footer-grid { grid-template-columns: repeat(2, 1fr); }
+    .footer-grid-sub { grid-template-columns: repeat(2, 1fr); }
     .hero-trust-bar { grid-template-columns: repeat(2, 1fr); }
 }
 
@@ -1540,6 +1556,7 @@ body {
     .process-grid { grid-template-columns: 1fr; }
     .hero-trust-bar { grid-template-columns: 1fr; gap: 16px; }
     .footer-grid { grid-template-columns: 1fr; }
+    .footer-grid-sub { grid-template-columns: 1fr; }
     .location-info-col { padding: 30px 20px; }
     .floating-whatsapp .whatsapp-label { display: none; }
     .floating-whatsapp { padding: 16px; border-radius: 50%; }
