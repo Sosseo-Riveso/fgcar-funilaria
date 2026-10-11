@@ -1,5 +1,5 @@
 # Robots.txt - FG Car Oficina Funilaria e Pintura em Osasco
-# https://fgcar-funilaria.pages.dev/
+# https://funilariaosasco.com.br/
 
 User-agent: *
 Allow: /
@@ -42,4 +42,4 @@ User-agent: CCBot
 Allow: /
 
 # Sitemap Oficial do Site
-Sitemap: https://fgcar-funilaria.pages.dev/sitemap.xml
+Sitemap: https://funilariaosasco.com.br/sitemap.xml
