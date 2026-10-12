@@ -1833,12 +1833,318 @@ body {
     }
 }
 
-@media (max-width: 640px) {
-    .category-grid {
-        grid-template-columns: 1fr;
+/* ==========================================================================
+   OTIMIZAÇÃO MOBILE: CARDS E TEXTOS DOS POSTS DO BLOG (MÁXIMA ESCANEABILIDADE)
+   Margens mínimas nas bordas do celular e texto aproveitando a largura total
+   ========================================================================== */
+
+/* 1. Cards do Blog nas Categorias e Listagens */
+@media (max-width: 768px) {
+    /* Container quase encostando nas bordas dos celulares */
+    .category-main-content {
+        padding: 24px 0 60px 0 !important;
     }
+
+    .category-main-content .container,
+    .category-page .container {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
     .category-title {
-        font-size: 26px;
+        font-size: 26px !important;
+        line-height: 1.25 !important;
+        padding: 0 4px !important;
+    }
+
+    .category-desc {
+        font-size: 14.5px !important;
+        line-height: 1.5 !important;
+        padding: 0 4px !important;
+        margin-bottom: 24px !important;
+    }
+
+    .category-grid {
+        grid-template-columns: 1fr !important;
+        gap: 14px !important;
+    }
+
+    /* Cards com cantos limpos e largura total quase encostando nas bordas */
+    .blog-card {
+        border-radius: 10px !important;
+        margin: 0 !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4) !important;
+    }
+
+    /* O texto dos cards quase encostando nos riscos laterais dos cards */
+    .blog-card-body {
+        padding: 12px 8px !important;
+    }
+
+    .blog-card-meta {
+        margin-bottom: 8px !important;
+        font-size: 11.5px !important;
+    }
+
+    .blog-card-cat-label {
+        padding: 2px 6px !important;
+        font-size: 10.5px !important;
+    }
+
+    .blog-card-title {
+        font-size: 17.5px !important;
+        line-height: 1.3 !important;
+        margin-bottom: 8px !important;
+        letter-spacing: -0.2px !important;
+    }
+
+    .blog-card-excerpt {
+        font-size: 14.5px !important;
+        line-height: 1.45 !important;
+        margin-bottom: 12px !important;
+    }
+
+    .blog-card-cta {
+        font-size: 13.5px !important;
+        font-weight: 700 !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .category-main-content .container,
+    .category-page .container {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    .blog-card {
+        border-radius: 8px !important;
+    }
+
+    /* Respiro ultra enxuto no celular */
+    .blog-card-body {
+        padding: 10px 6px !important;
+    }
+
+    .blog-card-title {
+        font-size: 16.5px !important;
+    }
+
+    .blog-card-excerpt {
+        font-size: 14px !important;
+        line-height: 1.42 !important;
+    }
+}
+
+/* 2. Textos e Estrutura dos Posts do Blog (Página do Artigo / Leitura) */
+@media (max-width: 768px) {
+    .article-main {
+        padding: 14px 0 50px 0 !important;
+    }
+
+    /* Margem externa quase encostando nas bordas dos celulares */
+    .article-main .container {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+    }
+
+    /* O card do artigo quase encosta nas bordas e o texto quase encosta nos riscos do card */
+    .artigo-fgcar-blog {
+        padding: 18px 8px !important;
+        border-radius: 10px !important;
+        font-size: 16.5px !important;
+        line-height: 1.65 !important;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, 0.35) !important;
+        box-sizing: border-box !important;
+        width: 100% !important;
+    }
+
+    .article-main nav[aria-label="Breadcrumb"] {
+        margin-bottom: 12px !important;
+        font-size: 12.5px !important;
+        line-height: 1.35 !important;
+        padding: 0 2px !important;
+    }
+
+    /* Título H1 do Artigo */
+    .artigo-fgcar-blog h1 {
+        font-size: 22px !important;
+        line-height: 1.25 !important;
+        margin-bottom: 12px !important;
+        letter-spacing: -0.3px !important;
+    }
+
+    /* Subtítulo H2 do Banner */
+    .artigo-fgcar-blog .subtitulo-banner,
+    .artigo-fgcar-blog h2.subtitulo-banner {
+        font-size: 15.5px !important;
+        line-height: 1.45 !important;
+        margin-bottom: 15px !important;
+    }
+
+    /* Barra de autoria e data */
+    .artigo-fgcar-blog > div[style*="background-color: #f0f9ff"] {
+        padding: 8px 10px !important;
+        font-size: 12px !important;
+        line-height: 1.4 !important;
+        margin-bottom: 16px !important;
+        border-radius: 6px !important;
+    }
+
+    /* Imagens de capa e técnicas com cantos proporcionais */
+    .artigo-banner-img-wrapper,
+    .artigo-mid-img-wrapper {
+        margin: 16px 0 20px 0 !important;
+        border-radius: 8px !important;
+    }
+
+    .artigo-banner-img-wrapper img,
+    .artigo-mid-img-wrapper img {
+        border-radius: 8px !important;
+    }
+
+    .artigo-banner-img-wrapper span,
+    .artigo-mid-img-wrapper span {
+        font-size: 11.5px !important;
+        line-height: 1.35 !important;
+        margin-top: 6px !important;
+    }
+
+    /* Parágrafos de texto corridos (evita quebrar em muitas linhas) */
+    .artigo-fgcar-blog p {
+        font-size: 16px !important;
+        line-height: 1.6 !important;
+        margin-bottom: 14px !important;
+        word-break: normal !important;
+    }
+
+    /* Citações / Pull Quotes */
+    .artigo-fgcar-blog blockquote {
+        margin: 18px 0 !important;
+        padding: 12px 10px !important;
+        border-left-width: 3px !important;
+        border-radius: 0 6px 6px 0 !important;
+    }
+
+    .artigo-fgcar-blog blockquote p {
+        font-size: 15px !important;
+        line-height: 1.5 !important;
+    }
+
+    /* Títulos de seções internas */
+    .artigo-fgcar-blog h2 {
+        font-size: 19px !important;
+        line-height: 1.3 !important;
+        margin-top: 26px !important;
+        margin-bottom: 12px !important;
+    }
+
+    .artigo-fgcar-blog h3 {
+        font-size: 16.5px !important;
+        line-height: 1.35 !important;
+        margin-top: 20px !important;
+        margin-bottom: 8px !important;
+    }
+
+    /* Listas */
+    .artigo-fgcar-blog ul,
+    .artigo-fgcar-blog ol {
+        padding-left: 18px !important;
+        margin-bottom: 18px !important;
+    }
+
+    .artigo-fgcar-blog li {
+        margin-bottom: 8px !important;
+        font-size: 15.5px !important;
+        line-height: 1.55 !important;
+    }
+
+    /* Caixas de destaque, avisos e dicas internas */
+    .artigo-fgcar-blog div[style*="background-color: #f8fafc"],
+    .artigo-fgcar-blog div[style*="background-color: #f0f9ff"],
+    .artigo-fgcar-blog div[style*="background-color: #ecfdf5"] {
+        padding: 12px 8px !important;
+        margin: 16px 0 !important;
+        border-radius: 6px !important;
+    }
+
+    /* Tabelas comparativas */
+    .artigo-fgcar-blog div:has(> table) {
+        overflow-x: auto !important;
+        -webkit-overflow-scrolling: touch !important;
+        width: 100% !important;
+        margin: 16px 0 !important;
+    }
+
+    .artigo-fgcar-blog table {
+        font-size: 13px !important;
+        min-width: 100% !important;
+    }
+
+    .artigo-fgcar-blog table th,
+    .artigo-fgcar-blog table td {
+        padding: 8px 6px !important;
+        line-height: 1.35 !important;
+    }
+
+    /* Box de CTA Final FG Car */
+    .artigo-fgcar-blog div[style*="background: linear-gradient"] {
+        padding: 20px 10px !important;
+        border-radius: 8px !important;
+        margin-top: 26px !important;
+    }
+
+    .artigo-fgcar-blog div[style*="background: linear-gradient"] h3 {
+        font-size: 19px !important;
+        line-height: 1.25 !important;
+        margin-bottom: 10px !important;
+    }
+
+    .artigo-fgcar-blog div[style*="background: linear-gradient"] p {
+        font-size: 14px !important;
+        line-height: 1.5 !important;
+        margin-bottom: 16px !important;
+    }
+
+    .artigo-fgcar-blog div[style*="background: linear-gradient"] a {
+        padding: 12px 18px !important;
+        font-size: 15px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        text-align: center !important;
+        display: block !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .article-main .container {
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+    }
+
+    .artigo-fgcar-blog {
+        padding: 15px 5px !important; /* quase encostando na lateral do card */
+        border-radius: 8px !important;
+    }
+
+    .artigo-fgcar-blog h1 {
+        font-size: 20px !important;
+    }
+
+    .artigo-fgcar-blog .subtitulo-banner,
+    .artigo-fgcar-blog h2.subtitulo-banner {
+        font-size: 14.5px !important;
+    }
+
+    .artigo-fgcar-blog p {
+        font-size: 15.5px !important;
+        line-height: 1.55 !important;
     }
 }
 
