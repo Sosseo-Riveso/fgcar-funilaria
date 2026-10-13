@@ -5,6 +5,7 @@ document.addEventListener('DOMContentLoaded', () => {
     initMobileNav();
     initMobileHeaderSubbar();
     initServiceHeroBadges();
+    initFgCarShuffle();
 
     // 2. Video Background Handling (Garante reprodução contínua e silenciosa)
     const heroVideo = document.getElementById('heroVideo');
@@ -343,3 +344,45 @@ window.fgTrackLead = function(leadData) {
 
     return lead;
 };
+
+// ==========================================================================
+// BARALHO FLUTUANTE DE IMAGENS (SHUFFLE STAGE)
+// ==========================================================================
+function initFgCarShuffle() {
+    const stage = document.getElementById('shuffle-stage-fgcar');
+    if (!stage) return;
+    const cards = Array.from(stage.querySelectorAll('.fgcar-shuffle-card'));
+    if (cards.length < 3) return;
+
+    const positions = [
+        { transform: 'translate(0, 0) scale(1) rotate(0deg)', z: 3, opacity: 1 },
+        { transform: 'translate(26px, 14px) scale(0.95) rotate(6deg)', z: 1, opacity: 0.82 },
+        { transform: 'translate(-22px, 12px) scale(0.97) rotate(-5deg)', z: 2, opacity: 0.92 }
+    ];
+    let order = [0, 1, 2];
+
+    function applyPositions() {
+        cards.forEach((card, i) => {
+            const pos = positions[order[i]];
+            card.style.transform = pos.transform;
+            card.style.zIndex = pos.z;
+            card.style.opacity = pos.opacity;
+        });
+    }
+
+    applyPositions();
+    let interval = setInterval(() => {
+        order.unshift(order.pop());
+        applyPositions();
+    }, 3000);
+
+    stage.addEventListener('mouseenter', () => clearInterval(interval));
+    stage.addEventListener('mouseleave', () => {
+        clearInterval(interval);
+        interval = setInterval(() => {
+            order.unshift(order.pop());
+            applyPositions();
+        }, 3000);
+    });
+}
+

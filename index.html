@@ -487,6 +487,26 @@
 
                 <!-- Coluna Direita: Imagem Grande e Centralizada da Cabine -->
                 <div class="cabin-intro-image">
+                    <!-- Selo Circular Giratório: Cabine Pressurizada & Garantia PPG -->
+                    <div class="fgcar-spinning-seal">
+                        <svg viewBox="0 0 140 140" fill="none" xmlns="http://www.w3.org/2000/svg" style="width: 100%; height: 100%;">
+                            <g class="fgcar-badge-spin" style="transform-origin: 70px 70px;">
+                                <circle cx="70" cy="70" r="66" fill="#091322" stroke="#f59e0b" stroke-width="2.2" />
+                                <circle cx="70" cy="70" r="44" fill="none" stroke="#1e293b" stroke-width="1" stroke-dasharray="3 3" />
+                                <path id="fgcar-seal-path" d="M70,18 a52,52 0 1 1 -0.1,0" fill="none" />
+                                <text font-size="8.8" font-weight="800" letter-spacing="1.7" fill="#fef08a">
+                                    <textPath href="#fgcar-seal-path" startOffset="0">
+                                        ★ FG CAR FUNILARIA ARTESANAL ★ CABINE ESTUFA PPG ★
+                                    </textPath>
+                                </text>
+                            </g>
+                            <!-- Miolo Central Estático: Padrão Original -->
+                            <circle cx="70" cy="70" r="25" fill="#1e293b" stroke="#f59e0b" stroke-width="2" />
+                            <path d="M62 68 l5 5 l12 -13" stroke="#f59e0b" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round" />
+                            <text x="70" y="84" text-anchor="middle" font-family="sans-serif" font-size="7.5" font-weight="900" fill="#ffffff" letter-spacing="0.5">ESTUFA</text>
+                        </svg>
+                    </div>
+
                     <div class="cabin-img-frame">
                         <img src="images/Cabine%20de%20Pintura%20Fg%20Car%20Funilaria%20em%20Osasco.webp" alt="Cabine de Pintura em Estufa da FG Car Funilaria em Osasco" class="cabin-big-img" loading="lazy">
                     </div>
@@ -633,23 +653,53 @@
                     </div>
                 </div>
 
-                <div class="about-box-card">
-                    <div class="highlight-card">
-                        <div class="highlight-badge">GARANTIA DE QUALIDADE</div>
-                        <h3>Atendimento Direto com Especialistas</h3>
-                        <p>Aqui você fala diretamente com profissionais experientes que avaliam o seu veículo com transparência e honestidade técnica.</p>
-                        <div class="contact-pill">
-                            <span>📍 Av. Visconde de Nova Granada, 3151</span>
-                            <span>Bairro Cipava — Osasco / SP</span>
+                <!-- Coluna 2: Baralho Flutuante de Serviços Automotivos (Shuffle Cards) -->
+                <div class="about-shuffle-col" style="display: flex; align-items: center; justify-content: center; padding: 15px 0;">
+                    <div class="fgcar-shuffle-stage" id="shuffle-stage-fgcar">
+                        <!-- Carta 1: Martelinho de Ouro -->
+                        <div class="fgcar-shuffle-card" data-index="0">
+                            <img src="images/tecnica-desamassamento-pdr-martelinho-funilaria.jpg" alt="Técnica de martelinho de ouro artesanal PDR em Osasco com preservação da pintura">
+                            <div class="fgcar-shuffle-badge">Martelinho de Ouro</div>
+                            <div class="fgcar-shuffle-caption">
+                                <h4 class="fgcar-shuffle-title">Desamassamento Artesanal (PDR)</h4>
+                                <p class="fgcar-shuffle-desc">100% de preservação da tinta de fábrica sem repintura</p>
+                            </div>
                         </div>
-                        <div class="contact-pill">
-                            <span>📞 WhatsApp & Telefone:</span>
-                            <span class="phone-big">Atendimento via WhatsApp</span>
+
+                        <!-- Carta 2: Pintura em Estufa -->
+                        <div class="fgcar-shuffle-card" data-index="1">
+                            <img src="images/etapas-restauracao-pintura-estufa.jpg" alt="Pintura em cabine estufa pressurizada na FG Car Funilaria">
+                            <div class="fgcar-shuffle-badge">Cabine Estufa PPG</div>
+                            <div class="fgcar-shuffle-caption">
+                                <h4 class="fgcar-shuffle-title">Pintura Pressurizada & Verniz PPG</h4>
+                                <p class="fgcar-shuffle-desc">Secagem térmica uniforme livre de ciscos e pó</p>
+                            </div>
                         </div>
-                        <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20saber%20mais%20sobre%20a%20oficina." class="btn btn-primary btn-block" target="_blank">
-                            Falar com a FG Car Agora ➔
-                        </a>
+
+                        <!-- Carta 3: Alinhamento Estrutural -->
+                        <div class="fgcar-shuffle-card" data-index="2">
+                            <img src="images/alinhamento-gaps-inspecao-final.jpg" alt="Alinhamento técnico de gaps e monobloco automotivo">
+                            <div class="fgcar-shuffle-badge">Alinhamento Técnico</div>
+                            <div class="fgcar-shuffle-caption">
+                                <h4 class="fgcar-shuffle-title">Recuperação Estrutural de Colisão</h4>
+                                <p class="fgcar-shuffle-desc">Vãos milimétricos e alinhamento original preservado</p>
+                            </div>
+                        </div>
                     </div>
+                </div>
+            </div>
+
+            <!-- Faixa de Contato e Avaliação Direta (Embaixo das Duas Colunas) -->
+            <div class="about-bottom-cta" style="margin-top: 40px; background: #070e1e; border: 1px solid rgba(56, 189, 248, 0.25); border-radius: 20px; padding: 28px 32px; box-shadow: 0 15px 35px rgba(0,0,0,0.5); display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px;">
+                <div style="max-width: 650px;">
+                    <span style="display: inline-block; font-size: 11px; font-weight: 800; color: #38bdf8; text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 6px;">Atendimento Direto com Especialistas • Orçamento Rápido</span>
+                    <h3 style="font-size: 22px; font-weight: 800; color: #ffffff; margin: 0 0 6px 0;">Avaliação Técnica Transparente e Sem Burocracia em Osasco</h3>
+                    <p style="font-size: 13px; color: #94a3b8; margin: 0; line-height: 1.5;">📍 Av. Visconde de Nova Granada, 3151 — Bairro Cipava, Osasco/SP. Envie fotos do veículo no WhatsApp e receba a estimativa técnica em minutos.</p>
+                </div>
+                <div style="flex-shrink: 0;">
+                    <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="btn btn-primary btn-lg pulse-glow" target="_blank" rel="noopener" style="padding: 16px 28px; font-weight: 800;">
+                        <span>⚡ Falar com a Oficina no WhatsApp ➔</span>
+                    </a>
                 </div>
             </div>
         </div>
