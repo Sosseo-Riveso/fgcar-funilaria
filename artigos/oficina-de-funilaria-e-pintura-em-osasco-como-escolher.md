@@ -38,7 +38,7 @@ Ao visitar o local, peça para conhecer a área de pintura. Uma cabine de verdad
 A oficina está estrategicamente localizada na **Av. Visconde de Nova Granada, 3151 - Cipava, Osasco - SP**, com fácil acesso para quem vem do Centro de Osasco, Bela Vista, Jaguaribe, Km 18, Vila Yara e da região de Barueri e Alphaville.
 
 #### 3. É possível obter um orçamento preliminar sem levar o carro até a oficina?
-Sim! Pelo WhatsApp da FG Car (11) 94004-7324 você envia fotos com boa iluminação da parte danificada e de diferentes distâncias. Nossos técnicos emitem uma faixa estimativa de valor e prazo em poucos minutos.
+Sim! Pelo WhatsApp da FG Car (11) 94772-7682 você envia fotos com boa iluminação da parte danificada e de diferentes distâncias. Nossos técnicos emitem uma faixa estimativa de valor e prazo em poucos minutos.
 
 #### 4. A oficina oferece garantia sobre o serviço de pintura?
 Sim, fornecemos garantia formal contra descascamento de verniz, perda precoce de brilho, empenamentos ou desalinhamento de peças reparadas, utilizando materiais de padrão internacional (Sherwin-Williams, PPG e Glasurit).

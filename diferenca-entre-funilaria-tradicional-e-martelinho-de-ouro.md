@@ -130,5 +130,5 @@ O segredo para economizar e valorizar seu veículo é contar com uma oficina hon
 
 ### Avaliação Técnica em Osasco e Região
 **Dúvida Entre Martelinho de Ouro ou Funilaria?**  
-Envie um vídeo ou fotos do amassado no WhatsApp da **FG Car**: **(11) 94004-7324**. Nossos mestres de funilaria diagnosticam gratuitamente a melhor solução para o seu carro, sem enrolação e com garantia total de qualidade!  
+Envie um vídeo ou fotos do amassado no WhatsApp da **FG Car**: **(11) 94772-7682**. Nossos mestres de funilaria diagnosticam gratuitamente a melhor solução para o seu carro, sem enrolação e com garantia total de qualidade!  
 *Atendimento na Av. Visconde de Nova Granada, 3151 - Cipava, Osasco / SP*

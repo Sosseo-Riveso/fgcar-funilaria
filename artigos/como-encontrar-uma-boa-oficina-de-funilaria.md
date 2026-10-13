@@ -41,7 +41,7 @@ Estamos localizados no Cipava (Av. Visconde de Nova Granada, 3151), atendendo mo
 Reparos rápidos (Spot Repair ou martelinho) levam de 1 a 2 dias úteis. Pinturas completas de peças (como porta ou para-choque) levam em média de 2 a 4 dias, dependendo do tempo de secagem em estufa e polimento técnico final.
 
 #### 4. Como agendar uma avaliação técnica na FG Car?
-Basta mandar uma mensagem pelo WhatsApp (11) 94004-7324 com fotos do veículo ou comparecer diretamente à oficina de segunda a sexta das 08h às 18h e aos sábados das 08h às 12h.
+Basta mandar uma mensagem pelo WhatsApp (11) 94772-7682 com fotos do veículo ou comparecer diretamente à oficina de segunda a sexta das 08h às 18h e aos sábados das 08h às 12h.
 
 ---
 **Encontre o Melhor Cuidado para o Seu Carro na FG Car:** Comprovamos nossa qualidade em cada detalhe. Traga seu carro para quem entende e ama o ofício de funilaria e pintura na Av. Visconde de Nova Granada, 3151 em Osasco.

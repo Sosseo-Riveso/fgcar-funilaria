@@ -114,5 +114,5 @@ Se o seu veículo sofreu um amassado em local de difícil acesso ou com vinco pr
 
 ### Avaliação Técnica em Osasco e Região
 **Bateu a Lateral ou Caixa de Ar e Quer Saber se Tem Recuperação?**  
-Envie uma foto do local danificado pelo WhatsApp da **FG Car**: **(11) 94004-7324**. Nossos especialistas avaliam na hora se o repuxo com spotter recupera a peça original, com orçamento rápido e sem compromisso!  
+Envie uma foto do local danificado pelo WhatsApp da **FG Car**: **(11) 94772-7682**. Nossos especialistas avaliam na hora se o repuxo com spotter recupera a peça original, com orçamento rápido e sem compromisso!  
 *Atendimento na Av. Visconde de Nova Granada, 3151 - Cipava, Osasco / SP*

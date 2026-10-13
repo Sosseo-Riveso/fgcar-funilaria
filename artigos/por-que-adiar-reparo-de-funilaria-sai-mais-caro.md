@@ -103,5 +103,5 @@ Na **FG Car**, oferecemos diagnósticos honestos para avaliar seu dano no estág
 
 ### Avaliação Preventiva em Osasco e Região
 **Tem um Amassado ou Arranhão Esperando para Consertar?**  
-Não deixe a ferrugem estragar a chapa do seu carro. Envie uma foto agora mesmo no WhatsApp da **FG Car**: **(11) 94004-7324** e receba uma estimativa sem enrolação e sem compromisso!  
+Não deixe a ferrugem estragar a chapa do seu carro. Envie uma foto agora mesmo no WhatsApp da **FG Car**: **(11) 94772-7682** e receba uma estimativa sem enrolação e sem compromisso!  
 *Atendimento na Av. Visconde de Nova Granada, 3151 - Cipava, Osasco / SP*

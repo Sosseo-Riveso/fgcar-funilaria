@@ -119,5 +119,5 @@ Evite soluções caseiras arriscadas e busque sempre a avaliação de profission
 
 ### Avaliação Técnica em Osasco e Região
 **Tem um Amassado no Carro e Não Sabe se Precisa de Funilaria?**  
-Envie uma foto do dano no WhatsApp da **FG Car**: **(11) 94004-7324**. Nossos especialistas analisam na hora se o caso é para martelinho express ou funilaria técnica, com orçamento transparente e sem compromisso!  
+Envie uma foto do dano no WhatsApp da **FG Car**: **(11) 94772-7682**. Nossos especialistas analisam na hora se o caso é para martelinho express ou funilaria técnica, com orçamento transparente e sem compromisso!  
 *Atendimento na Av. Visconde de Nova Granada, 3151 - Cipava, Osasco / SP*
