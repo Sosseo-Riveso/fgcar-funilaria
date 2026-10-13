@@ -393,17 +393,19 @@
         }
 
         .btn-delete-lead {
-            background: transparent;
-            border: none;
-            color: #64748b;
+            background: rgba(239, 68, 68, 0.12);
+            border: 1px solid rgba(239, 68, 68, 0.3);
+            color: #f87171;
+            padding: 6px 10px;
+            border-radius: 6px;
+            font-size: 12px;
             cursor: pointer;
-            font-size: 16px;
-            padding: 4px;
-            transition: color 0.2s;
+            transition: all 0.2s;
         }
 
         .btn-delete-lead:hover {
-            color: var(--brand-red);
+            background: rgba(239, 68, 68, 0.25);
+            color: #ffffff;
         }
 
         .empty-leads-box {
@@ -418,34 +420,40 @@
             margin-bottom: 12px;
         }
 
-        /* MODAL DE CONFIGURAÇÃO */
-        .config-modal {
+        /* MODAIS DO SISTEMA */
+        .modal-backdrop, .config-modal {
             display: none;
             position: fixed;
             inset: 0;
-            background: rgba(0, 0, 0, 0.8);
+            background: rgba(3, 7, 18, 0.88);
             backdrop-filter: blur(8px);
-            z-index: 9999;
+            -webkit-backdrop-filter: blur(8px);
+            z-index: 99999;
             align-items: center;
             justify-content: center;
             padding: 20px;
+            box-sizing: border-box;
         }
 
-        .config-modal.active {
+        .modal-backdrop.active, .config-modal.active {
             display: flex;
         }
 
-        .config-card {
+        .modal-card, .config-card {
             background: var(--bg-card);
             border: 1px solid var(--border-cyan);
-            border-radius: 16px;
+            box-shadow: 0 25px 60px rgba(0, 0, 0, 0.95);
+            border-radius: 18px;
             width: 100%;
             max-width: 520px;
-            padding: 30px;
+            padding: 30px 26px;
             color: #ffffff;
+            position: relative;
+            max-height: 90vh;
+            overflow-y: auto;
         }
 
-        .config-card h3 {
+        .modal-card h3, .config-card h3 {
             font-family: var(--font-heading);
             font-size: 20px;
             margin-bottom: 14px;
@@ -464,7 +472,7 @@
             margin-bottom: 6px;
         }
 
-        .config-field input {
+        .config-field input, .config-field select {
             width: 100%;
             background: var(--bg-input);
             border: 1px solid #334155;
@@ -482,11 +490,46 @@
             margin-top: 6px;
         }
 
-        .config-actions {
+        .modal-actions, .config-actions {
             display: flex;
             justify-content: flex-end;
             gap: 10px;
             margin-top: 24px;
+        }
+
+        /* DETALHES DO LEAD */
+        .lead-detail-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px 14px;
+            margin-bottom: 18px;
+            text-align: left;
+        }
+
+        .lead-detail-item {
+            background: rgba(11, 17, 32, 0.75);
+            border: 1px solid #1e293b;
+            padding: 10px 14px;
+            border-radius: 8px;
+        }
+
+        .lead-detail-item.full {
+            grid-column: span 2;
+        }
+
+        .lead-detail-label {
+            font-size: 11px;
+            color: #64748b;
+            text-transform: uppercase;
+            font-weight: 700;
+            display: block;
+            margin-bottom: 3px;
+        }
+
+        .lead-detail-val {
+            font-size: 13px;
+            color: #ffffff;
+            word-break: break-word;
         }
     </style>
 </head>
@@ -521,6 +564,8 @@
             </div>
 
             <div class="header-actions-box">
+                <span id="cloudSyncStatus" style="font-size: 12px; margin-right: 10px; display: inline-flex; align-items: center;"></span>
+                <button class="btn-action" onclick="openCleanupModal()">🗑️ Gerenciar Limpeza & Expurgo</button>
                 <button class="btn-action" onclick="openConfigModal()">⚙️ Configurações & Senha</button>
                 <button class="btn-action btn-red" onclick="handleLogout()">Sair</button>
             </div>
@@ -531,13 +576,13 @@
             <div class="metric-card">
                 <span class="metric-label">Total de Oportunidades</span>
                 <span class="metric-val" id="totalLeadsCount">0</span>
-                <span class="metric-sub">Registros acumulados</span>
+                <span class="metric-sub">Registros acumulados (Últimos 365 dias)</span>
             </div>
 
             <div class="metric-card gold">
                 <span class="metric-label">Contatos Este Mês</span>
                 <span class="metric-val" id="monthLeadsCount">0</span>
-                <span class="metric-sub">Oportunidades em outubro</span>
+                <span class="metric-sub" id="currentMonthName">Oportunidades no mês atual</span>
             </div>
 
             <div class="metric-card green">
@@ -560,8 +605,8 @@
             <div class="toolbar-buttons">
                 <button class="btn-action btn-green" onclick="exportToCSV()">📥 Baixar Relatório (Excel / CSV)</button>
                 <button class="btn-action" onclick="renderLeadsTable(); loadRemoteLeads();">🔄 Atualizar</button>
+                <button class="btn-action" onclick="openCleanupModal()" title="Gerenciar expurgo de 1 ano ou excluir por mês">🗑️ Limpeza & Expurgo</button>
                 <button class="btn-action" onclick="insertDemoLead()" style="border-style: dashed;" title="Inserir um lead de teste para apresentação comercial">➕ Inserir Demonstração</button>
-                <button class="btn-action btn-red" onclick="clearAllLeads()" title="Limpar todos os registros locais">🗑️ Limpar</button>
             </div>
         </div>
 
@@ -587,10 +632,75 @@
 
     </div>
 
-    <!-- 3. MODAL DE CONFIGURAÇÕES & SENHA -->
-    <div class="config-modal" id="configModal">
-        <div class="config-card">
-            <h3>⚙️ Configurações do Painel</h3>
+    <!-- 3. MODAL DE DETALHES DO LEAD -->
+    <div class="modal-backdrop" id="detailModal">
+        <div class="modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3 id="modalLeadTitle">Detalhes da Oportunidade</h3>
+                <button type="button" onclick="closeDetailModal()" style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+            </div>
+
+            <div class="lead-detail-grid" id="leadDetailContent">
+                <!-- Inserido dinamicamente via JS -->
+            </div>
+
+            <div class="modal-actions" id="leadDetailActions">
+                <button class="btn-action" onclick="closeDetailModal()">Fechar</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 4. MODAL DE GERENCIAMENTO DE LIMPEZA & EXPURGO (LGPD / 1 ANO) -->
+    <div class="modal-backdrop" id="cleanupModal">
+        <div class="modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3>🗑️ Gerenciar Limpeza & Expurgo</h3>
+                <button type="button" onclick="closeCleanupModal()" style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+            </div>
+
+            <p style="font-size:13px;color:#94a3b8;line-height:1.5;margin-bottom:20px;">
+                O sistema mantém os registros durante <strong>1 ano (365 dias)</strong>. Após 365 dias, os dados que ultrapassam a janela de 12 meses são automaticamente expurgados mês a mês. Abaixo você tem controle total para apagar dados sob demanda:
+            </p>
+
+            <!-- Opção A: Excluir por Mês Específico -->
+            <div style="background:#0b1120;border:1px solid #1e293b;border-radius:10px;padding:16px;margin-bottom:16px;">
+                <h4 style="font-size:14px;color:#38bdf8;margin-bottom:6px;">1. Excluir Registros de um Mês Específico</h4>
+                <p style="font-size:12px;color:#94a3b8;margin-bottom:12px;">Selecione o mês desejado para expurgar todos os leads daquele período:</p>
+                <div style="display:flex;gap:10px;">
+                    <select id="cleanupMonthSelect" style="flex:1;background:var(--bg-card);border:1px solid #334155;color:#ffffff;padding:9px 12px;border-radius:8px;font-size:13px;outline:none;">
+                        <option value="">Nenhum mês disponível</option>
+                    </select>
+                    <button type="button" class="btn-action btn-red" onclick="deleteLeadsBySelectedMonth()">Excluir Mês</button>
+                </div>
+            </div>
+
+            <!-- Opção B: Forçar Expurgo de 1 Ano -->
+            <div style="background:#0b1120;border:1px solid #1e293b;border-radius:10px;padding:16px;margin-bottom:16px;">
+                <h4 style="font-size:14px;color:#22c55e;margin-bottom:6px;">2. Executar Expurgo de 1 Ano (365 Dias)</h4>
+                <p style="font-size:12px;color:#94a3b8;margin-bottom:12px;">Força a varredura imediata eliminando qualquer lead anterior a 12 meses:</p>
+                <button type="button" class="btn-action btn-green" onclick="runForcePruneOneYear()">Executar Expurgo de 1 Ano Agora</button>
+            </div>
+
+            <!-- Opção C: Limpar Tudo -->
+            <div style="background:#0b1120;border:1px solid rgba(239,68,68,0.3);border-radius:10px;padding:16px;">
+                <h4 style="font-size:14px;color:#f87171;margin-bottom:6px;">3. Limpeza Geral (Apagar Tudo)</h4>
+                <p style="font-size:12px;color:#94a3b8;margin-bottom:12px;">Apaga permanentemente todos os leads armazenados localmente:</p>
+                <button type="button" class="btn-action btn-red" onclick="clearAllLeads()">🗑️ Limpar Todos os Registros</button>
+            </div>
+
+            <div class="modal-actions" style="margin-top:20px;">
+                <button class="btn-action" onclick="closeCleanupModal()">Concluir</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- 5. MODAL DE CONFIGURAÇÕES & SENHA -->
+    <div class="modal-backdrop" id="configModal">
+        <div class="modal-card">
+            <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;">
+                <h3>⚙️ Configurações do Painel</h3>
+                <button type="button" onclick="closeConfigModal()" style="background:none;border:none;color:#94a3b8;font-size:24px;cursor:pointer;line-height:1;">&times;</button>
+            </div>
             
             <div class="config-field">
                 <label for="newAdminPass">Alterar Senha do Painel:</label>
@@ -604,7 +714,7 @@
                 <p class="config-help">Cole aqui a URL do seu Google Apps Script caso queira sincronizar todas as gravações com a sua planilha do Google Drive.</p>
             </div>
 
-            <div class="config-actions">
+            <div class="modal-actions">
                 <button class="btn-action" onclick="closeConfigModal()">Cancelar</button>
                 <button class="btn-action btn-green" onclick="saveConfigs()">Salvar Alterações</button>
             </div>
@@ -614,7 +724,9 @@
     <!-- Scripts do Painel -->
     <script>
         const DEFAULT_PASS = 'fgcar2026';
+        const STORAGE_KEY = 'fg_leads';
         const DEFAULT_WEBHOOK = 'https://script.google.com/macros/s/AKfycbw_GPpVjP3810KNsqvgAY1pG3jYb9jh6nUcIZ8eDatWZ6pnTLG3TAXSKvYCVZHO1UtXQQ/exec';
+        const RETENTION_DAYS = 365; // Retenção máxima de 1 ano (conforme LGPD e regra solicitada)
 
         // 1. Checagem de Autenticação Inicial
         document.addEventListener('DOMContentLoaded', () => {
@@ -652,9 +764,16 @@
             loadRemoteLeads();
         }
 
+        // Sincronização Remota com Google Sheets
         async function loadRemoteLeads() {
             const webhookUrl = localStorage.getItem('fg_webhook_url') || DEFAULT_WEBHOOK;
-            if (!webhookUrl) return;
+            const syncStatus = document.getElementById('cloudSyncStatus');
+            if (!webhookUrl) {
+                if (syncStatus) syncStatus.innerHTML = '<span style="color:#94a3b8;">⚪ Armazenamento Local Ativo (Sem Nuvem)</span>';
+                return;
+            }
+            if (syncStatus) syncStatus.innerHTML = '<span style="color:#38bdf8;">🔄 Sincronizando com Google Sheets...</span>';
+
             try {
                 const res = await fetch(webhookUrl);
                 if (res.ok) {
@@ -689,13 +808,17 @@
                             }
                         });
                         if (hasNew) {
-                            localStorage.setItem('fg_leads', JSON.stringify(localLeads));
+                            localLeads = pruneExpiredLeads(localLeads);
+                            localStorage.setItem(STORAGE_KEY, JSON.stringify(localLeads));
                             renderLeadsTable(localLeads);
                         }
                     }
+                    if (syncStatus) syncStatus.innerHTML = '<span style="color:#22c55e;">🟢 Google Sheets Conectado & Sincronizado</span>';
+                } else {
+                    if (syncStatus) syncStatus.innerHTML = '<span style="color:#f59e0b;">⚠️ Resposta pendente da planilha</span>';
                 }
             } catch (err) {
-                console.log('Sincronização remota pendente ou sem suporte a GET:', err);
+                if (syncStatus) syncStatus.innerHTML = '<span style="color:#94a3b8;">⚪ Armazenamento Local Ativo</span>';
             }
         }
 
@@ -705,15 +828,53 @@
             location.reload();
         }
 
-        // 5. Renderização dos Leads
+        // 5. Política de Retenção de 1 Ano (365 Dias) - Expurgo Automático Contínuo
+        function pruneExpiredLeads(leads) {
+            if (!Array.isArray(leads)) return [];
+            const oneYearAgo = Date.now() - (RETENTION_DAYS * 24 * 60 * 60 * 1000);
+            return leads.filter(item => {
+                const ts = item.timestamp || parseDateToTimestamp(item.data, item.hora);
+                return ts >= oneYearAgo;
+            });
+        }
+
+        function parseDateToTimestamp(dateStr, timeStr) {
+            if (!dateStr) return Date.now();
+            try {
+                const parts = dateStr.split('/');
+                if (parts.length === 3) {
+                    const day = parseInt(parts[0], 10);
+                    const month = parseInt(parts[1], 10) - 1;
+                    const year = parseInt(parts[2], 10);
+                    let hour = 12, min = 0;
+                    if (timeStr && timeStr.includes(':')) {
+                        const tParts = timeStr.split(':');
+                        hour = parseInt(tParts[0], 10) || 12;
+                        min = parseInt(tParts[1], 10) || 0;
+                    }
+                    return new Date(year, month, day, hour, min).getTime();
+                }
+            } catch (e) {}
+            return Date.now();
+        }
+
+        // 6. Leitura e Persistência dos Leads (com expurgo automático)
         function getLeads() {
             try {
-                return JSON.parse(localStorage.getItem('fg_leads') || '[]');
+                const raw = localStorage.getItem(STORAGE_KEY);
+                if (!raw) return [];
+                const parsed = JSON.parse(raw);
+                const cleaned = pruneExpiredLeads(parsed);
+                if (cleaned.length !== parsed.length) {
+                    localStorage.setItem(STORAGE_KEY, JSON.stringify(cleaned));
+                }
+                return cleaned;
             } catch (e) {
                 return [];
             }
         }
 
+        // 7. Renderização da Tabela & Métricas
         function renderLeadsTable(leadsToRender) {
             const leads = leadsToRender || getLeads();
             const tbody = document.getElementById('leadsTableBody');
@@ -726,6 +887,13 @@
             const now = new Date();
             const currentMonth = (now.getMonth() + 1).toString().padStart(2, '0');
             const currentYear = now.getFullYear().toString();
+            const monthNames = ['janeiro', 'fevereiro', 'março', 'abril', 'maio', 'junho', 'julho', 'agosto', 'setembro', 'outubro', 'novembro', 'dezembro'];
+            
+            const monthLabel = document.getElementById('currentMonthName');
+            if (monthLabel) {
+                monthLabel.innerText = `Oportunidades em ${monthNames[now.getMonth()]}`;
+            }
+
             const monthLeads = allLeads.filter(l => l.data && l.data.includes(`/${currentMonth}/${currentYear}`));
             document.getElementById('monthLeadsCount').innerText = monthLeads.length;
 
@@ -787,6 +955,9 @@
                         <span class="lead-badge-type">${lead.tipo || 'WhatsApp'}</span>
                     </td>
                     <td style="text-align: right; white-space: nowrap;">
+                        <button class="btn-action" style="padding: 6px 10px; font-size: 12px; margin-right: 4px;" onclick="viewLeadDetail('${lead.id}')" title="Ver detalhes completos">
+                            🔍 Detalhes
+                        </button>
                         <a href="${waLink}" target="_blank" rel="noopener" class="btn-whatsapp-lead" title="Abrir conversa no WhatsApp">
                             💬 Conversar
                         </a>
@@ -799,7 +970,7 @@
             });
         }
 
-        // 6. Filtro de Busca em Tempo Real
+        // 8. Filtro de Busca em Tempo Real
         function filterLeads() {
             const query = document.getElementById('searchInput').value.toLowerCase().trim();
             const allLeads = getLeads();
@@ -819,23 +990,158 @@
             renderLeadsTable(filtered);
         }
 
-        // 7. Excluir Lead Individual
+        // 9. Modal de Detalhes do Lead
+        function viewLeadDetail(id) {
+            const allLeads = getLeads();
+            const lead = allLeads.find(l => l.id === id);
+            if (!lead) return;
+
+            const container = document.getElementById('leadDetailContent');
+            const rawTel = (lead.telefone || '').replace(/\D/g, '');
+            const waLink = rawTel ? `https://wa.me/55${rawTel}?text=${encodeURIComponent('Olá ' + lead.nome + '! Tudo bem? Recebemos seu contato pelo site da FG Car.')}` : '#';
+
+            container.innerHTML = `
+                <div class="lead-detail-item">
+                    <span class="lead-detail-label">Nome do Contato</span>
+                    <span class="lead-detail-val" style="font-weight:700;">${lead.nome}</span>
+                </div>
+                <div class="lead-detail-item">
+                    <span class="lead-detail-label">WhatsApp / Telefone</span>
+                    <span class="lead-detail-val" style="color:#38bdf8;font-weight:700;">${lead.telefone}</span>
+                </div>
+                <div class="lead-detail-item">
+                    <span class="lead-detail-label">Página de Origem</span>
+                    <span class="lead-detail-val">${lead.pagina || 'Home'}</span>
+                </div>
+                <div class="lead-detail-item">
+                    <span class="lead-detail-label">Canal / Tipo de Ação</span>
+                    <span class="lead-detail-val">${lead.tipo || 'WhatsApp Popup'}</span>
+                </div>
+                <div class="lead-detail-item full">
+                    <span class="lead-detail-label">Título da Página</span>
+                    <span class="lead-detail-val" style="font-size:12px;color:#94a3b8;">${lead.origem || 'FG Car Funilaria e Pintura'}</span>
+                </div>
+                <div class="lead-detail-item full">
+                    <span class="lead-detail-label">Data e Hora do Registro</span>
+                    <span class="lead-detail-val">${lead.data} às ${lead.hora}</span>
+                </div>
+            `;
+
+            const detailActions = document.getElementById('leadDetailActions');
+            if (detailActions) {
+                detailActions.innerHTML = `
+                    <a href="${waLink}" target="_blank" rel="noopener" class="btn-whatsapp-lead" style="display:inline-flex;align-items:center;padding:8px 16px;border-radius:8px;">
+                        💬 Abrir no WhatsApp
+                    </a>
+                    <button class="btn-action" onclick="closeDetailModal()">Fechar</button>
+                `;
+            }
+
+            document.getElementById('detailModal').classList.add('active');
+        }
+
+        function closeDetailModal() {
+            document.getElementById('detailModal').classList.remove('active');
+        }
+
+        // 10. Excluir Lead Individual (Manual)
         function deleteLead(id) {
-            if (!confirm('Deseja realmente excluir este registro?')) return;
+            if (!confirm('Deseja realmente excluir este registro de lead?')) return;
             let leads = getLeads();
             leads = leads.filter(l => l.id !== id);
-            localStorage.setItem('fg_leads', JSON.stringify(leads));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
             renderLeadsTable();
         }
 
-        // 8. Limpar Todos os Leads
+        // 11. Modal de Limpeza & Expurgo (Manual & 1 Ano)
+        function openCleanupModal() {
+            populateCleanupMonths();
+            document.getElementById('cleanupModal').classList.add('active');
+        }
+
+        function closeCleanupModal() {
+            document.getElementById('cleanupModal').classList.remove('active');
+        }
+
+        function populateCleanupMonths() {
+            const allLeads = getLeads();
+            const select = document.getElementById('cleanupMonthSelect');
+            select.innerHTML = '';
+
+            const monthsSet = new Set();
+            allLeads.forEach(l => {
+                if (l.data && l.data.includes('/')) {
+                    const parts = l.data.split('/');
+                    if (parts.length === 3) {
+                        monthsSet.add(`${parts[1]}/${parts[2]}`);
+                    }
+                }
+            });
+
+            const monthsArr = Array.from(monthsSet).sort().reverse();
+            if (monthsArr.length === 0) {
+                select.innerHTML = '<option value="">Nenhum mês registrado</option>';
+                return;
+            }
+
+            monthsArr.forEach(m => {
+                const [mes, ano] = m.split('/');
+                const monthNames = ['Janeiro', 'Fevereiro', 'Março', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro', 'Dezembro'];
+                const name = monthNames[parseInt(mes, 10) - 1] || mes;
+                const opt = document.createElement('option');
+                opt.value = m;
+                opt.innerText = `${name} de ${ano} (${m})`;
+                select.appendChild(opt);
+            });
+        }
+
+        // Excluir registros por mês selecionado
+        function deleteLeadsBySelectedMonth() {
+            const select = document.getElementById('cleanupMonthSelect');
+            const targetMonth = select.value;
+            if (!targetMonth) {
+                alert('Nenhum mês selecionado.');
+                return;
+            }
+
+            if (!confirm(`Tem certeza de que deseja excluir TODOS os leads registrados no período de ${targetMonth}?`)) return;
+
+            let leads = getLeads();
+            const initialCount = leads.length;
+            leads = leads.filter(l => {
+                if (!l.data) return true;
+                return !l.data.includes(`/${targetMonth}`);
+            });
+
+            const removedCount = initialCount - leads.length;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+            alert(`Foram removidos ${removedCount} registros correspondentes a ${targetMonth}.`);
+            populateCleanupMonths();
+            renderLeadsTable();
+        }
+
+        // Executar expurgo forçado de 1 ano (365 dias)
+        function runForcePruneOneYear() {
+            let leads = getLeads();
+            const initialCount = leads.length;
+            leads = pruneExpiredLeads(leads);
+            const removedCount = initialCount - leads.length;
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
+            alert(`Varredura concluída! Registros com mais de 365 dias excluídos: ${removedCount}. Registros ativos preservados: ${leads.length}.`);
+            populateCleanupMonths();
+            renderLeadsTable();
+        }
+
+        // Limpar todos os leads
         function clearAllLeads() {
-            if (!confirm('ATENÇÃO: Deseja apagar TODOS os leads registrados? Essa ação não pode ser desfeita.')) return;
-            localStorage.removeItem('fg_leads');
+            if (!confirm('ATENÇÃO: Deseja apagar permanentemente TODOS os leads registrados? Essa ação não pode ser desfeita.')) return;
+            localStorage.removeItem(STORAGE_KEY);
+            alert('Todos os registros foram excluídos.');
+            closeCleanupModal();
             renderLeadsTable();
         }
 
-        // 9. Inserir Lead de Demonstração (Para Apresentações)
+        // 12. Inserir Lead de Demonstração (Para Apresentações)
         function insertDemoLead() {
             const nomes = ['Carlos Eduardo Silva', 'Mariana Alcantara', 'Roberto Mendes', 'Juliana Rocha', 'Felipe Santos'];
             const paginas = ['/funilaria-de-colisao-e-batidas', '/pintura-em-estufa-climatizada', '/martelinho-de-ouro-express', '/'];
@@ -859,11 +1165,11 @@
 
             let leads = getLeads();
             leads.unshift(demo);
-            localStorage.setItem('fg_leads', JSON.stringify(leads));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
             renderLeadsTable();
         }
 
-        // 10. Exportação para Excel (.CSV)
+        // 13. Exportação para Excel (.CSV)
         function exportToCSV() {
             const leads = getLeads();
             if (leads.length === 0) {
@@ -888,7 +1194,7 @@
             document.body.removeChild(link);
         }
 
-        // 11. Modal de Configurações
+        // 14. Modal de Configurações
         function openConfigModal() {
             document.getElementById('webhookUrlInput').value = localStorage.getItem('fg_webhook_url') || DEFAULT_WEBHOOK;
             document.getElementById('newAdminPass').value = '';
