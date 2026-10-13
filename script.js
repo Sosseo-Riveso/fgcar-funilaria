@@ -356,8 +356,8 @@ function initFgCarShuffle() {
 
     const positions = [
         { transform: 'translate(0, 0) scale(1) rotate(0deg)', z: 3, opacity: 1 },
-        { transform: 'translate(26px, 14px) scale(0.95) rotate(6deg)', z: 1, opacity: 0.82 },
-        { transform: 'translate(-22px, 12px) scale(0.97) rotate(-5deg)', z: 2, opacity: 0.92 }
+        { transform: 'translate(20px, 14px) scale(0.95) rotate(5deg)', z: 1, opacity: 0.85 },
+        { transform: 'translate(-18px, 12px) scale(0.97) rotate(-4.5deg)', z: 2, opacity: 0.92 }
     ];
     let order = [0, 1, 2];
 
