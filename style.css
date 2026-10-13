@@ -184,17 +184,27 @@ body {
 }
 
 /* Menu Desktop */
+.desktop-nav {
+    margin-left: auto;
+    margin-right: 14px;
+}
+
 .desktop-nav .nav-links {
     display: flex;
     list-style: none;
-    gap: 24px;
+    gap: 15px;
+    align-items: center;
+    margin: 0;
+    padding: 0;
 }
 
 .nav-links a {
     color: var(--text-secondary);
     text-decoration: none;
-    font-size: 14px;
+    font-size: 13.5px;
     font-weight: 600;
+    white-space: nowrap;
+    padding: 4px 2px;
     transition: var(--transition-fast);
 }
 
@@ -203,11 +213,26 @@ body {
     color: var(--brand-cyan);
 }
 
-/* Ações Direitas */
+/* Ações Direitas (Botão WhatsApp no Cabeçalho) */
 .header-actions {
     display: flex;
     align-items: center;
-    gap: 18px;
+    gap: 12px;
+    margin-left: auto;
+    flex-shrink: 0;
+}
+
+.header-actions .btn-header {
+    padding: 8px 15px;
+    font-size: 13px;
+    font-weight: 700;
+    white-space: nowrap;
+    border-radius: 8px;
+    line-height: 1.2;
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    box-shadow: 0 4px 14px rgba(2, 132, 199, 0.35);
 }
 
 .phone-link {
@@ -1569,6 +1594,16 @@ body {
     position: relative;
 }
 
+.has-dropdown::after {
+    content: '';
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 14px;
+    pointer-events: auto;
+}
+
 .dropdown-trigger {
     display: inline-flex;
     align-items: center;
@@ -1609,6 +1644,28 @@ body {
     opacity: 1;
     visibility: visible;
     transform: translateY(4px);
+}
+
+@media (min-width: 993px) and (max-width: 1280px) {
+    .header-container {
+        padding: 0 16px;
+        gap: 10px;
+    }
+    .brand-img-logo {
+        height: 52px;
+        max-width: 170px;
+    }
+    .desktop-nav .nav-links {
+        gap: 10px;
+    }
+    .nav-links a {
+        font-size: 12.5px;
+        padding: 4px 0;
+    }
+    .header-actions .btn-header {
+        padding: 7px 11px;
+        font-size: 12px;
+    }
 }
 
 .dropdown-menu li {
