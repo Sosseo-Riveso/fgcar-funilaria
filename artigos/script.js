@@ -213,7 +213,7 @@ function initLeadGateSystem() {
                     <button type="submit" class="btn btn-primary lead-modal-submit" id="fgLeadSubmitBtn">
                         <span>⚡ Continuar para o WhatsApp ➔</span>
                     </button>
-                    <span class="lead-modal-privacy">🔒 Seus dados estão seguros e não serão compartilhados.</span>
+                    <span class="lead-modal-privacy">🔒 Dados protegidos pela LGPD. Uso exclusivo para seu orçamento. <a href="../politica-de-privacidade.html" target="_blank" style="color: #38bdf8; text-decoration: underline;">Política de Privacidade</a>.</span>
                 </form>
             </div>
         </div>`;
