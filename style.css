@@ -37,6 +37,8 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
+    overflow-x: hidden;
+    max-width: 100%;
 }
 
 body {
@@ -45,6 +47,7 @@ body {
     font-family: var(--font-body);
     line-height: 1.6;
     overflow-x: hidden;
+    max-width: 100%;
     -webkit-font-smoothing: antialiased;
 }
 
@@ -1448,8 +1451,20 @@ body {
     }
 
     .hero-bg-video {
-        object-position: 88% 20% !important;
-        opacity: 0.65 !important;
+        object-position: 84% 26% !important;
+        opacity: 0.85 !important;
+    }
+
+    .video-overlay {
+        background: linear-gradient(
+            180deg,
+            rgba(6, 9, 19, 0.90) 0%,
+            rgba(6, 9, 19, 0.74) 26%,
+            rgba(6, 9, 19, 0.12) 42%,
+            rgba(6, 9, 19, 0.16) 58%,
+            rgba(6, 9, 19, 0.84) 74%,
+            rgba(6, 9, 19, 0.96) 100%
+        ) !important;
     }
 
     .hero-section {
@@ -1475,7 +1490,8 @@ body {
     }
 
     .hero-cta-group {
-        margin-bottom: 22px !important;
+        margin-top: 175px !important;
+        margin-bottom: 24px !important;
     }
 
     /* Quando o menu está aberto, todo o cabeçalho original some e entra apenas o menu */
@@ -1565,7 +1581,12 @@ body {
 @media (max-width: 640px) {
     .brand-img-logo { height: 54px !important; max-height: 54px !important; }
     .hero-title { font-size: 22.5px !important; line-height: 1.22 !important; margin-bottom: 10px !important; }
-    .hero-subtitle { font-size: 13.5px !important; line-height: 1.4 !important; margin-bottom: 15px !important; }
+    .hero-subtitle { font-size: 13.5px !important; line-height: 1.4 !important; margin-bottom: 12px !important; }
+    .hero-cta-group {
+        margin-top: 175px !important;
+        margin-bottom: 22px !important;
+        gap: 12px !important;
+    }
     .hero-cta-group .btn-lg {
         padding: 12px 18px !important;
         font-size: 15px !important;
@@ -2998,6 +3019,42 @@ body {
     .about-box-card .highlight-card {
         padding: 16px 8px !important;
         border-radius: 10px !important;
+    }
+
+    /* Faixa de Contato e Avaliação Direta (about-bottom-cta) sem estourar a tela no mobile */
+    .about-bottom-cta {
+        padding: 20px 14px !important;
+        border-radius: 14px !important;
+        flex-direction: column !important;
+        align-items: stretch !important;
+        gap: 16px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        box-sizing: border-box !important;
+        overflow: hidden !important;
+    }
+
+    .about-bottom-cta > div,
+    .about-bottom-cta-text,
+    .about-bottom-cta-action {
+        width: 100% !important;
+        max-width: 100% !important;
+        flex: 1 1 auto !important;
+        box-sizing: border-box !important;
+    }
+
+    .about-bottom-cta .btn,
+    .process-cta .btn,
+    .cabin-cta-block .btn {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding: 14px 12px !important;
+        font-size: 14.5px !important;
+        white-space: normal !important;
+        text-align: center !important;
+        justify-content: center !important;
+        box-sizing: border-box !important;
+        line-height: 1.3 !important;
     }
 
     /* Seção Localização / Mapa */
