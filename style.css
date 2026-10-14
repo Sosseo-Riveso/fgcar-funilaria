@@ -704,6 +704,7 @@ body {
 
 /* 5. DESTAQUE DA CABINE DE PINTURA PROFISSIONAL (Sem Poeira nem Ciscos) */
 .cabin-spotlight-section {
+    position: relative;
     background: radial-gradient(circle at 80% 40%, rgba(2, 132, 199, 0.16) 0%, #060913 75%);
     border-top: 1px solid var(--border-color);
     border-bottom: 1px solid var(--border-color);
@@ -3448,13 +3449,14 @@ body {
    SELO CIRCULAR GIRATÓRIO (SPINNING SEAL) & BARALHO FLUTUANTE (SHUFFLE CARDS)
    ========================================================================== */
 
-/* Selo Circular Giratório sobre a Cabine de Pintura */
+/* Selo Circular Giratório sobre a Seção da Cabine de Pintura */
 .fgcar-spinning-seal {
     position: absolute;
-    top: -36px;
-    right: -24px;
-    width: 168px;
-    height: 168px;
+    top: -82px;
+    left: 48%;
+    transform: translateX(-50%);
+    width: 164px;
+    height: 164px;
     z-index: 25;
     pointer-events: none;
     filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.78));
@@ -3471,10 +3473,14 @@ body {
 
 @media (max-width: 768px) {
     .fgcar-spinning-seal {
-        top: -22px;
-        right: -6px;
-        width: 128px;
-        height: 128px;
+        position: relative;
+        top: 0;
+        left: 0;
+        right: auto;
+        transform: none;
+        margin: -58px auto 18px auto;
+        width: 132px;
+        height: 132px;
     }
 }
 
