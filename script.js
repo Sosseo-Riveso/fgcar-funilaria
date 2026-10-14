@@ -1,9 +1,10 @@
 // FG Car Oficina e Funilaria e Pintura - Scripts Principais & Lead Tracker
 
 document.addEventListener('DOMContentLoaded', () => {
-    // 1. Menu Mobile Toggle & Subbar
+    // 1. Menu Mobile Toggle, Subbar & Smart Sticky Header
     initMobileNav();
     initMobileHeaderSubbar();
+    initSmartStickyHeader();
     initServiceHeroBadges();
     initFgCarShuffle();
 
@@ -146,6 +147,26 @@ function initMobileHeaderSubbar() {
     if (subbar && mainHeader.contains(subbar)) {
         mainHeader.insertAdjacentElement('afterend', subbar);
     }
+}
+
+function initSmartStickyHeader() {
+    const mainHeader = document.querySelector('.main-header');
+    if (!mainHeader) return;
+
+    let isScrolled = false;
+    function onScroll() {
+        const y = window.scrollY || window.pageYOffset || 0;
+        if (!isScrolled && y > 48) {
+            isScrolled = true;
+            mainHeader.classList.add('fg-header-scrolled');
+        } else if (isScrolled && y <= 12) {
+            isScrolled = false;
+            mainHeader.classList.remove('fg-header-scrolled');
+        }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    onScroll();
 }
 
 function initServiceHeroBadges() {

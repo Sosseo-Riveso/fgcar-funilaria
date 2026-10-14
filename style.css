@@ -3477,6 +3477,122 @@ body {
     line-height: 1.4;
 }
 
+/* ==========================================================================
+   CABEÇALHO INTELIGENTE COMPACTO NO SCROLL + EXPANSÃO NO HOVER (DESKTOP & MOBILE)
+   ========================================================================== */
 
+.main-header {
+    padding: 8px 0;
+    transition: padding 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+}
 
+.brand-img-logo {
+    height: 60px;
+    max-height: 60px;
+    transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease;
+}
 
+.nav-links a,
+.header-actions .btn-header {
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Estado Compacto ao Rolar a Tela (.fg-header-scrolled) */
+.main-header.fg-header-scrolled {
+    padding: 2px 0 !important;
+    background: rgba(5, 9, 18, 0.98) !important;
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.65) !important;
+    border-bottom-color: rgba(56, 189, 248, 0.22) !important;
+}
+
+.main-header.fg-header-scrolled .brand-img-logo {
+    height: 34px !important;
+    max-height: 34px !important;
+}
+
+.main-header.fg-header-scrolled .nav-links a {
+    font-size: 12.5px !important;
+    padding: 2px 2px !important;
+}
+
+.main-header.fg-header-scrolled .header-actions .btn-header {
+    padding: 5px 11px !important;
+    font-size: 11.5px !important;
+    border-radius: 6px !important;
+}
+
+/* Expansão Suave ao Sobrepor o Mouse no Cabeçalho Compactado (Desktop) */
+@media (hover: hover) and (min-width: 993px) {
+    .main-header.fg-header-scrolled:hover {
+        padding: 8px 0 !important;
+    }
+
+    .main-header.fg-header-scrolled:hover .brand-img-logo {
+        height: 58px !important;
+        max-height: 58px !important;
+    }
+
+    .main-header.fg-header-scrolled:hover .nav-links a {
+        font-size: 13.5px !important;
+        padding: 4px 2px !important;
+    }
+
+    .main-header.fg-header-scrolled:hover .header-actions .btn-header {
+        padding: 8px 15px !important;
+        font-size: 13px !important;
+        border-radius: 8px !important;
+    }
+}
+
+/* Ajuste Ultra-Compacto para Mobile no Topo e ao Rolar */
+@media (max-width: 992px) {
+    .main-header {
+        padding: 0 !important;
+    }
+
+    .main-header .header-container {
+        min-height: 52px !important;
+        padding: 3px 12px !important;
+        transition: min-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), padding 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    }
+
+    .main-header .brand-img-logo {
+        height: 46px !important;
+        max-height: 46px !important;
+    }
+
+    .main-header.fg-header-scrolled .header-container {
+        min-height: 38px !important;
+        padding: 2px 12px !important;
+    }
+
+    .main-header.fg-header-scrolled .brand-img-logo {
+        height: 30px !important;
+        max-height: 30px !important;
+    }
+
+    .main-header.fg-header-scrolled .mobile-whatsapp-btn {
+        width: 30px !important;
+        height: 30px !important;
+        min-width: 30px !important;
+        border-radius: 6px !important;
+    }
+
+    .main-header.fg-header-scrolled .mobile-whatsapp-btn svg {
+        width: 16px !important;
+        height: 16px !important;
+    }
+
+    .main-header.fg-header-scrolled .mobile-toggle {
+        width: 30px !important;
+        height: 30px !important;
+        padding: 4px !important;
+        gap: 3px !important;
+        border-radius: 6px !important;
+    }
+
+    .main-header.fg-header-scrolled .mobile-toggle .bar {
+        width: 16px !important;
+        height: 2px !important;
+    }
+}
