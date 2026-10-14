@@ -3451,29 +3451,30 @@ body {
 /* Selo Circular Giratório sobre a Cabine de Pintura */
 .fgcar-spinning-seal {
     position: absolute;
-    top: -28px;
-    right: -28px;
-    width: 130px;
-    height: 130px;
+    top: -36px;
+    right: -24px;
+    width: 168px;
+    height: 168px;
     z-index: 25;
     pointer-events: none;
-    filter: drop-shadow(0 12px 24px rgba(0, 0, 0, 0.7));
+    filter: drop-shadow(0 14px 28px rgba(0, 0, 0, 0.78));
 }
 
 @keyframes fgcarBadgeSpin {
-    to { transform: rotate(360deg); }
+    from { transform: rotate(0deg); }
+    to { transform: rotate(-360deg); }
 }
 
 .fgcar-badge-spin {
-    animation: fgcarBadgeSpin 18s linear infinite;
+    animation: fgcarBadgeSpin 20s linear infinite;
 }
 
 @media (max-width: 768px) {
     .fgcar-spinning-seal {
-        top: -18px;
-        right: -12px;
-        width: 105px;
-        height: 105px;
+        top: -22px;
+        right: -6px;
+        width: 128px;
+        height: 128px;
     }
 }
 
