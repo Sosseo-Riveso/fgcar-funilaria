@@ -193,6 +193,39 @@ function initServiceHeroBadges() {
 // SISTEMA DE CAPTURA DE LEADS & LEAD GATE (WHATSAPP POPUP)
 // ==========================================================================
 
+// Captura e persiste UTMs (ex: ?utm_source=google-business-profile) durante toda a sessão de navegação
+(function captureTrafficSource() {
+    try {
+        const params = new URLSearchParams(window.location.search);
+        const utmSource = params.get('utm_source') || params.get('origem');
+        const utmMedium = params.get('utm_medium') || '';
+        const utmCampaign = params.get('utm_campaign') || '';
+        if (utmSource) {
+            sessionStorage.setItem('fg_utm_source', utmSource);
+            if (utmMedium) sessionStorage.setItem('fg_utm_medium', utmMedium);
+            if (utmCampaign) sessionStorage.setItem('fg_utm_campaign', utmCampaign);
+        } else if (!sessionStorage.getItem('fg_utm_source') && document.referrer) {
+            if (document.referrer.includes('google.com/maps') || document.referrer.includes('maps.app.goo.gl')) {
+                sessionStorage.setItem('fg_utm_source', 'google-maps-referrer');
+            }
+        }
+    } catch (e) {}
+})();
+
+function getLeadChannelLabel() {
+    try {
+        const src = (sessionStorage.getItem('fg_utm_source') || '').toLowerCase();
+        const camp = sessionStorage.getItem('fg_utm_campaign') || '';
+        if (src.includes('google-business') || src.includes('gmn') || src.includes('perfil-empresa') || src.includes('meu-negocio') || src.includes('maps')) {
+            return camp ? `📍 GMN (${camp})` : '📍 GMN (Perfil da Empresa)';
+        }
+        if (src) {
+            return camp ? `🎯 ${src} (${camp})` : `🎯 ${src}`;
+        }
+    } catch (e) {}
+    return 'WhatsApp Popup (Site Orgânico)';
+}
+
 function initLeadGateSystem() {
     // Cria o modal no DOM se não existir
     if (!document.getElementById('fgLeadModal')) {
@@ -299,13 +332,17 @@ function initLeadGateSystem() {
 
             if (!nome || !telefone) return;
 
-            // Salva o lead no sistema
+            const channelLabel = getLeadChannelLabel();
+            const isGmn = channelLabel.includes('GMN');
+            const pagePath = window.location.pathname || '/';
+
+            // Salva o lead no sistema com identificação da UTM / GMN
             window.fgTrackLead({
                 nome: nome,
                 telefone: telefone,
-                origem: document.title || 'Site FG Car',
-                pagina: window.location.pathname || '/',
-                tipo: 'WhatsApp Popup'
+                origem: isGmn ? `📍 GMN -> ${document.title || 'Site FG Car'}` : (document.title || 'Site FG Car'),
+                pagina: isGmn ? `${pagePath} [GMN]` : pagePath,
+                tipo: channelLabel
             });
 
             // Monta mensagem personalizada
@@ -335,7 +372,7 @@ window.fgTrackLead = function(leadData) {
         telefone: leadData.telefone || '',
         pagina: leadData.pagina || window.location.pathname || '/',
         origem: leadData.origem || document.title || 'FG Car Oficina',
-        tipo: leadData.tipo || 'Geral',
+        tipo: leadData.tipo || getLeadChannelLabel(),
         timestamp: Date.now()
     };
 
