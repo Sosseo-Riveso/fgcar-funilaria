@@ -1,5 +1,10 @@
 // FG Car Oficina e Funilaria e Pintura - Scripts Principais & Lead Tracker
 
+// Redirecionamento imediato de domínios provisórios (.pages.dev / .github.io) para o domínio oficial (evita duplicidade de indexação)
+if (typeof window !== 'undefined' && (window.location.hostname.endsWith('.pages.dev') || window.location.hostname.endsWith('.github.io'))) {
+    window.location.replace('https://funilariaosasco.com.br' + window.location.pathname + window.location.search + window.location.hash);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     // 1. Menu Mobile Toggle, Subbar & Smart Sticky Header
     initMobileNav();
