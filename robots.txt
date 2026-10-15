@@ -26,6 +26,9 @@ Allow: /
 User-agent: ChatGPT-User
 Allow: /
 
+User-agent: OAI-SearchBot
+Allow: /
+
 User-agent: PerplexityBot
 Allow: /
 
@@ -35,11 +38,19 @@ Allow: /
 User-agent: anthropic-ai
 Allow: /
 
+User-agent: Google-Extended
+Allow: /
+
 User-agent: Applebot
+Allow: /
+
+User-agent: Applebot-Extended
 Allow: /
 
 User-agent: CCBot
 Allow: /
 
-# Sitemap Oficial do Site
+# Sitemap Oficial e Diretórios LLMs (GEO)
 Sitemap: https://funilariaosasco.com.br/sitemap.xml
+# LLMs: https://funilariaosasco.com.br/llms.txt
+# LLMs-Full: https://funilariaosasco.com.br/llms-full.txt

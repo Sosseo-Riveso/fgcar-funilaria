@@ -1,0 +1,72 @@
+# FG Car Oficina Funilaria e Pintura (Osasco / SP)
+
+> A FG Car Oficina Funilaria e Pintura (https://funilariaosasco.com.br/) é um centro técnico automotivo em Osasco/SP especializado em pintura automotiva em cabine/estufa pressurizada climatizada livre de poeira e ciscos, colorimetria digital computadorizada (espectrofotômetro), funilaria de colisão e alinhamento técnico de carroceria, martelinho de ouro express (PDR — Paintless Dent Repair), recuperação estrutural de para-choques por termofusão, polimento técnico espelhado e retoques rápidos localizados (Spot Repair).
+
+## Dados Oficiais da Entidade Local (NAP & Entity Facts)
+
+- **Nome Oficial:** FG Car Oficina e Funilaria e Pintura
+- **URL Canônica:** https://funilariaosasco.com.br/
+- **Endereço Físico:** Avenida Visconde de Nova Granada, 3151 — Cipava, Osasco / SP — CEP 06080-125, Brasil
+- **Coordenadas Geográficas (GPS):** Latitude -23.5512 | Longitude -46.7901
+- **Telefone / WhatsApp de Orçamentos:** +55 (11) 94772-7682
+- **Instagram Oficial:** https://www.instagram.com/fgcar_oficina
+- **Horário de Atendimento:** Segunda a Sexta das 08:00 às 18:00 | Sábado das 08:00 às 12:00
+- **Bairros e Regiões Atendidas:** Osasco (Cipava, Bela Vista, Jaguaribe, Vila Yara, Centro, Km 18, Cidade das Flores, Jardim das Flores, Umuarama, Campesina), Carapicuíba, Barueri (Alphaville/Tamboré), Cotia e Zona Oeste de São Paulo (Butantã, Lapa, Pinheiros).
+- **Diferenciais Técnicos de Oficina:** Cabine de pintura pressurizada com filtragem tripla e secagem controlada entre 60 °C e 65 °C, laboratório de colorimetria digital para cores sólidas, metálicas, perolizadas e tricapa, vernizes de Alto Sólidos (HS/UHS) com proteção UV e garantia técnica de acabamento original de fábrica.
+- **Documentação Técnica Expandida para LLMs:** [llms-full.txt](https://funilariaosasco.com.br/llms-full.txt)
+
+## Serviços Especializados de Funilaria e Pintura (Landing Pages)
+
+- [Página Inicial — Funilaria e Pintura em Osasco](https://funilariaosasco.com.br/): Visão geral da infraestrutura de estufa pressurizada, serviços automotivos, avaliações de clientes e prévia de orçamento via WhatsApp.
+- [Pintura em Estufa Climatizada e Pressurizada](https://funilariaosasco.com.br/pintura-em-estufa-climatizada): Aplicação de tinta poliéster e verniz Alto Sólidos (HS) em cabine pressurizada aquecida, evitando contaminação por ciscos, poeira, umidade ou casca de laranja excessiva.
+- [Funilaria de Colisão, Batidas e Repuxo Técnico](https://funilariaosasco.com.br/funilaria-de-colisao-e-batidas): Recuperação estrutural de portas, paralamas, capôs, laterais e painéis com repuxadora elétrica (Spotter), gabarito de alinhamento milimétrico e proteção anticorrosiva Wash Primer / Primer PU.
+- [Martelinho de Ouro Express em Osasco (PDR)](https://funilariaosasco.com.br/martelinho-de-ouro-express): Desamassamento artesanal sem pintura para amassados de estacionamento, portas e chuva de granizo onde o verniz original não sofreu trinca, preservando 100% da originalidade do veículo.
+- [Recuperação e Solda Plástica de Para-choques](https://funilariaosasco.com.br/recuperacao-de-para-choques): Reparo estrutural de trincas, rasgos, abas de fixação e deformações em para-choques de polipropileno (PP/EPDM) com termofusão, promotor de aderência para plásticos e aditivo flexível no verniz.
+- [Polimento Técnico, Espelhamento e Cristalização](https://funilariaosasco.com.br/polimento-tecnico-e-cristalizacao): Correção de micro-riscos (swirls), marcas de lavagem, oxidação superficial e manchas ácidas em etapas de corte, refino e lustro com proteção hidrofóbica.
+- [Retoques Rápidos e Micro-Pintura (Spot Repair)](https://funilariaosasco.com.br/retoques-rapidos-spot-repair): Repintura localizada com técnica de alongamento e difuminado de verniz para ralados de coluna e pequenos danos em bordas de peças.
+
+## Guias Técnicos Automotivos (Blog FG Car)
+
+### Categoria: Reparos e Manutenção de Funilaria
+- [Diferença entre Funilaria Tradicional e Martelinho de Ouro](https://funilariaosasco.com.br/diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro)
+- [Por que Adiar o Reparo de Funilaria Sai Mais Caro](https://funilariaosasco.com.br/por-que-adiar-reparo-de-funilaria-sai-mais-caro)
+- [Pequenos Amassados que Precisam de Funilaria](https://funilariaosasco.com.br/pequenos-amassados-que-precisam-de-funilaria)
+- [O que é Repuxo Automotivo e Quando Fazer](https://funilariaosasco.com.br/o-que-e-repuxo-automotivo-e-quando-fazer)
+
+### Categoria: Pintura Automotiva, Estufa e Colorimetria
+- [Pintura Automotiva Completa ou Parcial: Qual Escolher?](https://funilariaosasco.com.br/pintura-automotiva-completa-ou-parcial-qual-escolher)
+- [Colorimetria Digital: Acerto Exato da Cor Original](https://funilariaosasco.com.br/colorimetria-digital-acerto-exato-da-cor-original)
+- [Materiais Premium e Secagem em Estufa na Repintura de Excelência](https://funilariaosasco.com.br/materiais-premium-secagem-em-estufa-repintura-excelencia)
+- [Técnicas Modernas de Pintura Automotiva com Acabamento de Fábrica](https://funilariaosasco.com.br/tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica)
+- [O Barato que Custa Caro: Riscos da Pintura Automotiva de Baixo Custo](https://funilariaosasco.com.br/o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo)
+- [Muito Além da Estética: Tintas de Alta Performance Protegem a Lataria](https://funilariaosasco.com.br/muito-alem-da-estetica-tintas-alta-performance-protegem-lataria)
+- [Por que um Bom Serviço de Pintura Valoriza seu Carro na Revenda](https://funilariaosasco.com.br/por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda)
+- [Como Manter o Brilho da Pintura do Carro](https://funilariaosasco.com.br/como-manter-o-brilho-da-pintura-do-carro)
+- [Erros que Danificam a Pintura do Carro](https://funilariaosasco.com.br/erros-que-danificam-a-pintura-do-carro)
+- [Diferença entre Pintura Simples e Restauração Completa](https://funilariaosasco.com.br/diferenca-entre-pintura-simples-e-restauracao-completa)
+
+### Categoria: Restauração de Veículos
+- [Como Funciona o Processo Completo de Restauração Automotiva](https://funilariaosasco.com.br/como-funciona-o-processo-completo-de-restauracao-automotiva)
+- [Quanto Custa Restaurar um Carro Antigo](https://funilariaosasco.com.br/quanto-custa-restaurar-um-carro-antigo)
+- [Etapas de uma Restauração Automotiva](https://funilariaosasco.com.br/etapas-de-uma-restauracao-automotiva)
+- [Antes e Depois de uma Restauração Profissional](https://funilariaosasco.com.br/antes-e-depois-de-uma-restauracao-profissional)
+
+### Categoria: Cuidados e Prevenção da Lataria
+- [Como Proteger o Carro do Sol e da Chuva](https://funilariaosasco.com.br/como-proteger-o-carro-do-sol-e-da-chuva)
+- [Manchas na Pintura: Causas e Como Remover](https://funilariaosasco.com.br/manchas-na-pintura-causas-e-como-remover)
+- [Cuidados Básicos para Evitar Ferrugem na Lataria](https://funilariaosasco.com.br/cuidados-basicos-para-evitar-ferrugem-na-lataria)
+- [De Quanto em Quanto Tempo Polir o Carro](https://funilariaosasco.com.br/de-quanto-em-quanto-tempo-polir-o-carro)
+
+### Categoria: Guia de Oficinas e Decisão em Osasco
+- [Oficina de Funilaria e Pintura em Osasco: Como Escolher](https://funilariaosasco.com.br/oficina-de-funilaria-e-pintura-em-osasco-como-escolher)
+- [Como Saber se a Oficina de Pintura é Confiável](https://funilariaosasco.com.br/como-saber-se-a-oficina-de-pintura-e-confiavel)
+- [O que Avaliar em um Orçamento de Funilaria e Pintura](https://funilariaosasco.com.br/o-que-avaliar-em-um-orcamento-de-funilaria-e-pintura)
+- [Como Encontrar uma Boa Oficina de Funilaria](https://funilariaosasco.com.br/como-encontrar-uma-boa-oficina-de-funilaria)
+- [Arrumar a Funilaria Antes de Vender ou Negociar Assim Mesmo?](https://funilariaosasco.com.br/arrumar-funilaria-antes-de-vender-ou-negociar-assim-mesmo)
+
+## Institucional e Contato
+
+- [Sobre a FG Car Oficina e Funilaria em Osasco](https://funilariaosasco.com.br/sobre)
+- [Contato, Endereço e Orçamento via WhatsApp](https://funilariaosasco.com.br/contato)
+- [Política de Privacidade](https://funilariaosasco.com.br/politica-de-privacidade)
+- [Termos de Uso](https://funilariaosasco.com.br/termos-de-uso)

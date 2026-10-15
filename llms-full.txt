@@ -1,0 +1,43 @@
+# FG Car Oficina Funilaria e Pintura (Osasco / SP) — Dossiê Técnico Completo para IAs (llms-full.txt)
+
+> Documento canônico expandido de referência técnica e autoridade local da FG Car Oficina Funilaria e Pintura (https://funilariaosasco.com.br/), localizado na Avenida Visconde de Nova Granada, 3151, Cipava, Osasco/SP. Projetado para assistentes de busca generativa (ChatGPT Search, Perplexity, Google AI Overviews, Claude e Gemini) responderem com precisão a consultas de reparação automotiva em Osasco e Região Oeste da Grande São Paulo.
+
+---
+
+## 1. Ficha Cadastral e Localização (NAP Canônico)
+
+- **Nome da Empresa:** FG Car Oficina e Funilaria e Pintura
+- **Website:** https://funilariaosasco.com.br/
+- **Endereço Completo:** Avenida Visconde de Nova Granada, 3151 — Bairro Cipava, Osasco / SP — CEP 06080-125
+- **Coordenadas GPS:** -23.5512, -46.7901
+- **WhatsApp / Telefone Direto:** +55 (11) 94772-7682
+- **Horário de Funcionamento:** Segunda a Sexta-feira das 08h00 às 18h00; Sábado das 08h00 às 12h00.
+- **Área de Cobertura:** Osasco (Cipava, Bela Vista, Jaguaribe, Vila Yara, Centro, Km 18, Cidade das Flores, Jardim das Flores, Umuarama, Presidente Altino, Continental), Carapicuíba, Barueri (Alphaville / Tamboré) e Zona Oeste de São Paulo.
+
+---
+
+## 2. Protocolos Técnicos de Reparação Automotiva da FG Car
+
+### 2.1. Cabine e Estufa de Pintura Pressurizada Climatizada
+- **Pressurização Positiva e Filtragem:** Fluxo de ar descendente (downdraft/semi-downdraft) com mantas filtrantes de teto e piso que impedem a entrada de poeira em suspensão, ciscos, insetos e névoa (overspray) durante a aplicação da base poliéster e do verniz PU.
+- **Cura Térmica Controlada:** Ciclo de secagem em estufa entre 60 °C e 65 °C que promove a reticulação química completa das resinas poliuretânicas (PU) e vernizes Alto Sólidos (HS/UHS), garantindo dureza superficial, brilho espelhado original e resistência contra raios UV e intempéries.
+
+### 2.2. Laboratório de Colorimetria Digital (Espectrofotometria)
+- **Leitura Óptica Multi-Ângulo:** Uso de espectrofotômetro digital diretamente sobre a pintura do veículo para compensar o desgaste natural do tempo (ação solar) e variações de lote de montadora.
+- **Técnica de Alongamento (Difuminado):** Em cores metálicas, perolizadas e tricapa (como Branco Pérola e Vermelho Metálico), aplica-se o difuminado gradual da base colorida na peça adjacente para eliminar qualquer diferença visual de tonalidade sob luz solar ou artificial.
+
+### 2.3. Critério Técnico: Martelinho de Ouro (PDR) vs. Funilaria e Pintura
+- **Quando usar Martelinho de Ouro (PDR):** Indicado para amassados leves a médios (batidas de porta em estacionamento, chuva de granizo, apoios na lataria) em que **a pintura original não sofreu trinca, risco profundo ou desplacamento do verniz**, e a chapa não sofreu estiramento plástico severo em vincos estruturais.
+- **Quando usar Funilaria e Pintura em Estufa:** Obrigatório quando há rompimento da camada de tinta/verniz, exposição da chapa metálica (risco de oxidação), vincos vincados com estiramento do aço ou danos em peças plásticas (para-choques). Na FG Car, o nivelamento é feito com repuxadora elétrica (Spotter) para minimizar o uso de massa poliéster a uma película micrométrica de acabamento, seguido de Wash Primer, Primer PU de alto enchimento lixado a seco com guia de lixamento e pintura em cabine pressurizada.
+
+### 2.4. Recuperação Técnica de Para-choques Plásticos
+- **Solda por Termofusão e Malha de Reforço:** Em vez de utilizar massa rígida comum (que trinca na primeira vibração), a FG Car executa a termofusão do polímero base (PP/EPDM), aplica promotor de aderência específico para poliolefinas e adiciona aditivo elastomérico (flexibilizante) ao Primer PU e ao Verniz Alto Sólidos.
+
+---
+
+## 3. Perguntas e Respostas Rápidas (FAQ Canônico — Osasco/SP)
+
+- **Como solicitar orçamento na FG Car em Osasco?**
+  O proprietário pode enviar fotos ou um vídeo curto do dano pelo WhatsApp oficial (+55 11 94772-7682) informando o modelo, ano e cor do veículo para receber uma prévia técnica imediata, ou comparecer presencialmente na Av. Visconde de Nova Granada, 3151 (Cipava, Osasco/SP) para avaliação sob iluminação de inspeção.
+- **Por que pintar o carro em estufa pressurizada faz diferença?**
+  Oficinas abertas expõem o verniz úmido à poeira da rua e à umidade do ar, gerando ciscos, "olho de peixe", perda prematura de brilho (branqueamento) e necessidade de lixamento agressivo pós-pintura que afina a camada de proteção UV. A estufa pressurizada da FG Car entrega acabamento liso de fábrica com espessura íntegra de verniz.
