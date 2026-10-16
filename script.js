@@ -1,7 +1,7 @@
 // FG Car Oficina e Funilaria e Pintura - Scripts Principais & Lead Tracker
 
 // Redirecionamento imediato de domínios provisórios (.pages.dev / .github.io) para o domínio oficial (evita duplicidade de indexação)
-if (typeof window !== 'undefined' && (window.location.hostname.endsWith('.pages.dev') || window.location.hostname.endsWith('.github.io'))) {
+if (typeof window !== 'undefined' && (window.location.hostname.endsWith('.pages.dev') || window.location.hostname.endsWith('.github.io') || window.location.hostname === 'www.funilariaosasco.com.br')) {
     window.location.replace('https://funilariaosasco.com.br' + window.location.pathname + window.location.search + window.location.hash);
 }
 
@@ -65,7 +65,7 @@ function initMobileNav() {
         if (!mobileDrawer.querySelector('.mobile-drawer-topbar')) {
             const topbarHtml = `
             <div class="mobile-drawer-topbar">
-                <a href="index.html" class="mobile-drawer-brand" aria-label="FG Car - Início">
+                <a href="/" class="mobile-drawer-brand" aria-label="FG Car - Início">
                     <img src="images/logo-fgcar.png" alt="FG Car Oficina" style="height: 40px; width: auto;">
                 </a>
                 <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Fechar Menu">
@@ -255,7 +255,7 @@ function initLeadGateSystem() {
                     <button type="submit" class="btn btn-primary lead-modal-submit" id="fgLeadSubmitBtn">
                         <span>⚡ Continuar para o WhatsApp ➔</span>
                     </button>
-                    <span class="lead-modal-privacy">🔒 Dados protegidos pela LGPD. Uso exclusivo para seu orçamento. <a href="politica-de-privacidade.html" target="_blank" style="color: #38bdf8; text-decoration: underline;">Política de Privacidade</a>.</span>
+                    <span class="lead-modal-privacy">🔒 Dados protegidos pela LGPD. Uso exclusivo para seu orçamento. <a href="/politica-de-privacidade" target="_blank" style="color: #38bdf8; text-decoration: underline;">Política de Privacidade</a>.</span>
                 </form>
             </div>
         </div>`;
