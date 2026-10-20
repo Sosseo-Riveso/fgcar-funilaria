@@ -37,7 +37,7 @@
 html {
     scroll-behavior: smooth;
     font-size: 16px;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
 }
 
@@ -46,7 +46,7 @@ body {
     color: var(--text-secondary);
     font-family: var(--font-body);
     line-height: 1.6;
-    overflow-x: hidden;
+    overflow-x: clip;
     max-width: 100%;
     -webkit-font-smoothing: antialiased;
 }
@@ -122,9 +122,10 @@ body {
 
 /* 2. Cabeçalho Principal (Sticky) */
 .main-header {
-    position: sticky;
-    top: 0;
-    z-index: 100;
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
     background: rgba(7, 11, 20, 0.94);
     backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
@@ -3559,6 +3560,10 @@ body {
    ========================================================================== */
 
 .main-header {
+    position: -webkit-sticky;
+    position: sticky !important;
+    top: 0 !important;
+    z-index: 1000 !important;
     padding: 8px 0;
     transition: padding 0.25s cubic-bezier(0.4, 0, 0.2, 1), background-color 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
 }

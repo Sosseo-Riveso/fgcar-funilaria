@@ -27,9 +27,10 @@ document.addEventListener('DOMContentLoaded', () => {
     const navLinks = document.querySelectorAll('.nav-links a');
 
     if (sections.length > 0 && navLinks.length > 0) {
-        window.addEventListener('scroll', () => {
+        const updateActiveNavLink = () => {
             let current = '';
-            const scrollPosition = window.pageYOffset + 200;
+            const scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+            const scrollPosition = scrollY + 200;
 
             sections.forEach(section => {
                 const sectionTop = section.offsetTop;
@@ -45,7 +46,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     link.classList.add('active');
                 }
             });
-        });
+        };
+        window.addEventListener('scroll', updateActiveNavLink, { passive: true });
+        document.addEventListener('scroll', updateActiveNavLink, { passive: true, capture: true });
     }
 
     // 4. Injeção e Controle do Modal Lead Gate (WhatsApp Popup)
@@ -159,8 +162,11 @@ function initSmartStickyHeader() {
     if (!mainHeader) return;
 
     let isScrolled = false;
+    function getScrollTop() {
+        return window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
+    }
     function onScroll() {
-        const y = window.scrollY || window.pageYOffset || 0;
+        const y = getScrollTop();
         if (!isScrolled && y > 48) {
             isScrolled = true;
             mainHeader.classList.add('fg-header-scrolled');
@@ -171,6 +177,10 @@ function initSmartStickyHeader() {
     }
 
     window.addEventListener('scroll', onScroll, { passive: true });
+    document.addEventListener('scroll', onScroll, { passive: true, capture: true });
+    if (document.body) {
+        document.body.addEventListener('scroll', onScroll, { passive: true });
+    }
     onScroll();
 }
 
