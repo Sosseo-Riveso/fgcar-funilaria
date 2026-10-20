@@ -2916,10 +2916,10 @@ body {
    ========================================================================== */
 
 @media (max-width: 768px) {
-    /* 1. Container Global com respiro mínimo nas bordas físicas dos celulares */
-    .container {
-        padding-left: 6px !important;
-        padding-right: 6px !important;
+    /* 1. Container Global com 2px de margem nas bordas físicas dos celulares */
+    .container:not(.header-container) {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
         width: 100% !important;
         max-width: 100% !important;
         box-sizing: border-box !important;
@@ -2932,7 +2932,7 @@ body {
     }
 
     .service-card {
-        padding: 16px 8px !important;
+        padding: 16px 6px !important;
         border-radius: 10px !important;
         margin: 0 !important;
         width: 100% !important;
@@ -3439,21 +3439,50 @@ body {
     }
 }
 
-/* 6. TELAS PEQUENAS (max-width: 480px) */
-@media (max-width: 480px) {
-    .container {
-        padding-left: 4px !important;
-        padding-right: 4px !important;
+/* 6. AJUSTE GLOBAL DE MARGENS LATERAIS NO MOBILE (2px DA TELA E 6px INTERNO NOS CARDS) */
+@media (max-width: 768px) {
+    .container:not(.header-container) {
+        padding-left: 2px !important;
+        padding-right: 2px !important;
     }
 
     .service-card,
+    .benefit-card,
     .process-step,
-    .contato-card-item,
-    .contato-form-card,
-    .sobre-pilar-card,
-    .sobre-servico-card,
+    .about-box-card,
+    .about-bottom-cta,
+    .location-info-col,
+    .faq-item,
+    .hero-trust-item,
+    .service-hero-trust-item,
+    .service-step-card,
     .related-service-card,
-    .service-step-card {
+    .service-guarantee-box,
+    .sobre-stat-item,
+    .sobre-pilar-card,
+    .sobre-pilares-grid > div,
+    .sobre-infra-card div,
+    .sobre-infra-grid > div > div,
+    .sobre-servico-card,
+    .sobre-servicos-grid > a,
+    .sobre-cta-card,
+    .contato-card-item,
+    .contato-cards-grid > div,
+    .contato-form-card,
+    .contato-routes-card,
+    .workshop-caption-bar {
+        padding-left: 6px !important;
+        padding-right: 6px !important;
+    }
+
+    /* Elementos com risquinho lateral ou sub-cards dentro de cards: quase encostam deixando 2px do fundo visível */
+    .about-box-card .highlight-card,
+    .service-card [style*="border-left"],
+    .about-box-card [style*="border-left"],
+    .sobre-pilar-card [style*="border-left"],
+    .contato-card-item [style*="border-left"] {
+        margin-left: -4px !important;
+        margin-right: -4px !important;
         padding-left: 6px !important;
         padding-right: 6px !important;
     }
