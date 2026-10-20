@@ -725,8 +725,89 @@
     <script>
         const DEFAULT_PASS = 'fgcar2026';
         const STORAGE_KEY = 'fg_leads';
+        const DELETED_SIGS_KEY = 'fg_leads_deleted_sigs';
+        const CLEARED_AT_KEY = 'fg_leads_cleared_at';
+        const CLOUD_API_URL = 'https://sosseo-crm.sosseosites.workers.dev/api/fgcar-leads';
         const DEFAULT_WEBHOOK = 'https://script.google.com/macros/s/AKfycbw_GPpVjP3810KNsqvgAY1pG3jYb9jh6nUcIZ8eDatWZ6pnTLG3TAXSKvYCVZHO1UtXQQ/exec';
         const RETENTION_DAYS = 365; // Retenção máxima de 1 ano (conforme LGPD e regra solicitada)
+
+        function getLeadSignature(l) {
+            if (!l) return '';
+            const tel = String(l.telefone || l.whatsapp || '').replace(/\D/g, '');
+            const d = String(l.data || '').trim();
+            const h = String(l.hora || '').trim();
+            return `${tel}_${d}_${h}`;
+        }
+
+        function getDeletedSignatures() {
+            try {
+                const raw = localStorage.getItem(DELETED_SIGS_KEY);
+                return raw ? new Set(JSON.parse(raw)) : new Set();
+            } catch (e) {
+                return new Set();
+            }
+        }
+
+        function addDeletedSignatures(items) {
+            const set = getDeletedSignatures();
+            items.forEach(l => {
+                if (!l) return;
+                if (typeof l === 'string') {
+                    set.add(l);
+                } else {
+                    if (l.id) set.add(String(l.id));
+                    const sig = getLeadSignature(l);
+                    if (sig) set.add(sig);
+                }
+            });
+            const arr = Array.from(set).slice(-2000);
+            localStorage.setItem(DELETED_SIGS_KEY, JSON.stringify(arr));
+            return new Set(arr);
+        }
+
+        function isLeadDeleted(l, delSet) {
+            if (!l) return true;
+            const set = delSet || getDeletedSignatures();
+            if (l.id && set.has(String(l.id))) return true;
+            const sig = getLeadSignature(l);
+            if (sig && set.has(sig)) return true;
+            const clearedAt = Number(localStorage.getItem(CLEARED_AT_KEY) || 0);
+            if (clearedAt > 0) {
+                const ts = Number(l.timestamp) || parseDateToTimestamp(l.data, l.hora);
+                if (ts <= clearedAt) return true;
+            }
+            return false;
+        }
+
+        async function syncRemoteAction(payload) {
+            const syncStatus = document.getElementById('cloudSyncStatus');
+            if (syncStatus) syncStatus.innerHTML = '<span style="color:#38bdf8;">🔄 Sincronizando exclusão na nuvem...</span>';
+
+            const webhookUrl = localStorage.getItem('fg_webhook_url') || DEFAULT_WEBHOOK;
+            const tasks = [];
+
+            tasks.push(
+                fetch(CLOUD_API_URL, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(payload)
+                }).catch(() => null)
+            );
+
+            if (webhookUrl) {
+                tasks.push(
+                    fetch(webhookUrl, {
+                        method: 'POST',
+                        mode: 'no-cors',
+                        headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                        body: JSON.stringify(payload)
+                    }).catch(() => null)
+                );
+            }
+
+            await Promise.all(tasks);
+            if (syncStatus) syncStatus.innerHTML = '<span style="color:#22c55e;">🟢 Nuvem & Planilha Sincronizadas</span>';
+        }
 
         // 1. Checagem de Autenticação Inicial
         document.addEventListener('DOMContentLoaded', () => {
@@ -764,61 +845,98 @@
             loadRemoteLeads();
         }
 
-        // Sincronização Remota com Google Sheets
+        // Sincronização Remota com Nuvem e Google Sheets
         async function loadRemoteLeads() {
             const webhookUrl = localStorage.getItem('fg_webhook_url') || DEFAULT_WEBHOOK;
             const syncStatus = document.getElementById('cloudSyncStatus');
-            if (!webhookUrl) {
-                if (syncStatus) syncStatus.innerHTML = '<span style="color:#94a3b8;">⚪ Armazenamento Local Ativo (Sem Nuvem)</span>';
-                return;
-            }
-            if (syncStatus) syncStatus.innerHTML = '<span style="color:#38bdf8;">🔄 Sincronizando com Google Sheets...</span>';
+            if (syncStatus) syncStatus.innerHTML = '<span style="color:#38bdf8;">🔄 Sincronizando com Nuvem & Google Sheets...</span>';
+
+            let remoteCandidates = [];
+            let cloudOk = false;
 
             try {
-                const res = await fetch(webhookUrl);
-                if (res.ok) {
-                    const data = await res.json();
-                    if (Array.isArray(data) && data.length > 0) {
-                        let localLeads = getLeads();
-                        const existingKeys = new Set(localLeads.map(l => (l.telefone + '_' + l.data + '_' + l.hora)));
-                        let hasNew = false;
-                        data.forEach(remoteLead => {
-                            let formattedDate = remoteLead.data;
-                            if (typeof formattedDate === 'string' && formattedDate.includes('T')) {
-                                try {
-                                    const d = new Date(formattedDate);
-                                    formattedDate = d.toLocaleDateString('pt-BR');
-                                } catch (e) {}
-                            }
-                            let formattedHora = remoteLead.hora;
-                            if (typeof formattedHora === 'string' && formattedHora.includes('T')) {
-                                try {
-                                    const d = new Date(formattedHora);
-                                    formattedHora = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
-                                } catch (e) {}
-                            }
-                            remoteLead.data = formattedDate || 'Hoje';
-                            remoteLead.hora = formattedHora || 'Recente';
-
-                            const key = remoteLead.telefone + '_' + remoteLead.data + '_' + remoteLead.hora;
-                            if (!existingKeys.has(key)) {
-                                localLeads.unshift(remoteLead);
-                                existingKeys.add(key);
-                                hasNew = true;
-                            }
-                        });
-                        if (hasNew) {
-                            localLeads = pruneExpiredLeads(localLeads);
-                            localStorage.setItem(STORAGE_KEY, JSON.stringify(localLeads));
-                            renderLeadsTable(localLeads);
+                const kvRes = await fetch(CLOUD_API_URL);
+                if (kvRes.ok) {
+                    const kvData = await kvRes.json();
+                    if (kvData && kvData.meta) {
+                        const remoteCleared = Number(kvData.meta.clearedAt || 0);
+                        const localCleared = Number(localStorage.getItem(CLEARED_AT_KEY) || 0);
+                        if (remoteCleared > localCleared) {
+                            localStorage.setItem(CLEARED_AT_KEY, String(remoteCleared));
+                        }
+                        if (Array.isArray(kvData.meta.deletedSignatures) && kvData.meta.deletedSignatures.length > 0) {
+                            addDeletedSignatures(kvData.meta.deletedSignatures);
                         }
                     }
-                    if (syncStatus) syncStatus.innerHTML = '<span style="color:#22c55e;">🟢 Google Sheets Conectado & Sincronizado</span>';
-                } else {
-                    if (syncStatus) syncStatus.innerHTML = '<span style="color:#f59e0b;">⚠️ Resposta pendente da planilha</span>';
+                    if (kvData && Array.isArray(kvData.leads)) {
+                        remoteCandidates.push(...kvData.leads);
+                        cloudOk = true;
+                    }
                 }
-            } catch (err) {
-                if (syncStatus) syncStatus.innerHTML = '<span style="color:#94a3b8;">⚪ Armazenamento Local Ativo</span>';
+            } catch (e) {}
+
+            if (webhookUrl) {
+                try {
+                    const res = await fetch(webhookUrl);
+                    if (res.ok) {
+                        const data = await res.json();
+                        if (Array.isArray(data)) {
+                            remoteCandidates.push(...data);
+                            cloudOk = true;
+                        }
+                    }
+                } catch (err) {}
+            }
+
+            const delSet = getDeletedSignatures();
+            let localLeads = getLeads().filter(l => !isLeadDeleted(l, delSet));
+            const existingKeys = new Set(localLeads.map(l => getLeadSignature(l)));
+
+            remoteCandidates.forEach(remoteLead => {
+                if (!remoteLead) return;
+                let formattedDate = remoteLead.data;
+                if (typeof formattedDate === 'string' && formattedDate.includes('T')) {
+                    try {
+                        const d = new Date(formattedDate);
+                        formattedDate = d.toLocaleDateString('pt-BR');
+                    } catch (e) {}
+                }
+                let formattedHora = remoteLead.hora;
+                if (typeof formattedHora === 'string' && formattedHora.includes('T')) {
+                    try {
+                        const d = new Date(formattedHora);
+                        formattedHora = d.toLocaleTimeString('pt-BR', { hour: '2-digit', minute: '2-digit' });
+                    } catch (e) {}
+                }
+                remoteLead.data = formattedDate || 'Hoje';
+                remoteLead.hora = formattedHora || 'Recente';
+                if (!remoteLead.id) {
+                    remoteLead.id = 'fg_' + parseDateToTimestamp(remoteLead.data, remoteLead.hora) + '_' + String(remoteLead.telefone || '').replace(/\D/g, '');
+                }
+
+                if (isLeadDeleted(remoteLead, delSet)) return;
+
+                const key = getLeadSignature(remoteLead);
+                if (key && !existingKeys.has(key)) {
+                    localLeads.push(remoteLead);
+                    existingKeys.add(key);
+                }
+            });
+
+            localLeads.sort((a, b) => {
+                const tsA = Number(a.timestamp) || parseDateToTimestamp(a.data, a.hora);
+                const tsB = Number(b.timestamp) || parseDateToTimestamp(b.data, b.hora);
+                return tsB - tsA;
+            });
+
+            localLeads = pruneExpiredLeads(localLeads);
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(localLeads));
+            renderLeadsTable(localLeads);
+
+            if (syncStatus) {
+                syncStatus.innerHTML = cloudOk
+                    ? '<span style="color:#22c55e;">🟢 Nuvem & Google Sheets Sincronizados</span>'
+                    : '<span style="color:#94a3b8;">⚪ Armazenamento Local Ativo</span>';
             }
         }
 
@@ -1045,12 +1163,21 @@
         }
 
         // 10. Excluir Lead Individual (Manual)
-        function deleteLead(id) {
+        async function deleteLead(id) {
             if (!confirm('Deseja realmente excluir este registro de lead?')) return;
             let leads = getLeads();
-            leads = leads.filter(l => l.id !== id);
+            const target = leads.find(l => String(l.id) === String(id));
+            if (target) addDeletedSignatures([target]);
+            leads = leads.filter(l => String(l.id) !== String(id));
             localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
             renderLeadsTable();
+            await syncRemoteAction({
+                action: 'delete',
+                id: id,
+                telefone: target ? target.telefone : '',
+                data: target ? target.data : '',
+                signature: target ? getLeadSignature(target) : ''
+            });
         }
 
         // 11. Modal de Limpeza & Expurgo (Manual & 1 Ano)
@@ -1096,7 +1223,7 @@
         }
 
         // Excluir registros por mês selecionado
-        function deleteLeadsBySelectedMonth() {
+        async function deleteLeadsBySelectedMonth() {
             const select = document.getElementById('cleanupMonthSelect');
             const targetMonth = select.value;
             if (!targetMonth) {
@@ -1108,37 +1235,65 @@
 
             let leads = getLeads();
             const initialCount = leads.length;
+            const removedLeads = [];
             leads = leads.filter(l => {
                 if (!l.data) return true;
-                return !l.data.includes(`/${targetMonth}`);
+                const match = l.data.includes(`/${targetMonth}`);
+                if (match) removedLeads.push(l);
+                return !match;
             });
 
+            if (removedLeads.length > 0) addDeletedSignatures(removedLeads);
             const removedCount = initialCount - leads.length;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
-            alert(`Foram removidos ${removedCount} registros correspondentes a ${targetMonth}.`);
             populateCleanupMonths();
             renderLeadsTable();
+            await syncRemoteAction({
+                action: 'delete_month',
+                month: targetMonth,
+                signatures: removedLeads.map(l => getLeadSignature(l))
+            });
+            alert(`Foram removidos ${removedCount} registros correspondentes a ${targetMonth}.`);
         }
 
         // Executar expurgo forçado de 1 ano (365 dias)
-        function runForcePruneOneYear() {
+        async function runForcePruneOneYear() {
             let leads = getLeads();
             const initialCount = leads.length;
+            const oneYearAgo = Date.now() - (RETENTION_DAYS * 24 * 60 * 60 * 1000);
+            const removedLeads = leads.filter(item => {
+                const ts = item.timestamp || parseDateToTimestamp(item.data, item.hora);
+                return ts < oneYearAgo;
+            });
+            if (removedLeads.length > 0) addDeletedSignatures(removedLeads);
             leads = pruneExpiredLeads(leads);
             const removedCount = initialCount - leads.length;
             localStorage.setItem(STORAGE_KEY, JSON.stringify(leads));
-            alert(`Varredura concluída! Registros com mais de 365 dias excluídos: ${removedCount}. Registros ativos preservados: ${leads.length}.`);
             populateCleanupMonths();
             renderLeadsTable();
+            await syncRemoteAction({
+                action: 'prune_year',
+                signatures: removedLeads.map(l => getLeadSignature(l))
+            });
+            alert(`Varredura concluída! Registros com mais de 365 dias excluídos: ${removedCount}. Registros ativos preservados: ${leads.length}.`);
         }
 
         // Limpar todos os leads
-        function clearAllLeads() {
+        async function clearAllLeads() {
             if (!confirm('ATENÇÃO: Deseja apagar permanentemente TODOS os leads registrados? Essa ação não pode ser desfeita.')) return;
-            localStorage.removeItem(STORAGE_KEY);
-            alert('Todos os registros foram excluídos.');
+            const currentLeads = getLeads();
+            if (currentLeads.length > 0) addDeletedSignatures(currentLeads);
+            const nowTs = Date.now();
+            localStorage.setItem(CLEARED_AT_KEY, String(nowTs));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify([]));
             closeCleanupModal();
-            renderLeadsTable();
+            renderLeadsTable([]);
+            await syncRemoteAction({
+                action: 'clear',
+                clearedAt: nowTs,
+                signatures: currentLeads.map(l => getLeadSignature(l))
+            });
+            alert('Todos os registros foram excluídos.');
         }
 
         // 12. Inserir Lead de Demonstração (Para Apresentações)

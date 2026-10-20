@@ -400,15 +400,25 @@ window.fgTrackLead = function(leadData) {
         console.error('Erro ao salvar lead localmente:', err);
     }
 
-    // 2. Dispara para o Webhook do Google Sheets (Oficial em Nuvem)
+    // 2. Dispara para a Nuvem (Cloudflare KV) e para o Webhook do Google Sheets (Oficial em Nuvem)
+    try {
+        fetch('https://sosseo-crm.sosseosites.workers.dev/api/fgcar-leads', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(lead),
+            keepalive: true
+        }).catch(() => {});
+    } catch (e) {}
+
     const webhookUrl = localStorage.getItem('fg_webhook_url') || window.FG_DEFAULT_WEBHOOK_URL;
     if (webhookUrl) {
         try {
             fetch(webhookUrl, {
                 method: 'POST',
                 mode: 'no-cors',
-                headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify(lead)
+                headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+                body: JSON.stringify(lead),
+                keepalive: true
             }).catch(e => console.log('Webhook disparado.'));
         } catch (e) {
             // Silencioso em caso de rede offline
