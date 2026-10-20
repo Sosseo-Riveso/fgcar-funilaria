@@ -144,14 +144,15 @@ body {
 .brand-logo {
     display: flex;
     align-items: center;
-    gap: 14px;
+    gap: 10px;
     text-decoration: none;
+    flex-shrink: 0;
 }
 
 .brand-img-logo {
-    height: 68px;
+    height: 56px;
     width: auto;
-    max-width: 220px;
+    max-width: 190px;
     object-fit: contain;
     background: transparent;
     border: none;
@@ -159,6 +160,7 @@ body {
     box-shadow: none;
     filter: drop-shadow(0 2px 10px rgba(0, 0, 0, 0.5));
     transition: var(--transition-fast);
+    flex-shrink: 0;
 }
 
 .brand-img-logo:hover {
@@ -168,15 +170,25 @@ body {
 .logo-text {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    line-height: 1.15;
 }
 
 .logo-title {
     font-family: var(--font-heading);
-    font-size: 22px;
-    font-weight: 900;
+    font-size: 14px;
+    font-weight: 800;
     color: #ffffff;
-    letter-spacing: -0.5px;
-    line-height: 1.1;
+    letter-spacing: -0.3px;
+    line-height: 1.15;
+    white-space: nowrap;
+    display: block;
+    transition: font-size 0.25s cubic-bezier(0.4, 0, 0.2, 1), line-height 0.25s ease;
+}
+
+.logo-city {
+    display: block;
+    color: var(--brand-cyan);
 }
 
 .logo-sub {
@@ -1685,11 +1697,18 @@ body {
 @media (min-width: 993px) and (max-width: 1280px) {
     .header-container {
         padding: 0 16px;
-        gap: 10px;
+        gap: 8px;
+    }
+    .brand-logo {
+        gap: 8px;
     }
     .brand-img-logo {
-        height: 52px;
-        max-width: 170px;
+        height: 46px;
+        max-width: 150px;
+    }
+    .logo-title {
+        font-size: 12px;
+        line-height: 1.12;
     }
     .desktop-nav .nav-links {
         gap: 10px;
@@ -3569,8 +3588,8 @@ body {
 }
 
 .brand-img-logo {
-    height: 60px;
-    max-height: 60px;
+    height: 54px;
+    max-height: 54px;
     transition: height 0.25s cubic-bezier(0.4, 0, 0.2, 1), max-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), transform 0.2s ease;
 }
 
@@ -3592,6 +3611,11 @@ body {
     max-height: 34px !important;
 }
 
+.main-header.fg-header-scrolled .logo-title {
+    font-size: 11.5px !important;
+    line-height: 1.1 !important;
+}
+
 .main-header.fg-header-scrolled .nav-links a {
     font-size: 12.5px !important;
     padding: 2px 2px !important;
@@ -3610,8 +3634,13 @@ body {
     }
 
     .main-header.fg-header-scrolled:hover .brand-img-logo {
-        height: 58px !important;
-        max-height: 58px !important;
+        height: 54px !important;
+        max-height: 54px !important;
+    }
+
+    .main-header.fg-header-scrolled:hover .logo-title {
+        font-size: 14px !important;
+        line-height: 1.15 !important;
     }
 
     .main-header.fg-header-scrolled:hover .nav-links a {
@@ -3638,9 +3667,19 @@ body {
         transition: min-height 0.25s cubic-bezier(0.4, 0, 0.2, 1), padding 0.25s cubic-bezier(0.4, 0, 0.2, 1) !important;
     }
 
+    .main-header .brand-logo {
+        gap: 8px !important;
+        min-width: 0 !important;
+    }
+
     .main-header .brand-img-logo {
-        height: 46px !important;
-        max-height: 46px !important;
+        height: 44px !important;
+        max-height: 44px !important;
+    }
+
+    .main-header .logo-title {
+        font-size: 13px !important;
+        line-height: 1.12 !important;
     }
 
     .main-header.fg-header-scrolled .header-container {
@@ -3651,6 +3690,11 @@ body {
     .main-header.fg-header-scrolled .brand-img-logo {
         height: 30px !important;
         max-height: 30px !important;
+    }
+
+    .main-header.fg-header-scrolled .logo-title {
+        font-size: 11px !important;
+        line-height: 1.08 !important;
     }
 
     .main-header.fg-header-scrolled .mobile-whatsapp-btn {
