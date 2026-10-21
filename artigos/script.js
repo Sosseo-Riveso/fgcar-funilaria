@@ -208,7 +208,7 @@ function initLeadGateSystem() {
                     </div>
                     <div class="lead-form-group">
                         <label for="fgLeadTelefone">Seu WhatsApp com DDD:</label>
-                        <input type="tel" id="fgLeadTelefone" placeholder="(11) 99999-9999" required maxlength="15" autocomplete="tel">
+                        <input type="tel" id="fgLeadTelefone" placeholder="(11) 99999-9999" required maxlength="22" autocomplete="tel">
                     </div>
                     <button type="submit" class="btn btn-primary lead-modal-submit" id="fgLeadSubmitBtn">
                         <span>⚡ Continuar para o WhatsApp ➔</span>
@@ -228,7 +228,16 @@ function initLeadGateSystem() {
     // Máscara de telefone brasileiro (11) 99999-9999
     if (telInput) {
         telInput.addEventListener('input', (e) => {
-            let v = e.target.value.replace(/\D/g, '');
+            const raw = String(e.target.value || '');
+            let v = raw.replace(/\D/g, '');
+            if (/^\s*\+?55/.test(raw) && v.length >= 12 && v.startsWith('55')) {
+                v = v.substring(2);
+            } else if ((v.length === 12 || v.length === 13) && v.startsWith('55')) {
+                v = v.substring(2);
+            }
+            if (v.length >= 11 && v.startsWith('0')) {
+                v = v.substring(1);
+            }
             if (v.length > 11) v = v.substring(0, 11);
             if (v.length > 6) {
                 e.target.value = `(${v.substring(0, 2)}) ${v.substring(2, 7)}-${v.substring(7)}`;
