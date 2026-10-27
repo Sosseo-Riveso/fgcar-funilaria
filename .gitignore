@@ -1,3 +1,6 @@
 ~$*
 *.tmp
 scratch/
+*.docx
+Imagens-GMN-Geotag/
+artigos/*.html

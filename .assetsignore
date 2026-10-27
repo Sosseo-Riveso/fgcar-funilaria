@@ -1,0 +1,9 @@
+.git
+.gitignore
+.assetsignore
+_redirects
+_headers
+scratch/
+*.docx
+Imagens-GMN-Geotag/
+artigos/*.html
