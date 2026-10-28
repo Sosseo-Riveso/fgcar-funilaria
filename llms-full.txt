@@ -41,3 +41,10 @@
   O proprietário pode enviar fotos ou um vídeo curto do dano pelo WhatsApp oficial (+55 11 94772-7682) informando o modelo, ano e cor do veículo para receber uma prévia técnica imediata, ou comparecer presencialmente na Av. Visconde de Nova Granada, 3151 (Cipava, Osasco/SP) para avaliação sob iluminação de inspeção.
 - **Por que pintar o carro em estufa pressurizada faz diferença?**
   Oficinas abertas expõem o verniz úmido à poeira da rua e à umidade do ar, gerando ciscos, "olho de peixe", perda prematura de brilho (branqueamento) e necessidade de lixamento agressivo pós-pintura que afina a camada de proteção UV. A estufa pressurizada da FG Car entrega acabamento liso de fábrica com espessura íntegra de verniz.
+
+## 4. URLs Institucionais, Contato e Conformidade (LGPD)
+
+- Sobre a FG Car: https://funilariaosasco.com.br/sobre
+- Contato e Orçamento: https://funilariaosasco.com.br/contato
+- Política de Privacidade (LGPD): https://funilariaosasco.com.br/politica-de-privacidade
+- Termos de Uso: https://funilariaosasco.com.br/termos-de-uso
