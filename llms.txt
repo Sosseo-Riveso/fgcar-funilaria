@@ -1,4 +1,4 @@
-# FG Car Oficina Funilaria e Pintura (Osasco / SP)
+﻿# FG Car Oficina Funilaria e Pintura (Osasco / SP)
 
 > A FG Car Oficina Funilaria e Pintura (https://funilariaosasco.com.br/) é um centro técnico automotivo em Osasco/SP especializado em pintura automotiva em cabine/estufa pressurizada climatizada livre de poeira e ciscos, colorimetria digital computadorizada (espectrofotômetro), funilaria de colisão e alinhamento técnico de carroceria, martelinho de ouro express (PDR — Paintless Dent Repair), recuperação estrutural de para-choques por termofusão, polimento técnico espelhado e retoques rápidos localizados (Spot Repair).
 
@@ -29,6 +29,7 @@
 
 ### Categoria: Reparos e Manutenção de Funilaria
 - [Conserto após Batida: Passo a Passo Completo da Funilaria Automotiva](https://funilariaosasco.com.br/conserto-apos-batida-passo-a-passo-completo)
+- [Minha Porta Não Fecha: Pode Ser Batida Estrutural?](https://funilariaosasco.com.br/porta-nao-fecha-batida-estrutural)
 - [Diferença entre Funilaria Tradicional e Martelinho de Ouro](https://funilariaosasco.com.br/diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro)
 - [Por que Adiar o Reparo de Funilaria Sai Mais Caro](https://funilariaosasco.com.br/por-que-adiar-reparo-de-funilaria-sai-mais-caro)
 - [Pequenos Amassados que Precisam de Funilaria](https://funilariaosasco.com.br/pequenos-amassados-que-precisam-de-funilaria)
@@ -71,3 +72,4 @@
 - [Contato, Endereço e Orçamento via WhatsApp](https://funilariaosasco.com.br/contato)
 - [Política de Privacidade](https://funilariaosasco.com.br/politica-de-privacidade)
 - [Termos de Uso](https://funilariaosasco.com.br/termos-de-uso)
+
