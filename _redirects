@@ -1,3 +1,6 @@
+# Remove extensão .html das URLs (versão canônica sem .html)
+/*.html /:splat 301!
+
 https://www.funilariaosasco.com.br/* https://funilariaosasco.com.br/:splat 301!
 http://www.funilariaosasco.com.br/* https://funilariaosasco.com.br/:splat 301!
 https://fgcar-funilaria.pages.dev/* https://funilariaosasco.com.br/:splat 301!
