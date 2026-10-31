@@ -3751,3 +3751,48 @@ body {
         height: 2px !important;
     }
 }
+    .main-header.fg-header-scrolled .mobile-toggle .bar {
+        width: 16px !important;
+        height: 2px !important;
+    }
+}
+
+/* ==========================================================================
+   SEÇÃO DE CONTEÚDO RICO PARA SEO/GEO (Funilaria e Pintura em Osasco)
+   ========================================================================== */
+
+.rich-seo-section {
+    background: linear-gradient(180deg, #070b14 0%, #0d1527 100%);
+    border-top: 1px solid rgba(56, 189, 248, 0.12);
+    border-bottom: 1px solid rgba(56, 189, 248, 0.12);
+}
+
+.rich-text-block {
+    max-width: 1020px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.rich-text-block p {
+    margin-bottom: 22px;
+    font-size: 17px;
+    line-height: 1.75;
+    color: var(--text-secondary, #cbd5e1);
+}
+
+.rich-text-block p:last-child {
+    margin-bottom: 0;
+}
+
+.rich-text-block strong {
+    color: var(--text-primary, #ffffff);
+    font-weight: 700;
+}
+
+@media (max-width: 640px) {
+    .rich-text-block p {
+        font-size: 15.5px;
+        line-height: 1.65;
+    }
+}
+
