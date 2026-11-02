@@ -1,6 +1,52 @@
+# ==========================================================================
+# .gitignore — FG Car Oficina Funilaria e Pintura
+# Objetivo: repositório leve. Só entra no Git o que é fonte do site.
+# ==========================================================================
+
+# --- Sistema operacional / editores ---
+.DS_Store
+Thumbs.db
+desktop.ini
+*.swp
+*.swo
+*~
+
+# --- Temporários do Word / Office ---
 ~$*
 *.tmp
-scratch/
+*.temp
+*.bak
+
+# --- Documentos internos de planejamento ---
 *.docx
+
+# --- Pastas locais de trabalho (mídia pesada não usada pelo site) ---
+scratch/
 Imagens-GMN-Geotag/
+Imagens Novos Artigos/
+
+# --- Cópias antigas de artigos (a raiz é a fonte publicada) ---
+# Os arquivos artigos/*.md permanecem versionados como fonte de edição.
 artigos/*.html
+
+# --- Caches, dependências e artefatos de build ---
+node_modules/
+.cache/
+.wrangler/
+.vercel/
+.netlify/
+dist/
+build/
+*.log
+npm-debug.log*
+yarn-error.log*
+pnpm-debug.log*
+
+# --- Variáveis de ambiente / segredos ---
+.env
+.env.*
+!.env.example
+
+# --- Arquivos locais do Cloudflare ---
+.dev.vars
+

@@ -1,9 +1,94 @@
-.git
+# ==========================================================================
+# .assetsignore — FG Car Oficina Funilaria e Pintura
+# Deploy: Cloudflare Pages / Workers Static Assets
+# Formato idêntico ao .gitignore (suporta "!" para re-incluir arquivos).
+# Tudo o que está listado aqui NÃO é enviado no deploy.
+#
+# REGRA DE OURO: nenhum CSS, JS, imagem, vídeo, fonte ou HTML público
+# pode ser bloqueado por este arquivo.
+# ==========================================================================
+
+# --------------------------------------------------------------------------
+# 1) ESSENCIAIS DO SITE — NUNCA BLOQUEAR
+#    (declarados primeiro; exclusões específicas abaixo continuam valendo)
+# --------------------------------------------------------------------------
+# CSS / JS da raiz e de pastas de includes/plugins
+!style.css
+!script.js
+!includes/**
+!plugins/**
+!assets/**
+!css/**
+!js/**
+!fonts/**
+!.well-known/**
+
+# Mídia usada pelas páginas
+!images/**
+!videos/**
+!favicon.ico
+!favicon.png
+
+# Arquivos de indexação, SEO e GEO
+!robots.txt
+!sitemap.xml
+!llms.txt
+!llms-full.txt
+
+# Configuração de borda do Cloudflare
+!_headers
+!_redirects
+
+# Todas as páginas HTML publicadas na raiz
+!/*.html
+
+# --------------------------------------------------------------------------
+# 2) METADADOS E CONFIGURAÇÃO LOCAL (não são assets públicos)
+# --------------------------------------------------------------------------
+.git/
 .gitignore
+.gitattributes
 .assetsignore
-_redirects
-_headers
-scratch/
+.clineignore
+.clinerules
+
+# --------------------------------------------------------------------------
+# 3) DOCUMENTAÇÃO INTERNA / GOVERNANÇA
+# --------------------------------------------------------------------------
+README.md
+ANALISE_PROJETO.md
+PROJECT_CONTEXT.md
+PROGRESS.md
+PLANO_CONTEUDO_BLOG_FGCAR.md
 *.docx
+~$*
+
+# --------------------------------------------------------------------------
+# 4) TEMPLATES DE DESENVOLVIMENTO (não são páginas publicadas)
+# --------------------------------------------------------------------------
+template-post-padrao.html
+
+# --------------------------------------------------------------------------
+# 5) PASTAS LOCAIS DE TRABALHO (pesadas e não referenciadas pelo site)
+# --------------------------------------------------------------------------
+scratch/
 Imagens-GMN-Geotag/
+Imagens Novos Artigos/
+
+# --------------------------------------------------------------------------
+# 6) CÓPIAS ANTIGAS DE ARTIGOS
+#    A raiz é a fonte publicada; artigos/ guarda apenas os .md de edição.
+# --------------------------------------------------------------------------
 artigos/*.html
+
+# --------------------------------------------------------------------------
+# 7) CACHES E TEMPORÁRIOS (caso apareçam na raiz)
+# --------------------------------------------------------------------------
+.cache/
+.wrangler/
+node_modules/
+*.tmp
+*.temp
+*.log
+.DS_Store
+Thumbs.db

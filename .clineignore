@@ -1,0 +1,37 @@
+# ==========================================================================
+# .clineignore — FG Car Oficina Funilaria e Pintura
+# Evita leitura/indexação de pastas pesadas de mídia e artefatos locais.
+# O que importa para edição (HTML/CSS/JS/MD da raiz) continua visível.
+# ==========================================================================
+
+# Controle de versão e metadados
+.git/
+.gitignore
+.gitattributes
+.assetsignore
+.clineignore
+
+# Acervo de mídia (pesado, não é fonte de código)
+/Imagens-GMN-Geotag/
+/Imagens Novos Artigos/
+/images/
+/videos/
+
+# Scripts utilitários locais
+/scratch/
+
+# Binários e documentos de planejamento
+*.docx
+*.mp4
+*.mov
+*.zip
+*.rar
+*.psd
+*.ai
+*.pdf
+
+# Cópias antigas de artigos (a raiz é a fonte publicada)
+/artigos/*.html
+
+# Dossiê GEO muito extenso (o resumo está em llms.txt)
+llms-full.txt

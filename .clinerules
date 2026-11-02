@@ -1,0 +1,87 @@
+# Diretrizes do Projeto — FG Car Oficina Funilaria e Pintura
+
+Site: **https://funilariaosasco.com.br/**
+Stack: HTML + CSS + JavaScript puro (100% estático) — deploy via Git na Cloudflare Pages.
+Leia sempre, antes de qualquer tarefa: `PROJECT_CONTEXT.md`, `PROGRESS.md` e (para conteúdo) `PLANO_CONTEUDO_BLOG_FGCAR.md`.
+
+---
+
+## 1. Escopo e arquivos protegidos
+
+- A **raiz do repositório é a fonte publicada**. `artigos/` guarda apenas os `.md` de edição.
+- **Nunca alterar sem pedido explícito:**
+  - `script.js` (lead gate, máscara de telefone, UTMs, envio de leads);
+  - `painel-leads.html` e `GOOGLE-APPS-SCRIPT-CRM.js` (CRM);
+  - `_headers`, `_redirects`, `robots.txt`, `sitemap.xml`, `llms.txt`, `llms-full.txt`;
+  - o endpoint de leads `https://sosseo-crm.sosseosites.workers.dev/api/fgcar-leads`;
+  - classes/IDs estruturais `fgLeadModal`, `mobileToggle`, `mobileDrawer`, `mobileDrawerClose`.
+- Não renomear nem mover páginas existentes: isso quebra links e redirecionamentos.
+- Alterações devem ser incrementais. Preservar o que já funciona.
+
+## 2. Identidade que nunca muda (NAP)
+
+| Campo | Valor |
+|---|---|
+| Nome | FG Car Oficina e Funilaria e Pintura |
+| Endereço | Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP — CEP 06080-125 |
+| Telefone/WhatsApp | +55 11 94772-7682 |
+| Domínio canônico | `https://funilariaosasco.com.br` (sem `www`) |
+| Horário | Seg–Sex 08:00–18:00 · Sáb 08:00–12:00 |
+
+## 3. Estrutura HTML semântica (obrigatório)
+
+- Um único `<h1>` por página e hierarquia `h1 > h2 > h3` sem pular níveis.
+- Usar `header`, `nav`, `main`, `article`, `section`, `aside` e `footer` com `aria-label` quando fizer sentido.
+- Links internos **sem `.html`** e com barra inicial: `/sobre`, `/contato`, `/categoria-reparos-e-manutencao`.
+- Toda `<img>` precisa de `alt` descritivo, `width`/`height` e `loading="lazy"` — exceto a imagem principal (banner), que usa `loading="eager"` + `fetchpriority="high"`.
+- Não deixar placeholders `{{...}}` em páginas publicadas; eles existem só nos arquivos de template.
+- Não usar `<br>` para espaçamento estrutural nem tabelas para layout.
+
+## 4. CTAs e links de WhatsApp (preservar sempre)
+
+- Formato canônico: `https://wa.me/5511947727682?text=<mensagem codificada>` com `target="_blank"` e `rel="noopener"`.
+- Manter as classes dos botões (`btn btn-primary`, `btn-header`, `btn-block`, `mobile-whatsapp-btn`, `btn-mobile-whatsapp`): o lead gate do `script.js` intercepta cliques em `wa.me`.
+- Nunca remover, esconder ou trocar o destino de um CTA existente. Ao criar página nova, incluir no mínimo **3 pontos de conversão**:
+  1. barra de aviso superior / header;
+  2. CTA no meio do conteúdo ou na barra lateral;
+  3. CTA final antes do rodapé.
+- Texto dos CTAs: verbo de ação + benefício ("Enviar fotos no WhatsApp", "Pedir orçamento sem compromisso").
+
+## 5. SEO / GEO
+
+- `<title>` com a palavra-chave no início, até ~60 caracteres.
+- `meta description` entre 140 e 155 caracteres, com benefício + CTA.
+- `canonical` sempre na URL sem `.html`.
+- Open Graph completo: `og:type`, `og:title`, `og:description`, `og:image` (JPG 1200×630 em `/images`), `og:image:width/height/type`, `og:url`, `og:site_name`, `og:locale`.
+- JSON-LD `BlogPosting` nos artigos e `BreadcrumbList` no breadcrumb; dados devem bater com o NAP.
+- Metadados de publicação no topo do HTML em comentário, com **8 itens** e a **Conclusão Estratégica (Takeaway) como último item**.
+- Ao publicar página nova: adicionar ao `sitemap.xml` e, se for artigo, aos links da categoria correspondente.
+
+## 6. CSS — boas práticas
+
+- Reutilizar as variáveis de `:root` (`--bg-dark`, `--brand-blue`, `--brand-cyan`, `--brand-gold`, `--text-secondary`, etc.). Não introduzir hex soltos quando existir token.
+- Novos componentes: classes com prefixo do bloco (`fg-post-*`, `card-*`), evitar seletores genéricos e `!important`.
+- Preferir classes a `style=""` inline. Em templates isolados, usar um bloco `<style>` escopado no próprio arquivo.
+- Layout responsivo com breakpoints em `1024px`, `768px` e `480px`; usar `clamp()` para tipografia fluida.
+- Garantir contraste mínimo AA, foco visível (`:focus-visible`) e respeito a `prefers-reduced-motion`.
+- Ao alterar `style.css`, acrescentar um bloco comentado no fim do arquivo em vez de reescrever seções existentes.
+
+## 7. Performance e acessibilidade
+
+- Imagens em WebP/JPG otimizado; capas de artigo até ~250 KB.
+- Evitar bibliotecas externas novas. Fontes já existentes: Google Fonts (Plus Jakarta Sans / Space Grotesk nos artigos; Montserrat/Inter no CSS base).
+- `defer`/`loading` conscientes; não bloquear a renderização com scripts novos.
+- Nunca inserir `noindex` em páginas do domínio oficial (o `noindex` do `_headers` é só para `.pages.dev`).
+
+## 8. Deploy e versionamento
+
+- Fluxo: `git add` → `git commit -m "..."` → `git push origin main` → build automático da Cloudflare Pages.
+- Commits em português, curtos e descritivos (ex.: `Novo artigo: <slug>`).
+- Respeitar `.assetsignore`, `.gitignore` e `.clineignore`: mídia pesada não usada pelo site e documentos internos não são versionados.
+- Antes de finalizar: validar HTML (tags fechadas, JSON-LD válido), conferir links internos e testar no navegador quando possível.
+
+## 9. Idioma e tom
+
+- Português do Brasil, técnico, direto e sem promessas exageradas.
+- Explicar o "porquê" técnico antes do benefício comercial.
+- Não inventar dados, preços, prazos ou certificações.
