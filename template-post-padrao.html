@@ -1,16 +1,29 @@
 <!-- ==========================================================================
      TEMPLATE DE POST PADRÃO — FG CAR OFICINA FUNILARIA E PINTURA
-     Arquivo de referência (não publicar). Copie para <slug>.html e substitua
+     Arquivo de referência (NÃO PUBLICAR). Copie para <slug>.html e substitua
      os placeholders {{...}} pelos dados reais do artigo.
 
-     METADADOS DE PUBLICAÇÃO (YOAST SEO / ASTRA / WORDPRESS)
-     1. Título SEO: {{TITULO_SEO}}
-     2. Slug / URL: {{SLUG}}
-     3. Meta Descrição: {{META_DESCRICAO}}
-     4. Palavra-Chave Principal: {{PALAVRA_CHAVE}}
-     5. Palavras-Chave Secundárias: {{PALAVRAS_CHAVE_SECUNDARIAS}}
-     6. Categoria: {{CATEGORIA_NOME}}
-     7. Tags: {{TAGS}}
+     REGRAS DE LAYOUT APLICADAS (ver .clinerules)
+     - H1 no banner > H2.subtitulo-banner > barra de autoria azul (#f0f9ff / #0284c7).
+     - Datas sem parênteses, sempre em <time datetime="AAAA-MM-DD">.
+     - 2 imagens 16:9 (capa após a autoria + imagem técnica no meio do post),
+       com legenda centralizada em itálico.
+     - Link âncora "funilaria em Osasco" -> home no 1º/2º parágrafo.
+     - Sem barra de aviso superior, sem telefone no topo e sem botão flutuante:
+       o <header> sticky limpo é o primeiro elemento da página.
+     - CTA final para envio de fotos no WhatsApp + endereço físico da oficina.
+     - FAQ com título natural (nunca "Query Fan-out", "RAG", "GEO" ou similares).
+
+     METADADOS DE PUBLICAÇÃO — 8 ITENS OBRIGATÓRIOS
+     (comentário interno de controle: nunca é renderizado ao visitante.
+      O 8º item é SEMPRE a Conclusão Estratégica / Takeaway.)
+     1. subtitulo_banner (H2): {{SUBTITULO}}
+     2. Palavra-chave Principal: {{PALAVRA_CHAVE}}
+     3. Título SEO (até 60 caracteres): {{TITULO_SEO}}
+     4. Slug / URL: {{SLUG}}
+     5. Meta Descrição (140 a 155 caracteres): {{META_DESCRICAO}}
+     6. Resumo (Excerpt, até 180 caracteres): {{RESUMO}}
+     7. Opções de Títulos H1 Extras: {{TITULOS_H1_EXTRAS}}
      8. Conclusão Estratégica (Takeaway): {{TAKEAWAY}}
      ========================================================================== -->
 <!DOCTYPE html>
@@ -31,7 +44,8 @@
     <meta property="og:locale" content="pt_BR">
     <meta property="og:title" content="{{TITULO_H1}}">
     <meta property="og:description" content="{{META_DESCRICAO}}">
-    <meta property="og:image" content="https://funilariaosasco.com.br/images/{{IMAGEM_CAPA}}">
+    <meta property="og:image" content="https://funilariaosasco.com.br/images/{{IMAGEM_OG}}">
+    <!-- og:image = JPG 1200x630 em /images (recorte dedicado da capa, nao a imagem 16:9 do corpo) -->
     <meta property="og:image:width" content="1200">
     <meta property="og:image:height" content="630">
     <meta property="og:image:type" content="image/jpeg">
@@ -46,7 +60,7 @@
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="{{TITULO_H1}}">
     <meta name="twitter:description" content="{{META_DESCRICAO}}">
-    <meta name="twitter:image" content="https://funilariaosasco.com.br/images/{{IMAGEM_CAPA}}">
+    <meta name="twitter:image" content="https://funilariaosasco.com.br/images/{{IMAGEM_OG}}">
 
     <!-- Favicons -->
     <link rel="icon" type="image/png" sizes="300x300" href="favicon.png">
@@ -147,14 +161,10 @@
             font-weight: 700;
         }
 
-        /* --- Banner principal em 2 colunas --- */
+        /* --- Banner principal (largura total): H1 + H2 + autoria --- */
         .fg-post-banner {
-            display: grid;
-            grid-template-columns: minmax(0, 1.1fr) minmax(0, 0.9fr);
-            gap: 36px;
-            align-items: center;
             padding: 38px;
-            margin-bottom: 40px;
+            margin-bottom: 26px;
             background: linear-gradient(135deg, #0d1527 0%, #131e38 100%);
             border: 1px solid var(--border-color);
             border-radius: 18px;
@@ -197,6 +207,33 @@
             font-size: clamp(16px, 1.6vw, 19px);
             font-weight: 500;
             line-height: 1.55;
+        }
+
+        /* H2 do banner (subtitulo_banner): confirma a promessa do H1, sem rótulos */
+        .subtitulo-banner {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: clamp(16px, 1.6vw, 19px);
+            font-weight: 500;
+            line-height: 1.55;
+        }
+
+        /* Barra de autoria e data — azul obrigatória, datas sem parênteses */
+        .fg-post-author-bar {
+            margin: 0 0 25px;
+            padding: 10px 18px;
+            background-color: #f0f9ff;
+            border-left: 3px solid #0284c7;
+            border-radius: 8px;
+            color: #0284c7;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .fg-post-author-bar time {
+            font-weight: 700;
         }
 
         .fg-post-meta {
@@ -258,27 +295,39 @@
             outline-offset: 3px;
         }
 
-        .fg-post-banner-media {
-            margin: 0;
+        /* --- Figuras 16:9 com legenda centralizada em itálico --- */
+        .fg-post-figure {
+            margin: 0 0 26px;
         }
 
-        .fg-post-banner-media img {
+        .fg-post-figure img {
             display: block;
             width: 100%;
-            height: 100%;
-            max-height: 380px;
+            height: auto;
+            aspect-ratio: 16 / 9;
             object-fit: cover;
             border-radius: 14px;
             border: 1px solid rgba(56, 189, 248, 0.25);
             box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
         }
 
-        .fg-post-banner-media figcaption {
+        .fg-post-figure figcaption {
             margin-top: 10px;
             color: var(--text-muted);
-            font-size: 12.5px;
+            font-size: 13px;
+            font-style: italic;
             line-height: 1.5;
             text-align: center;
+        }
+
+        /* Legenda dentro da área branca de leitura */
+        .fg-post-content .fg-post-figure figcaption {
+            color: #475569;
+        }
+
+        /* Respiro visual opcional logo abaixo do banner */
+        .fg-post-respiro {
+            height: 28px;
         }
 
         /* --- Grade conteúdo + barra lateral alinhada --- */
@@ -670,19 +719,17 @@
             }
 
             .fg-post-banner {
-                gap: 26px;
                 padding: 30px;
             }
         }
 
         @media (max-width: 960px) {
             .fg-post-banner {
-                grid-template-columns: 1fr;
                 padding: 26px;
             }
 
-            .fg-post-banner-media img {
-                max-height: 320px;
+            .fg-post-figure img {
+                border-radius: 12px;
             }
 
             .fg-post-layout {
@@ -734,17 +781,7 @@
 </head>
 <body class="blog-post-page">
 
-    <!-- 1. Barra de aviso superior -->
-    <div class="top-announcement">
-        <div class="container announcement-content">
-            <span class="announcement-text">
-                <span class="pulse-dot"></span>
-                <strong>Bateu ou arranhou o carro em Osasco e Região?</strong> Envie as fotos no WhatsApp para uma estimativa rápida!
-            </span>
-        </div>
-    </div>
-
-    <!-- 2. Cabeçalho principal (sticky) -->
+    <!-- 1. Cabeçalho principal (sticky e limpo: logo + navegação + WhatsApp) -->
     <header class="main-header" id="header">
         <div class="container header-container">
             <a href="/" class="brand-logo" aria-label="FG Car Oficina — Início">
@@ -857,7 +894,7 @@
         </div>
     </header>
 
-    <!-- 3. Barra mobile abaixo do cabeçalho -->
+    <!-- 2. Barra mobile abaixo do cabeçalho -->
     <div class="mobile-subbar">
         <div class="container mobile-subbar-container">
             <p class="mobile-subbar-text">
@@ -872,7 +909,7 @@
         </div>
     </div>
 
-    <!-- 4. Conteúdo principal -->
+    <!-- 3. Conteúdo principal -->
     <main class="fg-post-main">
         <div class="container">
 
@@ -887,40 +924,40 @@
                 <span class="current" aria-current="page">{{TITULO_CURTO}}</span>
             </nav>
 
-            <!-- 5. Banner principal em 2 colunas -->
+            <!-- 5. Banner principal: H1 > H2 do banner > barra de autoria -->
             <section class="fg-post-banner" aria-labelledby="post-title">
                 <div class="fg-post-banner-text">
                     <a href="/{{CATEGORIA_SLUG}}" class="fg-post-tag">{{CATEGORIA_NOME}}</a>
 
                     <h1 class="fg-post-title" id="post-title">{{TITULO_H1}}</h1>
 
-                    <p class="fg-post-subtitle">{{SUBTITULO}}</p>
+                    <!-- subtitulo_banner: confirma a promessa do H1 (sem rótulos de sistema) -->
+                    <h2 class="subtitulo-banner">{{SUBTITULO}}</h2>
 
-                    <div class="fg-post-meta">
-                        <span>Por <a href="/sobre">FG Car Funilaria e Pintura</a></span>
-                        <span>Publicado em <time datetime="{{DATA_ISO}}">{{DATA}}</time></span>
-                        <span>Atualizado em <time datetime="{{DATA_ISO}}">{{DATA}}</time></span>
-                        <span>⏱ {{TEMPO_LEITURA}} min de leitura</span>
+                    <!-- Barra de autoria e data: azul, sem parênteses nas datas -->
+                    <div class="fg-post-author-bar">
+                        Por FG Car Funilaria e Pintura - Publicado em <time datetime="{{DATA_ISO}}">{{DATA}}</time> - Atualizado em <time datetime="{{DATA_ISO}}">{{DATA}}</time>
                     </div>
 
                     <div class="fg-post-actions">
-                        <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Li%20o%20artigo%20sobre%20{{SLUG}}%20e%20gostaria%20de%20um%20or%C3%A7amento." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
-                            ⚡ Pedir orçamento no WhatsApp
+                        <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Li%20o%20artigo%20sobre%20{{SLUG}}%20e%20quero%20enviar%20fotos%20do%20meu%20carro." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
+                            ⚡ Enviar fotos no WhatsApp
                         </a>
                         <a href="/#servicos" class="fg-post-btn fg-post-btn--ghost">
                             Ver serviços da oficina
                         </a>
                     </div>
                 </div>
-
-                <figure class="fg-post-banner-media">
-                    <img src="images/{{IMAGEM_CAPA}}"
-                         alt="{{ALT_IMAGEM_CAPA}}"
-                         width="1200" height="900"
-                         loading="eager" fetchpriority="high" decoding="async">
-                    <figcaption>{{LEGENDA_IMAGEM}}</figcaption>
-                </figure>
             </section>
+
+            <!-- 5.1 Imagem 1 (capa 16:9, hiper-realista) logo após a barra de autoria -->
+            <figure class="fg-post-figure">
+                <img src="images/{{IMAGEM_CAPA}}"
+                     alt="{{ALT_IMAGEM_CAPA}}"
+                     width="1280" height="720"
+                     loading="eager" fetchpriority="high" decoding="async">
+                <figcaption>{{LEGENDA_IMAGEM}}</figcaption>
+            </figure>
 
             <!-- 6. Conteúdo + barra lateral alinhada -->
             <div class="fg-post-layout">
@@ -932,12 +969,17 @@
                      ============================================================ -->
                 <article class="fg-post-content">
 
+                    <!-- Respiro visual após o banner -->
+                    <div class="fg-post-respiro" aria-hidden="true"></div>
+
+                    <!-- Parágrafos curtos (2 a 3 frases) + âncora para a home -->
                     <p>
                         <strong>{{PARAGRAFO_ABERTURA_FORTE}}</strong> {{PARAGRAFO_ABERTURA_COMPLEMENTO}}
                     </p>
 
                     <p>
-                        {{PARAGRAFO_CONTEXTO}}
+                        {{PARAGRAFO_CONTEXTO}} Este guia é mantido pela nossa
+                        <a href="/">funilaria em Osasco</a> e reúne o que a equipe técnica aplica na rotina da oficina.
                     </p>
 
                     <h2 id="topico-1">{{TITULO_H2_1}}</h2>
@@ -962,10 +1004,11 @@
                         {{TEXTO_H2_2_PARAGRAFO_1}}
                     </p>
 
-                    <figure>
+                    <!-- Imagem 2 (técnica 16:9) no meio do post -->
+                    <figure class="fg-post-figure">
                         <img src="images/{{IMAGEM_CONTEUDO}}"
                              alt="{{ALT_IMAGEM_CONTEUDO}}"
-                             width="1200" height="800"
+                             width="1280" height="720"
                              loading="lazy" decoding="async">
                         <figcaption>{{LEGENDA_IMAGEM_CONTEUDO}}</figcaption>
                     </figure>
@@ -1149,18 +1192,18 @@
                 </aside>
             </div>
 
-            <!-- 7. CTA final (3º ponto de conversão) -->
+            <!-- 7. CTA final (3º ponto de conversão): envio de fotos + endereço -->
             <section class="fg-post-cta-final" aria-labelledby="cta-final-title">
                 <span class="eyebrow">{{EYEBROW_CTA_FINAL}}</span>
                 <h2 id="cta-final-title">{{TITULO_CTA_FINAL}}</h2>
                 <p>
-                    {{TEXTO_CTA_FINAL}}
+                    {{TEXTO_CTA_FINAL}} Envie as fotos do dano pelo WhatsApp e receba a orientação da equipe.
                 </p>
-                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Quero%20agendar%20uma%20avalia%C3%A7%C3%A3o%20na%20FG%20Car." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
-                    ⚡ Falar com a equipe no WhatsApp
+                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Quero%20enviar%20fotos%20do%20meu%20carro%20e%20receber%20um%20or%C3%A7amento%20de%20funilaria%20em%20Osasco." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
+                    ⚡ Enviar fotos do carro no WhatsApp
                 </a>
                 <p class="fg-post-widget-note">
-                    Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP
+                    FG Car Oficina e Funilaria e Pintura — Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP — CEP 06080-125 · Seg a sex: 8h–18h · Sáb: 8h–12h
                 </p>
             </section>
 

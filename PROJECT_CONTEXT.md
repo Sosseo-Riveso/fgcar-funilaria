@@ -130,7 +130,13 @@ Definida em `style.css` dentro de `:root`.
 
 **Técnicos / controle:** `painel-leads.html` (protegido por `noindex` no `robots.txt`), `script.js` (lead gate), `GOOGLE-APPS-SCRIPT-CRM.js` (webhook Sheets), `sitemap.xml` (45 URLs), `robots.txt`, `llms.txt`, `llms-full.txt`.
 
-**Templates:** `template-artigo.html` (legado) e `template-post-padrao.html` (padrão atual, com banner em 2 colunas + sidebar).
+**Templates:** `template-post-padrao.html` (oficial), `template-post-cuidados-e-prevencao.html` e
+`template-post-restauracao-de-veiculos.html` (variações por categoria) e `template-artigo.html` (legado/descontinuado).
+Todos seguem: `H1 > H2.subtitulo-banner > barra de autoria azul`, 2 imagens 16:9 com legenda em itálico,
+âncora para a home e CTA final com endereço físico.
+
+**Auditores locais (não publicados):** `scripts/seo_checker.py` e `scripts/geo_checker.py` — rodar com
+`py scripts/seo_checker.py .` e `py scripts/geo_checker.py .` na raiz.
 
 ---
 

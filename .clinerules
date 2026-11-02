@@ -4,6 +4,11 @@ Site: **https://funilariaosasco.com.br/**
 Stack: HTML + CSS + JavaScript puro (100% estático) — deploy via Git na Cloudflare Pages.
 Leia sempre, antes de qualquer tarefa: `PROJECT_CONTEXT.md`, `PROGRESS.md` e (para conteúdo) `PLANO_CONTEUDO_BLOG_FGCAR.md`.
 
+### Skills consolidadas nesta governança
+Esta regra unifica as diretrizes de `blog_fgcar_automotivo`, `manual_escaneabilidade_copywriting`,
+`geo-fundamentals`, `seo-fundamentals` e da regra de metadados (Takeaway obrigatório).
+Em caso de conflito, vale o que estiver descrito aqui.
+
 ---
 
 ## 1. Escopo e arquivos protegidos
@@ -17,6 +22,8 @@ Leia sempre, antes de qualquer tarefa: `PROJECT_CONTEXT.md`, `PROGRESS.md` e (pa
   - classes/IDs estruturais `fgLeadModal`, `mobileToggle`, `mobileDrawer`, `mobileDrawerClose`.
 - Não renomear nem mover páginas existentes: isso quebra links e redirecionamentos.
 - Alterações devem ser incrementais. Preservar o que já funciona.
+- **Nunca alterar páginas ou artigos já publicados** (HTML da raiz) sem pedido explícito: mudanças de padrão
+  entram primeiro em governance, `template-*.html` e `style.css`, e só depois são aplicadas aos posts.
 
 ## 2. Identidade que nunca muda (NAP)
 
@@ -42,10 +49,28 @@ Leia sempre, antes de qualquer tarefa: `PROJECT_CONTEXT.md`, `PROGRESS.md` e (pa
 - Formato canônico: `https://wa.me/5511947727682?text=<mensagem codificada>` com `target="_blank"` e `rel="noopener"`.
 - Manter as classes dos botões (`btn btn-primary`, `btn-header`, `btn-block`, `mobile-whatsapp-btn`, `btn-mobile-whatsapp`): o lead gate do `script.js` intercepta cliques em `wa.me`.
 - Nunca remover, esconder ou trocar o destino de um CTA existente. Ao criar página nova, incluir no mínimo **3 pontos de conversão**:
-  1. barra de aviso superior / header;
+  1. **cabeçalho sticky** (botão de WhatsApp sempre visível);
   2. CTA no meio do conteúdo ou na barra lateral;
   3. CTA final antes do rodapé.
 - Texto dos CTAs: verbo de ação + benefício ("Enviar fotos no WhatsApp", "Pedir orçamento sem compromisso").
+
+### 4.1 Cabeçalho e botão flutuante (padrão visual do site)
+
+- **Cabeçalho sticky limpo:** apenas logo, navegação e botão de WhatsApp.
+  - **Proibido** telefone no topo (`.phone-link`).
+  - **Proibido** link/botão amarelo "Pedir Orçamento Agora ➔" na barra superior.
+- **Remover a barra de aviso superior** (`.top-announcement`) em páginas novas: o primeiro elemento da página é o `<header>` sticky.
+- **Sem botão flutuante de WhatsApp** (`.floating-whatsapp`) em home, serviços ou artigos — o botão do header acompanha a rolagem.
+- Não excluir as regras de CSS existentes de `.top-announcement`/`.floating-whatsapp` (páginas antigas ainda as usam);
+  apenas não replicar esses elementos em páginas e templates novos.
+
+### 4.2 CTA final do artigo (obrigatório)
+
+- Caixa de conversão ao fim do post, com CTA para **envio de fotos no WhatsApp**.
+- O texto deve convidar explicitamente a enviar fotos e informar o **endereço físico da oficina em Osasco**:
+  `Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP — CEP 06080-125`.
+- Manter o horário de atendimento na mesma caixa (Seg–Sex 8h–18h · Sáb 8h–12h).
+
 
 ## 5. SEO / GEO
 
@@ -54,8 +79,71 @@ Leia sempre, antes de qualquer tarefa: `PROJECT_CONTEXT.md`, `PROGRESS.md` e (pa
 - `canonical` sempre na URL sem `.html`.
 - Open Graph completo: `og:type`, `og:title`, `og:description`, `og:image` (JPG 1200×630 em `/images`), `og:image:width/height/type`, `og:url`, `og:site_name`, `og:locale`.
 - JSON-LD `BlogPosting` nos artigos e `BreadcrumbList` no breadcrumb; dados devem bater com o NAP.
-- Metadados de publicação no topo do HTML em comentário, com **8 itens** e a **Conclusão Estratégica (Takeaway) como último item**.
 - Ao publicar página nova: adicionar ao `sitemap.xml` e, se for artigo, aos links da categoria correspondente.
+
+### 5.1 Metadados obrigatórios do artigo (bloco HTML)
+
+Todo artigo novo (`.html` na raiz e `.md` em `artigos/`) abre com um **comentário HTML** de metadados com
+**exatamente 8 itens**, nesta ordem, e o **Takeaway sempre como 8º item**:
+
+1. `subtitulo_banner (H2)` — confirmação afirmativa da promessa do H1, com a palavra-chave foco (não repete o H1);
+2. `Palavra-chave Principal`;
+3. `Título SEO` — até ~60 caracteres;
+4. `Slug / URL` — sem `.html`, palavra-chave no início;
+5. `Meta Descrição` — 140 a 155 caracteres, com benefício + CTA;
+6. `Resumo (Excerpt)` — até 180 caracteres, com a palavra-chave;
+7. `Opções de Títulos H1 Extras` — no mínimo 2 alternativas persuasivas;
+8. `Conclusão Estratégica (Takeaway)` — síntese do impacto prático e da decisão para o cliente.
+
+Regras do bloco:
+- Fica **no topo do arquivo**, dentro de `<!-- ... -->`, e **nunca** é renderizado ao visitante.
+- Proibido exibir rótulos de sistema (`[ subtitulo_banner ]`, caixas cinzas/amarelas) na página.
+- O `title`, a `meta description`, o `og:*`, o `canonical` e o JSON-LD devem refletir os itens 2–5.
+
+### 5.2 Subtítulo (H2) e barra de autoria
+
+- O `<h1>` fica no banner; **logo abaixo** vem o `<h2 class="subtitulo-banner">` (limpo, sem rótulo).
+- **Abaixo do H2**, entra a barra de autoria/data em azul:
+  - fundo `#f0f9ff`, texto `#0284c7`, borda esquerda `3px solid #0284c7`, raio 8px, `font-size: 14px`,
+    `font-weight: 600`, `padding: 10px 18px`, `margin-bottom: 25px`;
+  - conteúdo: `Por FG Car Funilaria e Pintura - Publicado em dd/mm/aaaa - Atualizado em dd/mm/aaaa`;
+  - **sem parênteses nas datas** (errado: `(Publicado em 02/11/2026)`);
+  - usar `<time datetime="AAAA-MM-DD">` para o sinal de data exigido pelo GEO;
+  - implementar como classe (`.fg-post-author-bar`) no template — não como `style=""` inline.
+
+### 5.3 Imagens do artigo
+
+- **Mínimo de 2 imagens 16:9 hiper-realistas** (oficina premium / piso de fábrica, iluminação realista):
+  1. **Capa:** imediatamente após a barra de autoria;
+  2. **Técnica:** no meio do post, após a seção técnica ou a tabela comparativa.
+- `width="1280" height="720"` (16:9), `alt` descritivo, capa com `loading="eager"` + `fetchpriority="high"`,
+  imagem técnica com `loading="lazy"`.
+- **Legenda obrigatória, centralizada e em itálico** (`<figcaption>` com `text-align: center; font-style: italic`).
+- Nomes de arquivo em minúsculas com hífens, salvos em `/images`, capa até ~250 KB.
+- A imagem de compartilhamento (`og:image`) é separada: JPG **1200×630** (`{{IMAGEM_OG}}`), com
+  `og:image:width/height/type` — não confundir com a capa 16:9 do corpo do artigo.
+
+### 5.4 Escaneabilidade e engenharia de texto
+
+- **Parágrafos curtos: 2 a 3 frases** (nunca paredes de texto), variando o tamanho ao longo do artigo.
+- Sem perda de densidade técnica: quebrar o texto, não cortar informação.
+- **Link âncora obrigatório** no 1º ou 2º parágrafo: `<a href="/">funilaria em Osasco</a>`
+  (aponta para a home, sem `.html`, barra inicial).
+- Abertura em pirâmide invertida: 1º parágrafo resolve a promessa do H1; 2º aprofunda o mecanismo técnico.
+- Usar listas, tabelas comparativas, blocos de destaque e `<strong>` com moderação (se tudo tem destaque, nada tem).
+- Nunca deixar asteriscos de Markdown (`**texto**`) em HTML publicado — usar `<strong>`.
+- **Sem jargões técnicos expostos:** proibido exibir termos como `Query Fan-out`, `RAG`, `GEO`, `schema`, `AEO`,
+  `SERP` ou `LLM` no texto visível. Títulos de FAQ naturais: "Perguntas Frequentes sobre [Tema]".
+  (Os conceitos continuam sendo aplicados — só não aparecem para o leitor.)
+- FAQ com 3 a 5 perguntas, cada resposta em bloco autossuficiente de 40 a 70 palavras, com entidades nomeadas.
+
+### 5.5 GEO / preparo para motores de IA
+
+- Resposta direta e extraível nos primeiros 200 caracteres; definições claras; dados e prazos sem invenção.
+- `lastmod`/`dateModified` atualizados a cada revisão; autoria identificada (Organização/NAP).
+- Manter `llms.txt` e `llms-full.txt` coerentes com o conteúdo publicado; bots de IA liberados no `robots.txt`.
+- JSON-LD válido: `AutoBodyShop` (institucional), `BlogPosting` + `BreadcrumbList` (+ `FAQPage` quando houver FAQ).
+
 
 ## 6. CSS — boas práticas
 
@@ -85,3 +173,29 @@ Leia sempre, antes de qualquer tarefa: `PROJECT_CONTEXT.md`, `PROGRESS.md` e (pa
 - Português do Brasil, técnico, direto e sem promessas exageradas.
 - Explicar o "porquê" técnico antes do benefício comercial.
 - Não inventar dados, preços, prazos ou certificações.
+
+## 10. Templates
+
+- **`template-post-padrao.html` é o template oficial** de artigo. As variações
+  (`template-post-cuidados-e-prevencao.html`, `template-post-restauracao-de-veiculos.html`)
+  herdam o mesmo head, banner, barra de autoria, imagens e CTA final — só muda o miolo (checklist, etapas, galeria).
+- `template-artigo.html` está **descontinuado**: não criar artigos novos a partir dele.
+- Templates nunca são publicados: `template-*.html` está bloqueado no `.assetsignore`.
+- Ao mudar um padrão de artigo, atualize **primeiro** `.clinerules`, depois os templates e, por último,
+  os posts (somente com pedido explícito).
+- Nenhum arquivo de template pode ter `link rel="canonical"` apontando para `{{SLUG}}` vazio publicado.
+
+## 11. Auditores locais (scripts)
+
+- `scripts/seo_checker.py` — auditoria de SEO on-page (title, description, canonical, OG, H1, alt, NAP, CTA).
+- `scripts/geo_checker.py` — auditoria de preparo para IA (JSON-LD, autoria, datas, FAQ, blocos extraíveis).
+- Rodar sempre pela raiz do projeto:
+  ```
+  py scripts/seo_checker.py .
+  py scripts/geo_checker.py .
+  ```
+- Ambos ignoram `template-*.html`, `painel-leads.html`, `artigos/`, `scratch/` e pastas de mídia.
+- Os scripts são ferramentas de apoio: **não editam arquivos**. O diagnóstico serve para orientar correções manuais.
+- `scripts/`, `*.py` e `__pycache__/` **não são versionados nem publicados**
+  (listados em `.gitignore`, `.assetsignore` e `.clineignore`).
+

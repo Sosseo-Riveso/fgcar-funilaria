@@ -32,15 +32,29 @@ artigos/*.html
 # --- Caches, dependências e artefatos de build ---
 node_modules/
 .cache/
+.sass-cache/
+.parcel-cache/
 .wrangler/
 .vercel/
 .netlify/
 dist/
 build/
+coverage/
+tmp/
 *.log
 npm-debug.log*
 yarn-error.log*
 pnpm-debug.log*
+
+# --- Auditores locais (scripts de apoio, não publicados) ---
+scripts/
+*.py
+*.pyc
+__pycache__/
+
+# --- Temporários de merge/diff ---
+*.orig
+*.rej
 
 # --- Variáveis de ambiente / segredos ---
 .env

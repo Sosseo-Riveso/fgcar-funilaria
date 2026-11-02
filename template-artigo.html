@@ -1,3 +1,11 @@
+<!-- ==========================================================================
+     TEMPLATE LEGADO / DESCONTINUADO — NÃO USE EM ARTIGOS NOVOS.
+     Use `template-post-padrao.html` (ou as variações por categoria).
+     Mantido apenas como referência histórica do layout de coluna única.
+     Os metadados de publicação dos artigos novos devem ficar no TOPO do
+     arquivo, em comentário HTML, com 8 itens e o Takeaway como 8º item.
+     ========================================================================== -->
+
 ﻿<!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -59,17 +67,7 @@
 </head>
 <body class="blog-post-page">
 
-    <!-- 1. Barra de Aviso Superior -->
-    <div class="top-announcement">
-        <div class="container announcement-content">
-            <span class="announcement-text">
-                <span class="pulse-dot"></span>
-                <strong>Bateu ou arranhou o carro em Osasco e Região?</strong> Envie as fotos no WhatsApp para uma estimativa rápida!
-            </span>
-        </div>
-    </div>
-
-    <!-- 2. Cabeçalho Principal (Sticky) -->
+    <!-- Cabeçalho Principal (Sticky) — sem barra de aviso superior e sem botão flutuante -->
     <header class="main-header" id="header">
         <div class="container header-container">
             <a href="/" class="brand-logo" aria-label="FG Car Oficina — Início">
@@ -255,7 +253,7 @@
 
                 <!-- 📸 IMAGEM 1: CAPA / DESTAQUE (16:9) -->
                 <div class="artigo-banner-img-wrapper" style="margin: 20px 0 32px 0; border-radius: 12px; overflow: hidden; box-shadow: 0 8px 24px rgba(0,0,0,0.12);">
-                    <img src="images/{{IMAGEM_CAPA}}" alt="{{ALT_IMAGEM_CAPA}}" style="width: 100%; height: auto; display: block; border-radius: 12px;" loading="lazy">
+                    <img src="images/{{IMAGEM_CAPA}}" alt="{{ALT_IMAGEM_CAPA}}" width="1280" height="720" style="width: 100%; height: auto; display: block; border-radius: 12px;" loading="eager" fetchpriority="high">
                     <span style="display: block; font-size: 13px; color: #64748b; margin-top: 8px; text-align: center; font-style: italic;">{{CAPTION_IMAGEM_CAPA}}</span>
                 </div>
 
@@ -413,7 +411,7 @@
                     <h3 style="color: #38bdf8; font-size: 24px; font-weight: 900; margin: 0 0 12px 0;">Tem um Amassado ou Arranhão Esperando para Consertar?</h3>
                     <p style="color: #cbd5e1; font-size: 16px; margin: 0 0 22px 0; line-height: 1.6; max-width: 650px; margin-left: auto; margin-right: auto;">Não deixe a ferrugem estragar a chapa do seu carro. Envie uma foto agora mesmo no WhatsApp da <strong>FG Car</strong> e receba uma estimativa sem enrolação e sem compromisso!</p>
                     <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Tenho%20um%20amassado%20no%20carro%20e%20gostaria%20de%20evitar%20que%20piore." target="_blank" rel="noopener" style="display: inline-block; background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%); color: #ffffff; padding: 14px 32px; border-radius: 8px; text-decoration: none; font-weight: 800; font-size: 16px; box-shadow: 0 4px 15px rgba(2, 132, 199, 0.4); transition: transform 0.2s ease;">⚡ Enviar Foto no WhatsApp</a>
-                    <p style="color: #94a3b8; font-size: 13px; margin: 14px 0 0 0;">Atendimento na Av. Visconde de Nova Granada, 3151 - Cipava, Osasco / SP</p>
+                    <p style="color: #94a3b8; font-size: 13px; margin: 14px 0 0 0;">Atendimento na Av. Visconde de Nova Granada, 3151 - Cipava, Osasco / SP — CEP 06080-125</p>
                 </div>
 
             </article>

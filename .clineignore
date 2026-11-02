@@ -19,6 +19,10 @@
 
 # Scripts utilitários locais
 /scratch/
+/scripts/
+*.py
+*.pyc
+__pycache__/
 
 # Binários e documentos de planejamento
 *.docx

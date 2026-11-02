@@ -57,6 +57,32 @@
 - Criado `PROJECT_CONTEXT.md` (visão geral, público, paleta, navegação, NAP).
 - Criado `PROGRESS.md` (este arquivo).
 - Criado `template-post-padrao.html`: base limpa de artigo com head SEO/OpenGraph, banner em 2 colunas, conteúdo + sidebar alinhada e rodapé.
+
+### Fase 6 — Consolidação de skills, templates e auditores locais (02/11/2026)
+- `.clinerules` reescrito consolidando `blog_fgcar_automotivo`, `manual_escaneabilidade_copywriting`,
+  `geo-fundamentals`, `seo-fundamentals` e a regra de metadados com Takeaway:
+  - 8 metadados obrigatórios em comentário HTML (Takeaway como 8º item);
+  - barra de autoria azul `#f0f9ff` / `#0284c7` abaixo do H2, datas sem parênteses;
+  - 2 imagens 16:9 com legenda centralizada em itálico;
+  - parágrafos de 2–3 frases e link âncora `funilaria em Osasco` → home;
+  - proibição de jargões técnicos visíveis (Query Fan-out, RAG, GEO, SERP...);
+  - cabeçalho sticky limpo, sem barra superior, sem telefone no topo e sem botão flutuante;
+  - CTA final para envio de fotos no WhatsApp com endereço físico completo;
+  - seções novas: 10 (Templates) e 11 (Auditores locais).
+- `template-post-padrao.html`, `template-post-cuidados-e-prevencao.html` e
+  `template-post-restauracao-de-veiculos.html` atualizados: banner em coluna única com
+  `H1 > H2.subtitulo-banner > barra de autoria`, capa 16:9 (`1280×720`, eager) após a autoria,
+  imagem técnica 16:9 no meio do post, legendas em itálico, respiro pós-banner, âncora da home
+  e CTA final com endereço + CEP. `.top-announcement` removido dos templates.
+- `template-artigo.html` marcado como **descontinuado** (referência histórica), com a barra superior
+  removida, capa em `loading="eager"` e CEP no CTA final.
+- Criados os auditores locais `scripts/seo_checker.py` e `scripts/geo_checker.py` (pt-BR, somente leitura),
+  com proteção contra pixels 1×1 no `seo_checker.py` e filtros para pular templates, `painel-leads.html`,
+  `artigos/` e mídia.
+- `.gitignore`, `.assetsignore` e `.clineignore` agora ignoram `scripts/`, `*.py`, `*.pyc` e `__pycache__/`.
+- Diagnóstico inicial (45 páginas publicadas): SEO 56/100 e GEO 78% — nenhuma página ou artigo publicado
+  foi alterado nesta fase.
+
 ---
 
 ## 3. Pendências
@@ -72,6 +98,11 @@
 - [ ] Auditar links internos (clusters por categoria) e corrigir órfãos.
 - [ ] Monitorar Core Web Vitals (peso das capas e do vídeo de fundo da home).
 - [ ] Validar rich results (BlogPosting/FAQ) no Search Console.
+- [ ] **`og:locale` ausente** em 44 das 45 páginas publicadas (só a home declara o locale).
+- [ ] Home sem `og:site_name`; 29 artigos sem `og:image:width/height/type`.
+- [ ] 25 páginas sem `datePublished`/`dateModified` no JSON-LD (só têm data visível).
+- [ ] 16 páginas sem autoria identificada no schema; 7 sem JSON-LD (legais, categorias e contato).
+- [ ] Revisar títulos com mais de 60 caracteres e descrições fora de 140–155.
 
 ### Infra / operação
 - [ ] Manter `_headers` limitado ao domínio provisório (revisar ao migrar de Pages para Workers).

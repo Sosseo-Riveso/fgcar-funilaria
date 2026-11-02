@@ -1,0 +1,1289 @@
+<!-- TEMPLATE ESPECÍFICO — CUIDADOS E PREVENÇÃO
+     Diferenças vs. template base: formato curto (guia rápido), checklist visual,
+     erros comuns em H3 e menos seções no índice lateral.
+     ========================================================================== -->
+<!-- ==========================================================================
+     TEMPLATE DE POST PADRÃO — FG CAR OFICINA FUNILARIA E PINTURA
+     Arquivo de referência (NÃO PUBLICAR). Copie para <slug>.html e substitua
+     os placeholders {{...}} pelos dados reais do artigo.
+
+     REGRAS DE LAYOUT APLICADAS (ver .clinerules)
+     - H1 no banner > H2.subtitulo-banner > barra de autoria azul (#f0f9ff / #0284c7).
+     - Datas sem parênteses, sempre em <time datetime="AAAA-MM-DD">.
+     - 2 imagens 16:9 (capa após a autoria + imagem técnica no meio do post),
+       com legenda centralizada em itálico.
+     - Link âncora "funilaria em Osasco" -> home no 1º/2º parágrafo.
+     - Sem barra de aviso superior, sem telefone no topo e sem botão flutuante:
+       o <header> sticky limpo é o primeiro elemento da página.
+     - CTA final para envio de fotos no WhatsApp + endereço físico da oficina.
+     - FAQ com título natural (nunca "Query Fan-out", "RAG", "GEO" ou similares).
+
+     METADADOS DE PUBLICAÇÃO — 8 ITENS OBRIGATÓRIOS
+     (comentário interno de controle: nunca é renderizado ao visitante.
+      O 8º item é SEMPRE a Conclusão Estratégica / Takeaway.)
+     1. subtitulo_banner (H2): {{SUBTITULO}}
+     2. Palavra-chave Principal: {{PALAVRA_CHAVE}}
+     3. Título SEO (até 60 caracteres): {{TITULO_SEO}}
+     4. Slug / URL: {{SLUG}}
+     5. Meta Descrição (140 a 155 caracteres): {{META_DESCRICAO}}
+     6. Resumo (Excerpt, até 180 caracteres): {{RESUMO}}
+     7. Opções de Títulos H1 Extras: {{TITULOS_H1_EXTRAS}}
+     8. Conclusão Estratégica (Takeaway): {{TAKEAWAY}}
+     ========================================================================== -->
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- SEO básico -->
+    <title>{{TITULO_SEO}}</title>
+    <meta name="description" content="{{META_DESCRICAO}}">
+    <meta name="robots" content="index, follow, max-image-preview:large">
+    <meta name="author" content="FG Car Oficina e Funilaria e Pintura">
+    <link rel="canonical" href="https://funilariaosasco.com.br/{{SLUG}}">
+
+    <!-- Open Graph / Redes Sociais -->
+    <meta property="og:type" content="article">
+    <meta property="og:locale" content="pt_BR">
+    <meta property="og:title" content="{{TITULO_H1}}">
+    <meta property="og:description" content="{{META_DESCRICAO}}">
+    <meta property="og:image" content="https://funilariaosasco.com.br/images/{{IMAGEM_OG}}">
+    <!-- og:image = JPG 1200x630 em /images (recorte dedicado da capa, nao a imagem 16:9 do corpo) -->
+    <meta property="og:image:width" content="1200">
+    <meta property="og:image:height" content="630">
+    <meta property="og:image:type" content="image/jpeg">
+    <meta property="og:image:alt" content="{{ALT_IMAGEM_CAPA}}">
+    <meta property="og:url" content="https://funilariaosasco.com.br/{{SLUG}}">
+    <meta property="og:site_name" content="FG Car Oficina Funilaria e Pintura">
+    <meta property="article:published_time" content="{{DATA_ISO}}">
+    <meta property="article:modified_time" content="{{DATA_ISO}}">
+    <meta property="article:section" content="{{CATEGORIA_NOME}}">
+
+    <!-- Twitter / X -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{TITULO_H1}}">
+    <meta name="twitter:description" content="{{META_DESCRICAO}}">
+    <meta name="twitter:image" content="https://funilariaosasco.com.br/images/{{IMAGEM_OG}}">
+
+    <!-- Favicons -->
+    <link rel="icon" type="image/png" sizes="300x300" href="favicon.png">
+    <link rel="icon" type="image/x-icon" href="favicon.ico">
+    <link rel="apple-touch-icon" href="favicon.png">
+
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800;900&family=Space+Grotesk:wght@600;700;800&display=swap" rel="stylesheet">
+
+    <!-- CSS base do site -->
+    <link rel="stylesheet" href="style.css?v=20261020c">
+
+    <!-- Schema.org: BlogPosting -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://funilariaosasco.com.br/{{SLUG}}"
+      },
+      "headline": "{{TITULO_H1}}",
+      "description": "{{META_DESCRICAO}}",
+      "image": "https://funilariaosasco.com.br/images/{{IMAGEM_CAPA}}",
+      "datePublished": "{{DATA_ISO}}",
+      "dateModified": "{{DATA_ISO}}",
+      "inLanguage": "pt-BR",
+      "articleSection": "{{CATEGORIA_NOME}}",
+      "keywords": "{{PALAVRA_CHAVE}}, {{PALAVRAS_CHAVE_SECUNDARIAS}}",
+      "author": {
+        "@type": "Organization",
+        "name": "FG Car Oficina e Funilaria e Pintura"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "FG Car Oficina e Funilaria e Pintura",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://funilariaosasco.com.br/images/logo-fgcar.png"
+        }
+      }
+    }
+    </script>
+
+    <!-- Schema.org: BreadcrumbList -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        { "@type": "ListItem", "position": 1, "name": "Início", "item": "https://funilariaosasco.com.br/" },
+        { "@type": "ListItem", "position": 2, "name": "Blog", "item": "https://funilariaosasco.com.br/categoria-reparos-e-manutencao" },
+        { "@type": "ListItem", "position": 3, "name": "{{CATEGORIA_NOME}}", "item": "https://funilariaosasco.com.br/{{CATEGORIA_SLUG}}" },
+        { "@type": "ListItem", "position": 4, "name": "{{TITULO_H1}}", "item": "https://funilariaosasco.com.br/{{SLUG}}" }
+      ]
+    }
+    </script>
+
+    <!-- ======================================================================
+         Estilos exclusivos deste template (prefixo fg-post-).
+         Ficam aqui para que o template funcione sem alterar o style.css.
+         Ao publicar o artigo, o ideal é migrar estas regras para o style.css.
+         ====================================================================== -->
+    <style>
+        /* --- Estrutura geral da página de post --- */
+        .fg-post-main {
+            padding: 40px 0 90px;
+            background-color: var(--bg-dark);
+        }
+
+        .fg-post-breadcrumb {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 24px;
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .fg-post-breadcrumb a {
+            color: var(--brand-cyan);
+            text-decoration: none;
+        }
+
+        .fg-post-breadcrumb a:hover {
+            text-decoration: underline;
+        }
+
+        .fg-post-breadcrumb .sep {
+            color: var(--border-color);
+        }
+
+        .fg-post-breadcrumb .current {
+            color: var(--brand-gold);
+            font-weight: 700;
+        }
+
+        /* --- Banner principal (largura total): H1 + H2 + autoria --- */
+        .fg-post-banner {
+            padding: 38px;
+            margin-bottom: 26px;
+            background: linear-gradient(135deg, #0d1527 0%, #131e38 100%);
+            border: 1px solid var(--border-color);
+            border-radius: 18px;
+            box-shadow: 0 18px 45px rgba(0, 0, 0, 0.45);
+        }
+
+        .fg-post-tag {
+            display: inline-block;
+            margin-bottom: 14px;
+            padding: 6px 14px;
+            border-radius: 999px;
+            background-color: rgba(2, 132, 199, 0.15);
+            border: 1px solid rgba(56, 189, 248, 0.35);
+            color: var(--brand-cyan);
+            font-size: 12px;
+            font-weight: 800;
+            letter-spacing: 0.6px;
+            text-transform: uppercase;
+            text-decoration: none;
+        }
+
+        .fg-post-tag:hover {
+            background-color: rgba(2, 132, 199, 0.28);
+        }
+
+        .fg-post-title {
+            margin: 0 0 14px;
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: clamp(28px, 3.4vw, 40px);
+            font-weight: 900;
+            line-height: 1.2;
+            letter-spacing: -0.3px;
+        }
+
+        .fg-post-subtitle {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: clamp(16px, 1.6vw, 19px);
+            font-weight: 500;
+            line-height: 1.55;
+        }
+
+        /* H2 do banner (subtitulo_banner): confirma a promessa do H1, sem rótulos */
+        .subtitulo-banner {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: clamp(16px, 1.6vw, 19px);
+            font-weight: 500;
+            line-height: 1.55;
+        }
+
+        /* Barra de autoria e data — azul obrigatória, datas sem parênteses */
+        .fg-post-author-bar {
+            margin: 0 0 25px;
+            padding: 10px 18px;
+            background-color: #f0f9ff;
+            border-left: 3px solid #0284c7;
+            border-radius: 8px;
+            color: #0284c7;
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.5;
+        }
+
+        .fg-post-author-bar time {
+            font-weight: 700;
+        }
+
+        .fg-post-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px 18px;
+            margin-bottom: 22px;
+            color: var(--text-muted);
+            font-size: 13.5px;
+        }
+
+        .fg-post-meta a {
+            color: var(--brand-cyan);
+            font-weight: 600;
+            text-decoration: none;
+        }
+
+        .fg-post-meta a:hover {
+            text-decoration: underline;
+        }
+
+        .fg-post-actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 12px;
+        }
+
+        .fg-post-btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 13px 26px;
+            border-radius: 9px;
+            font-size: 15px;
+            font-weight: 800;
+            text-decoration: none;
+            transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+        }
+
+        .fg-post-btn--primary {
+            background: linear-gradient(135deg, var(--brand-blue) 0%, #0369a1 100%);
+            color: #ffffff;
+            box-shadow: 0 6px 18px rgba(2, 132, 199, 0.4);
+        }
+
+        .fg-post-btn--ghost {
+            background: transparent;
+            border: 1px solid rgba(148, 163, 184, 0.45);
+            color: var(--text-secondary);
+        }
+
+        .fg-post-btn:hover {
+            transform: translateY(-2px);
+        }
+
+        .fg-post-btn:focus-visible {
+            outline: 3px solid var(--brand-gold);
+            outline-offset: 3px;
+        }
+
+        /* --- Figuras 16:9 com legenda centralizada em itálico --- */
+        .fg-post-figure {
+            margin: 0 0 26px;
+        }
+
+        .fg-post-figure img {
+            display: block;
+            width: 100%;
+            height: auto;
+            aspect-ratio: 16 / 9;
+            object-fit: cover;
+            border-radius: 14px;
+            border: 1px solid rgba(56, 189, 248, 0.25);
+            box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+        }
+
+        .fg-post-figure figcaption {
+            margin-top: 10px;
+            color: var(--text-muted);
+            font-size: 13px;
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        /* Legenda dentro da área branca de leitura */
+        .fg-post-content .fg-post-figure figcaption {
+            color: #475569;
+        }
+
+        /* Respiro visual opcional logo abaixo do banner */
+        .fg-post-respiro {
+            height: 28px;
+        }
+
+        /* --- Grade conteúdo + barra lateral alinhada --- */
+        .fg-post-layout {
+            display: grid;
+            grid-template-columns: minmax(0, 1fr) 340px;
+            gap: 36px;
+            align-items: start;
+        }
+
+        /* --- Área de conteúdo do artigo (tema claro de leitura) --- */
+        .fg-post-content {
+            padding: 44px 48px;
+            background-color: #ffffff;
+            border-radius: 18px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
+            color: #1e293b;
+            font-family: 'Plus Jakarta Sans', var(--font-body);
+            font-size: 17.5px;
+            line-height: 1.8;
+        }
+
+        .fg-post-content > :first-child {
+            margin-top: 0;
+        }
+
+        .fg-post-content h2 {
+            margin: 36px 0 14px;
+            color: #0f172a;
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: clamp(23px, 2.3vw, 28px);
+            font-weight: 800;
+            line-height: 1.3;
+            scroll-margin-top: 110px;
+        }
+
+        .fg-post-content h3 {
+            margin: 26px 0 10px;
+            color: #0369a1;
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: 21px;
+            font-weight: 700;
+            line-height: 1.35;
+            scroll-margin-top: 110px;
+        }
+
+        .fg-post-content p {
+            margin: 0 0 16px;
+        }
+
+        .fg-post-content ul,
+        .fg-post-content ol {
+            margin: 0 0 20px;
+            padding-left: 24px;
+        }
+
+        .fg-post-content li {
+            margin-bottom: 8px;
+        }
+
+        .fg-post-content a {
+            color: #0284c7;
+            font-weight: 600;
+            text-decoration: underline;
+            text-underline-offset: 2px;
+        }
+
+        .fg-post-content a:hover {
+            color: #0369a1;
+        }
+
+        .fg-post-content strong {
+            color: #0f172a;
+        }
+
+        .fg-post-content img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+            margin: 26px auto;
+            border-radius: 12px;
+            border: 1px solid #e2e8f0;
+        }
+
+        .fg-post-content figure {
+            margin: 26px 0;
+        }
+
+        .fg-post-content figcaption {
+            margin-top: 10px;
+            color: #64748b;
+            font-size: 13.5px;
+            font-style: italic;
+            line-height: 1.5;
+            text-align: center;
+        }
+
+        .fg-post-content blockquote {
+            margin: 26px 0;
+            padding: 18px 24px;
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            border-radius: 0 12px 12px 0;
+            color: #0f172a;
+            font-size: 17px;
+        }
+
+        .fg-post-content blockquote p:last-child {
+            margin-bottom: 0;
+        }
+
+        .fg-post-content table {
+            display: block;
+            width: 100%;
+            margin: 24px 0;
+            overflow-x: auto;
+            border-collapse: collapse;
+            font-size: 15.5px;
+        }
+
+        .fg-post-content th,
+        .fg-post-content td {
+            padding: 11px 14px;
+            border: 1px solid #e2e8f0;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        .fg-post-content th {
+            background-color: #f0f9ff;
+            color: #0f172a;
+            font-weight: 800;
+        }
+
+        /* Caixa de destaque dentro do conteúdo */
+        .fg-post-callout {
+            margin: 28px 0;
+            padding: 22px 26px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-left: 4px solid #0284c7;
+            border-radius: 12px;
+        }
+
+        .fg-post-callout h3 {
+            margin-top: 0;
+        }
+
+        .fg-post-callout p:last-child {
+            margin-bottom: 0;
+        }
+
+        /* FAQ em acordeão nativo */
+        .fg-post-faq {
+            margin: 28px 0 0;
+        }
+
+        .fg-post-faq details {
+            margin-bottom: 10px;
+            padding: 14px 18px;
+            background-color: #f8fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 10px;
+        }
+
+        .fg-post-faq summary {
+            color: #0f172a;
+            font-size: 16.5px;
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        .fg-post-faq details[open] summary {
+            margin-bottom: 8px;
+            color: #0369a1;
+        }
+
+        .fg-post-faq p {
+            margin-bottom: 8px;
+            font-size: 16px;
+        }
+
+        /* --- Barra lateral alinhada --- */
+        .fg-post-sidebar {
+            position: sticky;
+            top: 100px;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            align-self: start;
+        }
+
+        .fg-post-widget {
+            padding: 22px;
+            background-color: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 14px;
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            line-height: 1.6;
+        }
+
+        .fg-post-widget h2,
+        .fg-post-widget h3 {
+            margin: 0 0 12px;
+            color: var(--text-primary);
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: 18px;
+            font-weight: 800;
+            line-height: 1.3;
+        }
+
+        .fg-post-widget--cta {
+            background: linear-gradient(135deg, #0b1a2f 0%, #0f172a 100%);
+            border-color: rgba(56, 189, 248, 0.35);
+            text-align: center;
+        }
+
+        .fg-post-widget--cta p {
+            margin: 0 0 18px;
+            color: var(--text-secondary);
+            font-size: 14.5px;
+        }
+
+        .fg-post-widget .fg-post-btn {
+            width: 100%;
+            padding: 12px 18px;
+            font-size: 14.5px;
+        }
+
+        .fg-post-widget-note {
+            margin: 12px 0 0;
+            color: var(--text-muted);
+            font-size: 12.5px;
+            line-height: 1.5;
+        }
+
+        /* Índice do artigo */
+        .fg-post-toc {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            counter-reset: toc;
+        }
+
+        .fg-post-toc li {
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .fg-post-toc li:last-child {
+            border-bottom: 0;
+        }
+
+        .fg-post-toc a {
+            display: block;
+            padding: 9px 0;
+            color: var(--text-secondary);
+            font-size: 14.5px;
+            font-weight: 600;
+            line-height: 1.45;
+            text-decoration: none;
+            transition: color var(--transition-fast);
+        }
+
+        .fg-post-toc a::before {
+            counter-increment: toc;
+            content: counter(toc) ". ";
+            color: var(--brand-cyan);
+            font-weight: 800;
+        }
+
+        .fg-post-toc a:hover {
+            color: var(--brand-cyan);
+        }
+
+        /* Artigos relacionados na lateral */
+        .fg-post-related {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+        }
+
+        .fg-post-related li {
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .fg-post-related li:last-child {
+            padding-bottom: 0;
+            border-bottom: 0;
+        }
+
+        .fg-post-related a {
+            display: block;
+            color: #e2e8f0;
+            font-size: 14.5px;
+            font-weight: 700;
+            line-height: 1.45;
+            text-decoration: none;
+        }
+
+        .fg-post-related a:hover {
+            color: var(--brand-cyan);
+        }
+
+        .fg-post-related span {
+            display: block;
+            margin-top: 5px;
+            color: var(--text-muted);
+            font-size: 12.5px;
+        }
+
+        /* Dados da oficina (NAP) */
+        .fg-post-nap {
+            margin: 0;
+            padding: 0;
+            list-style: none;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .fg-post-nap li {
+            margin-bottom: 10px;
+            padding-left: 24px;
+            position: relative;
+        }
+
+        .fg-post-nap li:last-child {
+            margin-bottom: 0;
+        }
+
+        .fg-post-nap .ico {
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: var(--brand-cyan);
+        }
+
+        /* --- CTA final --- */
+        .fg-post-cta-final {
+            margin-top: 40px;
+            padding: 34px 30px;
+            background: linear-gradient(135deg, #070b14 0%, #0f172a 100%);
+            border: 1px solid rgba(56, 189, 248, 0.3);
+            border-radius: 16px;
+            text-align: center;
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.4);
+        }
+
+        .fg-post-cta-final .eyebrow {
+            display: inline-block;
+            margin-bottom: 8px;
+            color: var(--brand-gold);
+            font-size: 12.5px;
+            font-weight: 800;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+        }
+
+        .fg-post-cta-final h2 {
+            margin: 0 0 12px;
+            color: var(--brand-cyan);
+            font-family: 'Plus Jakarta Sans', var(--font-heading);
+            font-size: clamp(22px, 2.4vw, 27px);
+            font-weight: 900;
+            line-height: 1.3;
+        }
+
+        .fg-post-cta-final p {
+            max-width: 660px;
+            margin: 0 auto 22px;
+            color: var(--text-secondary);
+            font-size: 16px;
+            line-height: 1.65;
+        }
+
+        .fg-post-cta-final .fg-post-widget-note {
+            margin-bottom: 0;
+        }
+
+        /* --- Checklist de prevenção (exclusiva dos posts de Cuidados) --- */
+        .fg-post-checklist {
+            padding-left: 0;
+            list-style: none;
+        }
+
+        .fg-post-checklist li {
+            position: relative;
+            padding-left: 28px;
+            margin-bottom: 10px;
+        }
+
+        .fg-post-checklist li::before {
+            content: "\2713";
+            position: absolute;
+            left: 0;
+            top: 0;
+            color: #16a34a;
+            font-weight: 900;
+        }
+
+        /* --- Responsivo --- */
+        @media (max-width: 1100px) {
+            .fg-post-layout {
+                grid-template-columns: minmax(0, 1fr) 300px;
+                gap: 26px;
+            }
+
+            .fg-post-content {
+                padding: 36px 32px;
+            }
+
+            .fg-post-banner {
+                padding: 30px;
+            }
+        }
+
+        @media (max-width: 960px) {
+            .fg-post-banner {
+                padding: 26px;
+            }
+
+            .fg-post-figure img {
+                border-radius: 12px;
+            }
+
+            .fg-post-layout {
+                grid-template-columns: 1fr;
+            }
+
+            .fg-post-sidebar {
+                position: static;
+                top: auto;
+            }
+
+            .fg-post-sidebar .fg-post-widget--cta {
+                order: -1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .fg-post-main {
+                padding: 26px 0 60px;
+            }
+
+            .fg-post-content {
+                padding: 26px 20px;
+                font-size: 16.5px;
+            }
+
+            .fg-post-banner {
+                padding: 22px 18px;
+                border-radius: 14px;
+            }
+
+            .fg-post-actions .fg-post-btn {
+                width: 100%;
+            }
+
+            .fg-post-cta-final {
+                padding: 26px 20px;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            .fg-post-btn,
+            .fg-post-toc a {
+                transition: none;
+            }
+        }
+    </style>
+
+</head>
+<body class="blog-post-page">
+
+    <!-- 1. Cabeçalho principal (sticky e limpo: logo + navegação + WhatsApp) -->
+    <header class="main-header" id="header">
+        <div class="container header-container">
+            <a href="/" class="brand-logo" aria-label="FG Car Oficina — Início">
+                <img src="images/logo-fgcar.png" alt="FG Car Oficina Funilaria e Pintura em Osasco" class="brand-img-logo">
+                <div class="logo-text">
+                    <span class="logo-title">Funilaria e Pintura <span class="logo-city">Osasco</span></span>
+                </div>
+            </a>
+
+            <nav class="desktop-nav" aria-label="Menu principal">
+                <ul class="nav-links">
+                    <li><a href="/#inicio">Início</a></li>
+                    <li class="has-dropdown">
+                        <a href="/#servicos" class="dropdown-trigger">
+                            Serviços <span class="dropdown-arrow">▾</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/funilaria-de-colisao-e-batidas">Funilaria de Colisão &amp; Batidas</a></li>
+                            <li><a href="/pintura-em-estufa-climatizada">Pintura em Estufa Climatizada</a></li>
+                            <li><a href="/martelinho-de-ouro-express">Martelinho de Ouro Express</a></li>
+                            <li><a href="/recuperacao-de-para-choques">Recuperação de Para-choques</a></li>
+                            <li><a href="/polimento-tecnico-e-cristalizacao">Polimento Técnico &amp; Cristalização</a></li>
+                            <li><a href="/retoques-rapidos-spot-repair">Retoques Rápidos (Spot Repair)</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/#cabine-destaque">Cabine de Pintura</a></li>
+                    <li class="has-dropdown">
+                        <a href="/{{CATEGORIA_SLUG}}" class="dropdown-trigger active">
+                            Blog <span class="dropdown-arrow">▾</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="/categoria-reparos-e-manutencao">Reparos e Manutenção de Lataria</a></li>
+                            <li><a href="/categoria-pintura-automotiva-e-estetica">Pintura Automotiva e Estética</a></li>
+                            <li><a href="/categoria-restauracao-de-veiculos">Restauração de Veículos</a></li>
+                            <li><a href="/categoria-cuidados-e-prevencao">Cuidados e Prevenção</a></li>
+                            <li><a href="/categoria-autoridade-local-e-intencao-de-busca">Super Dicas FGCar em Osasco</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="/sobre">Sobre</a></li>
+                    <li><a href="/#diferenciais">A Oficina</a></li>
+                    <li><a href="/contato">Contato</a></li>
+                    <li><a href="/#contato">Localização</a></li>
+                </ul>
+            </nav>
+
+            <div class="header-actions">
+                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="btn btn-primary btn-header" target="_blank" rel="noopener">
+                    <span>⚡ WhatsApp Orçamento</span>
+                </a>
+                <!-- Botão WhatsApp pequeno (apenas ícone) no topo fixo -->
+                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="mobile-whatsapp-btn" target="_blank" rel="noopener" aria-label="Falar no WhatsApp">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="currentColor" aria-hidden="true" focusable="false">
+                        <path d="M.057 24l1.687-6.163c-1.041-1.804-1.588-3.849-1.587-5.946.003-6.556 5.338-11.891 11.893-11.891 3.181.001 6.167 1.24 8.413 3.488 2.245 2.248 3.481 5.236 3.48 8.414-.003 6.557-5.338 11.892-11.893 11.892-1.99-.001-3.951-.5-5.688-1.448l-6.305 1.654zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884-.001 2.225.651 3.891 1.746 5.634l-.999 3.648 3.742-.981zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.151-.172.2-.296.3-.495.099-.198.05-.372-.025-.521-.075-.148-.669-1.611-.916-2.206-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.095 3.2 5.076 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+                    </svg>
+                </a>
+                <button class="mobile-toggle" id="mobileToggle" type="button" aria-label="Abrir menu de navegação" aria-expanded="false" aria-controls="mobileDrawer">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Menu mobile drawer -->
+        <div class="mobile-drawer" id="mobileDrawer">
+            <div class="mobile-drawer-topbar">
+                <a href="/" class="mobile-drawer-brand" aria-label="FG Car - Início">
+                    <img src="images/logo-fgcar.png" alt="FG Car Oficina Funilaria e Pintura em Osasco" style="height: 40px; width: auto;">
+                </a>
+                <button type="button" class="mobile-drawer-close" id="mobileDrawerClose" aria-label="Fechar Menu">
+                    ✕ Fechar
+                </button>
+            </div>
+            <ul class="mobile-nav-links">
+                <li><a href="/#inicio" class="mobile-link">Início</a></li>
+                <li><a href="/sobre" class="mobile-link">Sobre a FG Car</a></li>
+                <li><a href="/#diferenciais" class="mobile-link">A Oficina &amp; Estrutura</a></li>
+                <li><a href="/contato" class="mobile-link">Fale Conosco / Contato</a></li>
+                <li class="mobile-dropdown-group">
+                    <span class="mobile-dropdown-title">🛠️ Serviços Especializados</span>
+                    <ul class="mobile-sublinks">
+                        <li><a href="/funilaria-de-colisao-e-batidas" class="mobile-link">› Funilaria de Colisão &amp; Batidas</a></li>
+                        <li><a href="/pintura-em-estufa-climatizada" class="mobile-link">› Pintura em Estufa Climatizada</a></li>
+                        <li><a href="/martelinho-de-ouro-express" class="mobile-link">› Martelinho de Ouro Express</a></li>
+                        <li><a href="/recuperacao-de-para-choques" class="mobile-link">› Recuperação de Para-choques</a></li>
+                        <li><a href="/polimento-tecnico-e-cristalizacao" class="mobile-link">› Polimento Técnico &amp; Cristalização</a></li>
+                        <li><a href="/retoques-rapidos-spot-repair" class="mobile-link">› Retoques Rápidos (Spot Repair)</a></li>
+                    </ul>
+                </li>
+                <li><a href="/#cabine-destaque" class="mobile-link">Cabine de Pintura Profissional</a></li>
+                <li class="mobile-dropdown-group">
+                    <span class="mobile-dropdown-title">📝 Blog FG Car</span>
+                    <ul class="mobile-sublinks">
+                        <li><a href="/categoria-reparos-e-manutencao" class="mobile-link">› Reparos e Manutenção de Lataria</a></li>
+                        <li><a href="/categoria-pintura-automotiva-e-estetica" class="mobile-link">› Pintura Automotiva e Estética</a></li>
+                        <li><a href="/categoria-restauracao-de-veiculos" class="mobile-link">› Restauração de Veículos</a></li>
+                        <li><a href="/categoria-cuidados-e-prevencao" class="mobile-link">› Cuidados e Prevenção</a></li>
+                        <li><a href="/categoria-autoridade-local-e-intencao-de-busca" class="mobile-link">› Super Dicas FGCar em Osasco</a></li>
+                    </ul>
+                </li>
+                <li><a href="/#contato" class="mobile-link">Localização &amp; Como Chegar</a></li>
+            </ul>
+            <div class="mobile-drawer-cta">
+                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="btn btn-primary btn-block" target="_blank" rel="noopener">
+                    Falar com a Oficina no WhatsApp ➔
+                </a>
+            </div>
+            <!-- Espaçador de respiro no final do drawer -->
+            <div class="mobile-drawer-spacer"></div>
+        </div>
+    </header>
+
+    <!-- 2. Barra mobile abaixo do cabeçalho -->
+    <div class="mobile-subbar">
+        <div class="container mobile-subbar-container">
+            <p class="mobile-subbar-text">
+                <strong>Bateu ou arranhou o carro em Osasco e Região?</strong><br>
+                Envie as fotos no WhatsApp para uma estimativa rápida!
+            </p>
+            <div class="mobile-subbar-btn-wrap">
+                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20funilaria%20para%20o%20meu%20carro." class="btn btn-primary btn-mobile-whatsapp" target="_blank" rel="noopener">
+                    <span>⚡ WhatsApp Orçamento</span>
+                </a>
+            </div>
+        </div>
+    </div>
+
+    <!-- 3. Conteúdo principal -->
+    <main class="fg-post-main">
+        <div class="container">
+
+            <!-- Breadcrumb -->
+            <nav class="fg-post-breadcrumb" aria-label="Breadcrumb">
+                <a href="/">Início</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <a href="/categoria-reparos-e-manutencao">Blog</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <a href="/{{CATEGORIA_SLUG}}">{{CATEGORIA_NOME}}</a>
+                <span class="sep" aria-hidden="true">/</span>
+                <span class="current" aria-current="page">{{TITULO_CURTO}}</span>
+            </nav>
+
+            <!-- 5. Banner principal: H1 > H2 do banner > barra de autoria -->
+            <section class="fg-post-banner" aria-labelledby="post-title">
+                <div class="fg-post-banner-text">
+                    <a href="/{{CATEGORIA_SLUG}}" class="fg-post-tag">{{CATEGORIA_NOME}}</a>
+
+                    <h1 class="fg-post-title" id="post-title">{{TITULO_H1}}</h1>
+
+                    <!-- subtitulo_banner: confirma a promessa do H1 (sem rótulos de sistema) -->
+                    <h2 class="subtitulo-banner">{{SUBTITULO}}</h2>
+
+                    <!-- Barra de autoria e data: azul, sem parênteses nas datas -->
+                    <div class="fg-post-author-bar">
+                        Por FG Car Funilaria e Pintura - Publicado em <time datetime="{{DATA_ISO}}">{{DATA}}</time> - Atualizado em <time datetime="{{DATA_ISO}}">{{DATA}}</time>
+                    </div>
+
+                    <div class="fg-post-actions">
+                        <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Li%20o%20artigo%20sobre%20{{SLUG}}%20e%20quero%20enviar%20fotos%20do%20meu%20carro." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
+                            ⚡ Enviar fotos no WhatsApp
+                        </a>
+                        <a href="/#servicos" class="fg-post-btn fg-post-btn--ghost">
+                            Ver serviços da oficina
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <!-- 5.1 Imagem 1 (capa 16:9, hiper-realista) logo após a barra de autoria -->
+            <figure class="fg-post-figure">
+                <img src="images/{{IMAGEM_CAPA}}"
+                     alt="{{ALT_IMAGEM_CAPA}}"
+                     width="1280" height="720"
+                     loading="eager" fetchpriority="high" decoding="async">
+                <figcaption>{{LEGENDA_IMAGEM}}</figcaption>
+            </figure>
+
+            <!-- 6. Conteúdo + barra lateral alinhada -->
+            <div class="fg-post-layout">
+
+                <!-- ============================================================
+                     ÁREA DO CONTEÚDO
+                     Regras: 1 H1 (no banner), H2 por bloco, H3 para subtemas.
+                     Cada H2 recebe id para alimentar o índice lateral.
+                     ============================================================ -->
+                <article class="fg-post-content">
+
+                    <!-- Respiro visual após o banner -->
+                    <div class="fg-post-respiro" aria-hidden="true"></div>
+
+                    <!-- Parágrafos curtos (2 a 3 frases) + âncora para a home -->
+                    <p>
+                        <strong>{{PARAGRAFO_ABERTURA_FORTE}}</strong> {{PARAGRAFO_ABERTURA_COMPLEMENTO}}
+                    </p>
+
+                    <p>{{PARAGRAFO_CONTEXTO}} Este guia é mantido pela nossa <a href="/">funilaria em Osasco</a> e reúne o que a equipe técnica aplica na rotina da oficina.</p>
+
+                    <h2 id="topico-1">{{TITULO_H2_CHECKLIST}}</h2>
+
+                    <p>{{TEXTO_INTRO_CHECKLIST}}</p>
+
+                    <!-- Checklist: bloco característico dos posts de Cuidados e Prevenção -->
+                    <ul class="fg-post-checklist">
+                        <li><strong>{{CHECK_1_TITULO}}:</strong> {{CHECK_1_DESCRICAO}}</li>
+                        <li><strong>{{CHECK_2_TITULO}}:</strong> {{CHECK_2_DESCRICAO}}</li>
+                        <li><strong>{{CHECK_3_TITULO}}:</strong> {{CHECK_3_DESCRICAO}}</li>
+                        <li><strong>{{CHECK_4_TITULO}}:</strong> {{CHECK_4_DESCRICAO}}</li>
+                        <li><strong>{{CHECK_5_TITULO}}:</strong> {{CHECK_5_DESCRICAO}}</li>
+                    </ul>
+
+                    <h2 id="topico-2">{{TITULO_H2_ERROS}}</h2>
+
+                    <p>{{TEXTO_INTRO_ERROS}}</p>
+
+                    <!-- Imagem 2 (técnica 16:9) no meio do post -->
+                    <figure class="fg-post-figure">
+                        <img src="images/{{IMAGEM_CONTEUDO}}"
+                             alt="{{ALT_IMAGEM_CONTEUDO}}"
+                             width="1280" height="720"
+                             loading="lazy" decoding="async">
+                        <figcaption>{{LEGENDA_IMAGEM_CONTEUDO}}</figcaption>
+                    </figure>
+
+                    <h3>{{ERRO_1_TITULO}}</h3>
+                    <p>{{ERRO_1_TEXTO}}</p>
+
+                    <h3>{{ERRO_2_TITULO}}</h3>
+                    <p>{{ERRO_2_TEXTO}}</p>
+
+                    <h3>{{ERRO_3_TITULO}}</h3>
+                    <p>{{ERRO_3_TEXTO}}</p>
+
+                    <div class="fg-post-callout">
+                        <h3>{{TITULO_CTA_MEIO}}</h3>
+                        <p>{{TEXTO_CTA_MEIO}}</p>
+                        <p>
+                            <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Quero%20uma%20orienta%C3%A7%C3%A3o%20sobre%20cuidados%20com%20a%20pintura%20do%20meu%20carro." target="_blank" rel="noopener">
+                                Tirar dúvidas no WhatsApp ➔
+                            </a>
+                        </p>
+                    </div>
+
+                    <h2 id="topico-3">{{TITULO_H2_OFICINA}}</h2>
+
+                    <p>{{TEXTO_OFICINA}}</p>
+
+                    <ul>
+                        <li>{{SINAL_1}}</li>
+                        <li>{{SINAL_2}}</li>
+                        <li>{{SINAL_3}}</li>
+                    </ul>
+
+                    <h2 id="perguntas-frequentes">Perguntas Frequentes</h2>
+
+                    <div class="fg-post-faq">
+                        <details>
+                            <summary>{{PERGUNTA_1}}</summary>
+                            <p>{{RESPOSTA_1}}</p>
+                        </details>
+                        <details>
+                            <summary>{{PERGUNTA_2}}</summary>
+                            <p>{{RESPOSTA_2}}</p>
+                        </details>
+                    </div>
+
+                    <h2 id="conclusao">Conclusão: {{TITULO_CONCLUSAO}}</h2>
+
+                    <p>{{TEXTO_CONCLUSAO_1}}</p>
+
+                    <p>{{TEXTO_CONCLUSAO_2}}</p>
+
+                    <div class="fg-post-callout">
+                        <h3>Continue lendo sobre {{CATEGORIA_NOME}}</h3>
+                        <ul>
+                            <li><a href="/{{ARTIGO_RELACIONADO_1_SLUG}}">{{ARTIGO_RELACIONADO_1_TITULO}}</a></li>
+                            <li><a href="/{{ARTIGO_RELACIONADO_2_SLUG}}">{{ARTIGO_RELACIONADO_2_TITULO}}</a></li>
+                            <li><a href="/{{ARTIGO_RELACIONADO_3_SLUG}}">{{ARTIGO_RELACIONADO_3_TITULO}}</a></li>
+                        </ul>
+                        <p>
+                            <a href="/{{CATEGORIA_SLUG}}">📂 Ver todos os guias de {{CATEGORIA_NOME}} ➔</a>
+                        </p>
+                    </div>
+                </article>
+
+                <!-- ============================================================
+                     BARRA LATERAL ALINHADA AO CONTEÚDO
+                     1º widget é o CTA (prioridade de conversão).
+                     ============================================================ -->
+                <aside class="fg-post-sidebar" aria-label="Conteúdo complementar do artigo">
+
+                    <!-- CTA principal da lateral -->
+                    <div class="fg-post-widget fg-post-widget--cta">
+                        <h2>Avaliação sem compromisso</h2>
+                        <p>
+                            Envie fotos do dano e receba uma estimativa rápida da nossa equipe em Osasco.
+                        </p>
+                        <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Gostaria%20de%20uma%20estimativa%20para%20o%20meu%20carro." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
+                            ⚡ Falar no WhatsApp
+                        </a>
+                        <p class="fg-post-widget-note">
+                            Seg a sex, 8h às 18h · Sáb, 8h às 12h
+                        </p>
+                    </div>
+
+                    <!-- Índice do artigo -->
+                    <nav class="fg-post-widget" aria-labelledby="toc-title">
+                        <h2 id="toc-title">Neste artigo</h2>
+                        <ol class="fg-post-toc">
+                            <li><a href="#topico-1">{{TITULO_H2_CHECKLIST}}</a></li>
+                            <li><a href="#topico-2">{{TITULO_H2_ERROS}}</a></li>
+                            <li><a href="#topico-3">{{TITULO_H2_OFICINA}}</a></li>
+                            <li><a href="#perguntas-frequentes">Perguntas Frequentes</a></li>
+                            <li><a href="#conclusao">Conclusão</a></li>
+                        </ol>
+                    </nav>
+
+                    <!-- Dados da oficina (NAP) -->
+                    <div class="fg-post-widget">
+                        <h2>A oficina</h2>
+                        <ul class="fg-post-nap">
+                            <li><span class="ico" aria-hidden="true">📍</span>Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP</li>
+                            <li><span class="ico" aria-hidden="true">💬</span>WhatsApp: (11) 94772-7682</li>
+                            <li><span class="ico" aria-hidden="true">🕘</span>Seg a sex: 8h–18h · Sáb: 8h–12h</li>
+                            <li><span class="ico" aria-hidden="true">🚗</span><a href="/#servicos" style="color: var(--brand-cyan); font-weight: 700; text-decoration: none;">Ver todos os serviços</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Artigos relacionados -->
+                    <div class="fg-post-widget">
+                        <h2>Leia também</h2>
+                        <ul class="fg-post-related">
+                            <li>
+                                <a href="/{{ARTIGO_RELACIONADO_1_SLUG}}">{{ARTIGO_RELACIONADO_1_TITULO}}</a>
+                                <span>{{ARTIGO_RELACIONADO_1_RESUMO}}</span>
+                            </li>
+                            <li>
+                                <a href="/{{ARTIGO_RELACIONADO_2_SLUG}}">{{ARTIGO_RELACIONADO_2_TITULO}}</a>
+                                <span>{{ARTIGO_RELACIONADO_2_RESUMO}}</span>
+                            </li>
+                            <li>
+                                <a href="/{{ARTIGO_RELACIONADO_3_SLUG}}">{{ARTIGO_RELACIONADO_3_TITULO}}</a>
+                                <span>{{ARTIGO_RELACIONADO_3_RESUMO}}</span>
+                            </li>
+                        </ul>
+                    </div>
+
+                </aside>
+            </div>
+
+            <!-- 7. CTA final (3º ponto de conversão): envio de fotos + endereço -->
+            <section class="fg-post-cta-final" aria-labelledby="cta-final-title">
+                <span class="eyebrow">{{EYEBROW_CTA_FINAL}}</span>
+                <h2 id="cta-final-title">{{TITULO_CTA_FINAL}}</h2>
+                <p>
+                    {{TEXTO_CTA_FINAL}} Envie as fotos do dano pelo WhatsApp e receba a orientação da equipe.
+                </p>
+                <a href="https://wa.me/5511947727682?text=Ol%C3%A1!%20Quero%20enviar%20fotos%20do%20meu%20carro%20e%20receber%20um%20or%C3%A7amento%20de%20funilaria%20em%20Osasco." class="fg-post-btn fg-post-btn--primary" target="_blank" rel="noopener">
+                    ⚡ Enviar fotos do carro no WhatsApp
+                </a>
+                <p class="fg-post-widget-note">
+                    FG Car Oficina e Funilaria e Pintura — Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP — CEP 06080-125 · Seg a sex: 8h–18h · Sáb: 8h–12h
+                </p>
+            </section>
+
+        </div>
+    </main>
+
+    <!-- 8. Rodapé institucional completo -->
+    <footer class="main-footer">
+        <div class="container footer-grid">
+            <div class="footer-col brand-col">
+                <div class="brand-logo footer-logo">
+                    <img src="images/logo-fgcar.png" alt="Logo FG Car Oficina Funilaria e Pintura em Osasco" class="brand-img-logo">
+                </div>
+                <p class="footer-text">
+                    Oficina de funilaria, pintura automotiva em estufa, martelinho de ouro e recuperação de colisões em Osasco e região. Qualidade, agilidade e respeito pelo seu carro.
+                </p>
+                <div class="footer-contact-info">
+                    <p>📍 Av. Visconde de Nova Granada, 3151 - Cipava, Osasco - SP</p>
+                    <p>💬 Atendimento Oficial via WhatsApp</p>
+                </div>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Serviços Especializados</h4>
+                <ul class="footer-links">
+                    <li><a href="/funilaria-de-colisao-e-batidas">Funilaria de Colisão &amp; Batidas</a></li>
+                    <li><a href="/pintura-em-estufa-climatizada">Pintura em Estufa Climatizada</a></li>
+                    <li><a href="/martelinho-de-ouro-express">Martelinho de Ouro Express</a></li>
+                    <li><a href="/recuperacao-de-para-choques">Recuperação de Para-choques</a></li>
+                    <li><a href="/polimento-tecnico-e-cristalizacao">Polimento Técnico &amp; Cristalização</a></li>
+                    <li><a href="/retoques-rapidos-spot-repair">Retoques Rápidos (Spot Repair)</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Regiões Atendidas</h4>
+                <ul class="footer-regions">
+                    <li>Osasco — Cipava</li>
+                    <li>Osasco — Bela Vista</li>
+                    <li>Osasco — Jaguaribe</li>
+                    <li>Osasco — Centro</li>
+                    <li>Osasco — Km 18</li>
+                    <li>Osasco — Vila Yara</li>
+                    <li>Barueri / Alphaville</li>
+                    <li>Carapicuíba e Cotia</li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Horário de Funcionamento</h4>
+                <p class="footer-hours">
+                    <strong>Segunda a Sexta:</strong><br>08:00 às 18:00<br><br>
+                    <strong>Sábados:</strong><br>08:00 às 12:00<br><br>
+                    <span class="badge-open">Atendimento Rápido no WhatsApp</span>
+                </p>
+            </div>
+        </div>
+
+        <div class="container">
+            <hr class="footer-divider">
+        </div>
+
+        <div class="container footer-grid-sub">
+            <div class="footer-col">
+                <h4 class="footer-heading">Super Dicas FGCar (Blog)</h4>
+                <ul class="footer-links">
+                    <li><a href="/categoria-pintura-automotiva-e-estetica">Pintura Automotiva &amp; Estética</a></li>
+                    <li><a href="/categoria-reparos-e-manutencao">Reparos &amp; Manutenção de Lataria</a></li>
+                    <li><a href="/categoria-cuidados-e-prevencao">Cuidados &amp; Prevenção</a></li>
+                    <li><a href="/categoria-restauracao-de-veiculos">Restauração de Clássicos</a></li>
+                    <li><a href="/categoria-autoridade-local-e-intencao-de-busca">Guia de Oficina &amp; Orçamentos</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Navegação Institucional</h4>
+                <ul class="footer-links">
+                    <li><a href="/">Página Inicial (Início)</a></li>
+                    <li><a href="/sobre">Sobre a FG Car Funilaria</a></li>
+                    <li><a href="/contato">Localização &amp; Contato</a></li>
+                    <li><a href="/#cabine-destaque">Cabine de Pintura em Estufa</a></li>
+                    <li><a href="/#faq">Perguntas Frequentes (FAQ)</a></li>
+                    <li><a href="/politica-de-privacidade">Política de Privacidade (LGPD)</a></li>
+                    <li><a href="/termos-de-uso">Termos de Uso</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-col">
+                <h4 class="footer-heading">Diferenciais &amp; Tecnologia</h4>
+                <ul class="footer-links">
+                    <li><span style="color: #94a3b8; font-size: 14px;">✓ Colorimetria Computadorizada</span></li>
+                    <li><span style="color: #94a3b8; font-size: 14px;">✓ Estufa Climatizada com Cura a 60°C</span></li>
+                    <li><span style="color: #94a3b8; font-size: 14px;">✓ Repuxo Digital com Spotter</span></li>
+                    <li><span style="color: #94a3b8; font-size: 14px;">✓ Desmontagem Técnica Cuidadosa</span></li>
+                    <li><span style="color: #94a3b8; font-size: 14px;">✓ Orçamento Transparente e Sem Surpresas</span></li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <div class="container footer-bottom-flex">
+                <p>© 2026 FG Car Oficina Funilaria e Pintura — Todos os direitos reservados. • <a href="/politica-de-privacidade" style="color: #94a3b8; text-decoration: underline;">Política de Privacidade</a> • <a href="/termos-de-uso" style="color: #94a3b8; text-decoration: underline;">Termos de Uso</a></p>
+                <p>Estrutura de Alta Performance por <strong>SOSSEO Sites</strong></p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js?v=20261020a"></script>
+</body>
+
+
+
+
+
+
+
+
+</html>

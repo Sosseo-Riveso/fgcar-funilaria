@@ -23,6 +23,15 @@
 !fonts/**
 !.well-known/**
 
+# WordPress / plugins e includes de terceiros
+# (o site NÃO usa WordPress hoje; regras preventivas para não quebrar
+#  CSS/JS caso wp-content ou wp-includes sejam adicionados no futuro)
+!wp-content/**
+!wp-content/plugins/**
+!wp-content/themes/**
+!wp-content/uploads/**
+!wp-includes/**
+
 # Mídia usada pelas páginas
 !images/**
 !videos/**
@@ -59,14 +68,16 @@ README.md
 ANALISE_PROJETO.md
 PROJECT_CONTEXT.md
 PROGRESS.md
+_MEMORIA_PROJETO.md
 PLANO_CONTEUDO_BLOG_FGCAR.md
 *.docx
 ~$*
 
 # --------------------------------------------------------------------------
 # 4) TEMPLATES DE DESENVOLVIMENTO (não são páginas publicadas)
+#    Inclui o template base e as variantes por categoria.
 # --------------------------------------------------------------------------
-template-post-padrao.html
+template-*.html
 
 # --------------------------------------------------------------------------
 # 5) PASTAS LOCAIS DE TRABALHO (pesadas e não referenciadas pelo site)
@@ -92,3 +103,13 @@ node_modules/
 *.log
 .DS_Store
 Thumbs.db
+
+# --------------------------------------------------------------------------
+# 8) AUDITORES LOCAIS (scripts de apoio — nunca vão para o deploy)
+#    scripts/seo_checker.py e scripts/geo_checker.py rodam apenas na máquina.
+# --------------------------------------------------------------------------
+scripts/
+*.py
+*.pyc
+__pycache__/
+
