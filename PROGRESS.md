@@ -120,6 +120,29 @@
 - Resultado geral: problemas SEO de 44 → 43 (com 2 páginas novas) e GEO de 30 → 28 páginas com
   pendência; nenhuma regressão.
 
+### Fase 8 — Regularização em lote das 43 páginas legadas (04/11/2026)
+- **Open Graph completo** em todas as páginas: `og:image:width/height/type` (tipo detectado pela extensão
+  real do arquivo), `og:locale`, `og:site_name` e `twitter:card`; bloco OG reordenado em ordem canônica.
+- **Títulos**: 34 títulos acima de 60 caracteres encurtados removendo sufixos de marca; 9 páginas com
+  reescrita mínima para não deixar frase truncada.
+- **Descrições**: 18 descrições acima de 155 caracteres ajustadas para a faixa 140–155 (corte em fim de
+  frase quando possível); 2 descrições curtas completadas.
+- **Imagens**: `width`/`height` reais injetados (dimensões medidas nos arquivos) e `loading` definido em
+  todas as `<img>` — `eager` no topo e `lazy` fora da dobra.
+- **Dados estruturados**: `BreadcrumbList` (ligado à home, montado a partir do breadcrumb visível) em
+  todas as páginas; datas (`datePublished`/`dateModified` reais, extraídas do histórico do git) e
+  `author` nos nós de artigo; `Service` com `provider` apontando para `#autobodyshop`; `CollectionPage`
+  e `WebPage`/`AboutPage`/`ContactPage` nas páginas que não tinham schema.
+- **Hierarquia de títulos**: `h4` do rodapé convertido para `h3` em todo o site e `h4` de conteúdo
+  corrigido nas 6 páginas de serviço e em `sobre.html`; `contato.html` teve os `h3` de seção promovidos a `h2`.
+- **Correção de bug estrutural pré-existente:** `<p>` órfão em `porta-nao-fecha-batida-estrutural.html`
+  que deixava o aninhamento da página desbalanceado.
+- **Resultado:** SEO **60/100 → 100/100** (44 páginas com problema → 0) e GEO **80% → 93%**
+  (30 páginas com problema → 0). Restam apenas avisos de conteúdo (seções de FAQ ausentes e artigos
+  com um único H2), fora do escopo estrutural desta fase.
+- Scripts temporários do lote removidos de `scratch/` após a execução.
+
+
 ---
 
 ## 3. Pendências
