@@ -194,3 +194,49 @@
 2. Marque o item concluído em **Pendências** (`[x]`) e registre novas pendências descobertas.
 3. Se houver mudança de arquitetura, infraestrutura ou identidade visual, atualize também `PROJECT_CONTEXT.md` e `ANALISE_PROJETO.md`.
 
+---
+
+## 6. Backlog Editorial: Refinamento de Escaneabilidade (16 Artigos)
+
+> Registrado em **04/11/2026**. A auditoria de GEO aponta 16 artigos publicados com **apenas 1 `<h2>`**
+> de seção. São textos longos sustentados por um único subtítulo, o que prejudica a escaneabilidade
+> (parágrafos extensos sem quebra visual) e a extração de trechos por motores de IA.
+>
+> **Decisão:** a divisão em subtítulos adicionais será feita **gradualmente**, artigo por artigo, junto com
+> as próximas revisões de conteúdo — não é uma alteração estrutural em lote. Cada intervenção deve
+> preservar a redação original, apenas promovendo trechos já existentes a `<h2>`/`<h3>` e respeitando a
+> hierarquia `h1 > h2 > h3` sem pular níveis.
+>
+> Enquanto a revisão não acontece, o aviso permanece como **informativo** (não é defeito de marcação):
+> todos os 16 artigos estão com `0` problemas nos auditores e com nota SEO 100/100.
+
+- [ ] `arrumar-funilaria-antes-de-vender-ou-negociar-assim-mesmo.html`
+- [ ] `colorimetria-digital-acerto-exato-da-cor-original.html`
+- [ ] `como-encontrar-uma-boa-oficina-de-funilaria.html`
+- [ ] `como-proteger-o-carro-do-sol-e-da-chuva.html`
+- [ ] `como-saber-se-a-oficina-de-pintura-e-confiavel.html`
+- [ ] `cuidados-basicos-para-evitar-ferrugem-na-lataria.html`
+- [ ] `de-quanto-em-quanto-tempo-polir-o-carro.html`
+- [ ] `manchas-na-pintura-causas-e-como-remover.html`
+- [ ] `materiais-premium-secagem-em-estufa-repintura-excelencia.html`
+- [ ] `muito-alem-da-estetica-tintas-alta-performance-protegem-lataria.html`
+- [ ] `o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo.html`
+- [ ] `o-que-avaliar-em-um-orcamento-de-funilaria-e-pintura.html`
+- [ ] `oficina-de-funilaria-e-pintura-em-osasco-como-escolher.html`
+- [ ] `por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda.html`
+- [ ] `porta-nao-fecha-batida-estrutural.html`
+- [ ] `tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica.html`
+
+### Nota técnica — CTAs em `termos-de-uso.html`
+
+O auditor de SEO mantém **um** aviso no site: `apenas 2 CTA(s) de WhatsApp (recomendado 3+)` em
+`termos-de-uso.html`. Esse aviso está **dispensado por decisão editorial**: a página é
+**institucional/jurídica**, cujo objetivo é informar condições de uso — não converter. Forçar um terceiro
+CTA comercial em um documento legal piora a experiência e o próprio enquadramento jurídico do texto.
+
+- Regra: o requisito de **3+ pontos de conversão** do `.clinerules` (§4) vale para home, serviços,
+  categorias e artigos — **não** para páginas legais (`termos-de-uso.html`, `politica-de-privacidade.html`).
+- Estado atual: os 2 CTAs existentes (cabeçalho e subbar mobile) permanecem intactos.
+- Consequência aceita: a média de SEO do domínio fica em **100/100 com 1 aviso informativo**, e não
+  100/100 sem avisos.
+
