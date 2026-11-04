@@ -83,6 +83,27 @@
 - Diagnóstico inicial (45 páginas publicadas): SEO 56/100 e GEO 78% — nenhuma página ou artigo publicado
   foi alterado nesta fase.
 
+### Fase 6 — Home reforçada: triagem, comparativo e rotas (04/11/2026)
+- **Credibilidade:** removidas promessas absolutas ("garantia total", "retém 100% das impurezas",
+  "economia de até 70%", "acertar 100% o tom").
+- **Novo bloco `#triagem-fotos`:** guia de 5 fotos para orçamento via WhatsApp, entre `#como-funciona`
+  e `#diferenciais`, com CTA de mensagem pré-preenchida.
+- **Novo comparativo `#comparativo-pdr-repintura`:** tabela de 9 critérios dentro de `#servicos`,
+  reutilizando `.service-table` / `.service-table-wrap` / `.highlight-col`.
+- **Rotas regionais `#como-chegar`:** acesso por Av. dos Autonomistas, Castelo Branco/Rodoanel e
+  Carapicuíba/Barueri; parágrafo de bairros reescrito e rodapé alinhado ao `areaServed`.
+- **FAQ 5 → 8:** acerto de cor reescrito (prova em cartela), franquia x particular, o que é franquia e
+  martelinho em amassados de estacionamento; `FAQPage` sincronizado pergunta a pergunta.
+- **Schema `AutoBodyShop`:** `areaServed` em objetos (inclui Campesina, Rochdale, Quitaúna), 6º serviço
+  no `hasOfferCatalog`, `url` e `provider` em cada oferta, `description`, `logo` e `hasMap`.
+- **Head:** `title` de 72 → 46 caracteres, `og:site_name`, `og:image:alt`, Twitter Card e cache-buster
+  do CSS atualizado.
+- **Higiene técnica:** `width`/`height` em todas as `<img>`, `loading` explícito, poster do hero corrigido
+  (apontava para arquivo inexistente com `%20`), iframe do Maps sem parâmetros fabricados, `h2 → h4`
+  corrigido para `h3`, autoria/data visíveis na home.
+- **`llms.txt`:** nova seção com triagem por foto, comparativo técnico, rotas de acesso e dúvidas comerciais.
+- Resultado na home: **SEO 100/100** e **GEO 92%** (apenas o aviso de datas em `<time>`, sem erro).
+
 ---
 
 ## 3. Pendências
@@ -99,7 +120,7 @@
 - [ ] Monitorar Core Web Vitals (peso das capas e do vídeo de fundo da home).
 - [ ] Validar rich results (BlogPosting/FAQ) no Search Console.
 - [ ] **`og:locale` ausente** em 44 das 45 páginas publicadas (só a home declara o locale).
-- [ ] Home sem `og:site_name`; 29 artigos sem `og:image:width/height/type`.
+- [x] Home sem `og:site_name` (resolvido em 04/11/2026, junto com `og:image:alt` e Twitter Card); 29 artigos sem `og:image:width/height/type`.
 - [ ] 25 páginas sem `datePublished`/`dateModified` no JSON-LD (só têm data visível).
 - [ ] 16 páginas sem autoria identificada no schema; 7 sem JSON-LD (legais, categorias e contato).
 - [ ] Revisar títulos com mais de 60 caracteres e descrições fora de 140–155.

@@ -3796,3 +3796,223 @@ body {
     }
 }
 
+/* ==========================================================================
+   HOME — TRIAGEM POR FOTO, COMPARATIVO PDR x REPINTURA E ROTAS REGIONAIS
+   Bloco incremental (04/11/2026). Não altera componentes existentes.
+   ========================================================================== */
+
+.fg-triage-section {
+    background: linear-gradient(180deg, #0b1120 0%, var(--bg-dark) 100%);
+    border-top: 1px solid var(--border-color);
+    border-bottom: 1px solid var(--border-color);
+}
+
+.fg-triage-grid {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+    gap: 18px;
+    margin: 35px 0 30px;
+    padding: 0;
+}
+
+.fg-triage-card {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 14px;
+    padding: 24px 20px 20px;
+    transition: background var(--transition-fast), border-color var(--transition-fast), transform var(--transition-fast);
+}
+
+.fg-triage-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(56, 189, 248, 0.35);
+    transform: translateY(-3px);
+}
+
+.fg-triage-num {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 34px;
+    height: 34px;
+    margin-bottom: 12px;
+    border-radius: 50%;
+    background: rgba(2, 132, 199, 0.18);
+    border: 1px solid rgba(56, 189, 248, 0.45);
+    color: var(--brand-cyan);
+    font-family: var(--font-heading);
+    font-size: 15px;
+    font-weight: 800;
+}
+
+.fg-triage-title {
+    font-family: var(--font-heading);
+    font-size: 16px;
+    font-weight: 800;
+    line-height: 1.35;
+    color: var(--text-primary);
+    margin-bottom: 8px;
+}
+
+.fg-triage-text {
+    font-size: 13.5px;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    margin-bottom: 10px;
+}
+
+.fg-triage-tip {
+    margin-top: auto;
+    padding-left: 10px;
+    border-left: 2px solid var(--brand-blue);
+    font-size: 12.5px;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.fg-triage-cta {
+    max-width: 780px;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.fg-triage-cta-text {
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text-secondary);
+    margin-bottom: 18px;
+}
+
+.fg-triage-cta-text strong {
+    color: var(--text-primary);
+}
+
+/* Comparativo PDR x Repintura (reutiliza .service-table) */
+.fg-compare-wrap {
+    margin-bottom: 10px;
+}
+
+.fg-compare-table caption {
+    caption-side: top;
+    text-align: center;
+    font-style: italic;
+    font-size: 14px;
+    line-height: 1.6;
+    color: var(--text-muted);
+    padding: 0 8px 16px;
+}
+
+.fg-compare-table caption a {
+    color: var(--brand-cyan);
+}
+
+.fg-compare-table tbody td:first-child {
+    font-weight: 700;
+    color: var(--text-primary);
+    background: rgba(255, 255, 255, 0.03);
+}
+
+/* Rotas de acesso regional */
+.fg-routes {
+    margin: 24px 0 6px;
+}
+
+.fg-routes-title {
+    font-family: var(--font-heading);
+    font-size: 17px;
+    font-weight: 800;
+    color: var(--text-primary);
+    margin-bottom: 12px;
+}
+
+.fg-routes-list {
+    list-style: none;
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding: 0;
+}
+
+.fg-route-item {
+    background: rgba(13, 21, 39, 0.7);
+    border: 1px solid var(--border-color);
+    border-left: 3px solid var(--brand-blue);
+    border-radius: 8px;
+    padding: 12px 14px;
+}
+
+.fg-route-item strong {
+    display: block;
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--brand-cyan);
+    margin-bottom: 4px;
+}
+
+.fg-route-item span {
+    font-size: 13.5px;
+    line-height: 1.55;
+    color: var(--text-secondary);
+}
+
+@media (max-width: 1024px) {
+    .fg-triage-grid {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+    }
+}
+
+@media (max-width: 768px) {
+    .fg-triage-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+    }
+
+    .fg-triage-title {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fg-triage-grid {
+        grid-template-columns: minmax(0, 1fr);
+    }
+
+    .fg-triage-card {
+        padding: 20px 16px 16px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fg-triage-card:hover {
+        transform: none;
+    }
+}
+
+/* Autoria e data de atualizacao da home */
+.fg-content-update {
+    max-width: 1020px;
+    margin: 26px auto 0;
+    padding: 10px 18px;
+    background: rgba(13, 21, 39, 0.8);
+    border-left: 3px solid var(--brand-cyan);
+    border-radius: 8px;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.5;
+    color: var(--text-muted);
+}
+
+.fg-content-update strong {
+    color: var(--text-primary);
+}
+
+.fg-content-update time {
+    color: var(--brand-cyan);
+    font-weight: 700;
+}
+
