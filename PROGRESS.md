@@ -104,6 +104,22 @@
 - **`llms.txt`:** nova seção com triagem por foto, comparativo técnico, rotas de acesso e dúvidas comerciais.
 - Resultado na home: **SEO 100/100** e **GEO 92%** (apenas o aviso de datas em `<time>`, sem erro).
 
+### Fase 7 — Schema da home + 2 artigos técnicos + listagem no blog (04/11/2026)
+- **Home:** novo nó JSON-LD `WebPage` com `datePublished` (15/01/2024) e `dateModified` (04/11/2026)
+  → home em **SEO 100/100 e GEO 100%**; `aggregateRating` removido do schema (a menção 4.9 no
+  Google permanece apenas no HTML visível, como prova social).
+- **Novo artigo A:** `franquia-de-seguro-ou-conserto-particular-quando-compensa.html`
+  (TechArticle + FAQPage + BreadcrumbList, 3 FAQs espelhadas, 100/100 SEO e 100% GEO).
+- **Novo artigo B:** `recuperar-lataria-ou-trocar-peca-criterios-tecnicos.html`
+  (TechArticle + FAQPage + BreadcrumbList, 3 FAQs espelhadas, 100/100 SEO e 100% GEO).
+- **Listagem:** 2 cards novos no topo de `categoria-reparos-e-manutencao.html`; a página também
+  recebeu Open Graph completo, `CollectionPage` + `BreadcrumbList`, autoria/data visíveis e dimensões
+  em todas as capas → 45/100 para **100/100 SEO e 100% GEO**.
+- **Sincronização:** 2 URLs novas no `sitemap.xml` (prioridade 0.7, lastmod 04/11/2026), `llms.txt`
+  (seção de Reparos) e `llms-full.txt` (novas seções 2.5 e 2.6).
+- Resultado geral: problemas SEO de 44 → 43 (com 2 páginas novas) e GEO de 30 → 28 páginas com
+  pendência; nenhuma regressão.
+
 ---
 
 ## 3. Pendências

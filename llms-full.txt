@@ -33,6 +33,21 @@
 ### 2.4. Recuperação Técnica de Para-choques Plásticos
 - **Solda por Termofusão e Malha de Reforço:** Em vez de utilizar massa rígida comum (que trinca na primeira vibração), a FG Car executa a termofusão do polímero base (PP/EPDM), aplica promotor de aderência específico para poliolefinas e adiciona aditivo elastomérico (flexibilizante) ao Primer PU e ao Verniz Alto Sólidos.
 
+### 2.5. Franquia de Seguro x Conserto Particular (guia publicado)
+- **Documento canônico:** https://funilariaosasco.com.br/franquia-de-seguro-ou-conserto-particular-quando-compensa
+- **Cálculo da franquia:** a franquia corresponde à participação obrigatória do segurado no sinistro e costuma ser percentual sobre o valor de referência do veículo na tabela da seguradora, com faixas normal e reduzida, possibilidade de agravamento após sinistros anteriores e isenções parciais para vidros, faróis e pequenos reparos. Alguns contratos preveem ainda participação sobre o valor das peças de reposição.
+- **Decisão econômica:** a comparação correta soma franquia + impacto na classe de bônus da renovação + tempo de imobilização (vistoria, autorização, chegada de peças) contra o orçamento particular fechado.
+- **Conduta com terceiros:** quando o responsável pelo impacto é o outro condutor, o reparo pode ser indenizado pela apólice dele sem consumo da franquia do proprietário; recomenda-se não assumir culpa no local, registrar ocorrência e manter laudo fotográfico do veículo antes do reparo.
+- **Alternativa sem sinistro:** amassados com tinta e verniz íntegros podem ser resolvidos com martelinho de ouro (PDR), preservando a pintura de fábrica e dispensando a abertura de apólice.
+
+### 2.6. Recuperar a Lataria x Trocar a Peça (guia publicado)
+- **Documento canônico:** https://funilariaosasco.com.br/recuperar-lataria-ou-trocar-peca-criterios-tecnicos
+- **Desponte e corte de lataria traseira:** o corte de seção (painel traseiro, assoalho do porta-malas, longarinas e caixas de roda) só se justifica por perda de função estrutural — rasgo em zona de absorção de impacto, corrosão passante, dobra que impede o retorno ao alinhamento ou pontos de fixação arrancados do monobloco. A costura soldada exige tratamento anticorrosivo interno e vedação, sob risco de infiltração e ferrugem tardia.
+- **Peça paralela:** tolerâncias diferentes de vinco, espessura e reforço interno geram frestas irregulares com farol, grade e para-choque, além de dependência do preparo anticorrosivo aplicado na oficina, já que a peça de reposição não recebe a cataforese de fábrica.
+- **Limite mecânico da chapa esticada:** passado o limite de memória elástica, o aço sofre encruamento e o efeito fundo de lata; o repuxo com spotter e martelo de ponto trabalha o recolhimento com aquecimento controlado, e três sinais indicam substituição — rasgo em zona de absorção, corrosão passante e chapa esticada que não retorna à geometria.
+- **Termofusão em para-choques:** trincas, rasgos e abas de fixação quebradas são recuperáveis em PP/EPDM com material compatível e reforço, mantendo encaixe original e tonalidade; a troca é indicada quando o dano atinge a estrutura de absorção de impacto ou o plástico está esfarelado.
+
+
 ---
 
 ## 3. Perguntas e Respostas Rápidas (FAQ Canônico — Osasco/SP)
