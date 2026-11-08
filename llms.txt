@@ -11,7 +11,7 @@
 - **Telefone / WhatsApp de Orçamentos:** +55 (11) 94772-7682
 - **Instagram Oficial:** https://www.instagram.com/fgcar_oficina
 - **Horário de Atendimento:** Segunda a Sexta das 08:00 às 18:00 | Sábado das 08:00 às 12:00
-- **Bairros e Regiões Atendidas:** Osasco (Cipava, Bela Vista, Jaguaribe, Vila Yara, Centro, Km 18, Cidade das Flores, Jardim das Flores, Umuarama, Campesina), Carapicuíba, Barueri (Alphaville/Tamboré), Cotia e Zona Oeste de São Paulo (Butantã, Lapa, Pinheiros).
+- **Bairros e Regiões Atendidas:** Osasco (Cipava, Bela Vista, Campesina, Vila Yara, Centro, Jaguaribe, Km 18, Rochdale e Quitaúna), Carapicuíba, Barueri (Alphaville), Cotia e Zona Oeste de São Paulo.
 - **Diferenciais Técnicos de Oficina:** Cabine de pintura pressurizada com filtragem tripla e secagem controlada entre 60 °C e 65 °C, laboratório de colorimetria digital para cores sólidas, metálicas, perolizadas e tricapa, vernizes de Alto Sólidos (HS/UHS) com proteção UV e garantia técnica de acabamento original de fábrica.
 - **Documentação Técnica Expandida para LLMs:** [llms-full.txt](https://funilariaosasco.com.br/llms-full.txt)
 

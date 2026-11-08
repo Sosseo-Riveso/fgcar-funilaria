@@ -143,6 +143,42 @@
 - Scripts temporários do lote removidos de `scratch/` após a execução.
 
 
+### Fase 9 — Reestruturação semântica da Home e desarme de canibalização (08/11/2026)
+- **Diagnóstico:** auditoria completa da Home apontou densidade muito baixa para as palavras-chave centrais
+  (`funilaria e pintura em Osasco` 5× = 0,20% e `funilaria em Osasco` 1× = 0,04%), ausência de resposta
+  direta extraível, conflito de intenção com um artigo e uma categoria, e Home linkando apenas 1 dos 44 artigos.
+- **Home — blocos novos:** parágrafo de resposta direta (`.fg-answer-box`) no topo do bloco de conteúdo
+  (`#sobre-resumo`), seção discursiva `#como-escolher-oficina` (~290 palavras, 4 critérios técnicos) e hub
+  `#guias-tecnicos` com 8 links para artigos-pilar.
+- **Home — H2 estratégicos:** modificador local adicionado a 3 títulos (serviços, cabine de pintura e guia de fotos)
+  e H2 de processo reescrito para carregar "Funilaria e Pintura".
+- **Home — estrutura:** conteúdo principal agora dentro de `<main id="conteudo">` (antes as sections ficavam
+  soltas entre header e footer); `dateModified` e a barra de atualização passaram para 08/11/2026.
+- **Densidade final (mensurada por script, 3.009 palavras de conteúdo principal):** `funilaria e pintura em Osasco`
+  **12× (0,40%)**, `funilaria em osasco` **5× (0,17%)**, `oficina de funilaria e pintura em osasco` **6× (0,20%)**,
+  `funilaria` **32× (1,06%)**, `osasco` **41× (1,36%)**.
+- **Schema da Home:** `streetAddress` com bairro (`3151 - Cipava`), `FAQPage` ligado ao `#webpage` via
+  `mainEntityOfPage`, e `slogan`, `knowsAbout`, `paymentAccepted` e `currenciesAccepted` adicionados ao
+  `AutoBodyShop`. Espelhamento FAQ visível × schema reconferido: **8 × 8, zero divergências**.
+  `sameAs` e `hasMap` permanecem intocados até a definição da URL/CID do Google Perfil da Empresa.
+- **Canibalização desarmada:** `oficina-de-funilaria-e-pintura-em-osasco-como-escolher` passou a
+  `Como Escolher Oficina de Funilaria e Pintura em Osasco` (title, og:title, headline e H1) e
+  `categoria-autoridade-local-e-intencao-de-busca` passou a `Super Dicas de Funilaria e Pintura | FG Car Osasco`
+  (title, og:title, nome do schema e H1).
+- **Links de retorno para a Home:** âncora exata `funilaria e pintura em Osasco` inserida em `sobre.html`,
+  `contato.html` e nas 6 landing pages de serviço (antes, a frase mais valiosa do site não existia em nenhum link interno).
+- **Arquitetura de links:** Home deixou de linkar 1 artigo e passou a linkar 9 (hub de 8 + o guia de escolha).
+- **GEO:** bairros do `llms.txt` e do `llms-full.txt` alinhados com o que a Home realmente cita
+  (removidos Cidade das Flores, Jardim das Flores, Umuarama, Presidente Altino, Continental, Butantã, Lapa e Pinheiros).
+- **CSS:** componentes novos adicionados no fim de `style.css` (`.fg-answer-box`, `.fg-guide-list`, `.fg-guide-close`,
+  `.fg-hub-links`) com tokens de `:root` e breakpoints 768/480; versão da folha na home → `v=20261108a`.
+- **Correção pré-existente no CSS:** removidas 4 linhas duplicadas de `.main-header.fg-header-scrolled
+  .mobile-toggle .bar` que estavam fora do `@media (max-width: 992px)`, com um `}` órfão (o bloco aplicava
+  `!important` em todas as larguras). `style.css` voltou a 631 chaves abertas / 631 fechadas, sem fechamentos órfãos.
+- **Resultado:** SEO **100/100 com 1 aviso** (o de `termos-de-uso`, dispensado por decisão editorial) e
+  GEO **93% com 46 avisos**, ambos inalterados em relação à fase anterior — a entrega é de profundidade
+  competitiva, não de conformidade técnica.
+
 ---
 
 ## 3. Pendências
@@ -163,6 +199,21 @@
 - [ ] 25 páginas sem `datePublished`/`dateModified` no JSON-LD (só têm data visível).
 - [ ] 16 páginas sem autoria identificada no schema; 7 sem JSON-LD (legais, categorias e contato).
 - [ ] Revisar títulos com mais de 60 caracteres e descrições fora de 140–155.
+
+### SEO local — bloqueios de entidade (aberto em 08/11/2026)
+- [ ] **Google Perfil da Empresa:** preencher `sameAs` (URL do perfil) e substituir o `hasMap` genérico pela URL
+      do place com CID no schema da home. Aguarda o envio dos dados do GBP.
+- [ ] **NAP:** confirmar bairro e CEP oficiais com o GBP. O CEP `06080-125` retorna **Vila Osasco** nas bases dos
+      Correios, enquanto todo o site declara **Cipava**; conferir também as coordenadas do schema
+      (`-23.5512` / `-46.7901`) contra o pin do perfil, que divergem ~2 km do centroide do CEP.
+- [ ] **`aggregateRating`:** só incluir no JSON-LD se a nota e a quantidade de avaliações vierem do GBP —
+      hoje "Avaliação 4.9 no Google" aparece no title, na description e no hero sem lastro estruturado.
+
+### Performance
+- [ ] LCP do hero: vídeo de fundo de 2,1 MB com `autoplay`; avaliar `preload="none"` e carregamento pós-`load`
+      (exige alteração no `script.js`, que é arquivo protegido).
+- [ ] Limpar `images/`: PNGs não referenciados (7,8 MB, 7,5 MB e 6,8 MB) e arquivos com espaço no nome,
+      que contrariam a convenção de nomes do `.clinerules` §5.3.
 
 ### Infra / operação
 - [ ] Manter `_headers` limitado ao domínio provisório (revisar ao migrar de Pages para Workers).

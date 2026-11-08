@@ -3751,11 +3751,6 @@ body {
         height: 2px !important;
     }
 }
-    .main-header.fg-header-scrolled .mobile-toggle .bar {
-        width: 16px !important;
-        height: 2px !important;
-    }
-}
 
 /* ==========================================================================
    SEÇÃO DE CONTEÚDO RICO PARA SEO/GEO (Funilaria e Pintura em Osasco)
@@ -4014,5 +4009,147 @@ body {
 .fg-content-update time {
     color: var(--brand-cyan);
     font-weight: 700;
+}
+
+
+/* ==========================================================================
+   Home — resposta direta, guia de escolha e hub de conteúdo (08/11/2026)
+   Componentes novos: .fg-answer-box, .fg-guide-section, .fg-guide-list,
+   .fg-guide-close e .fg-hub-links. Usam apenas tokens de :root.
+   ========================================================================== */
+
+/* Bloco de resposta direta (primeiro parágrafo citável da Home) */
+.fg-answer-box {
+    padding: 18px 22px;
+    margin-bottom: 24px;
+    background: rgba(13, 21, 39, 0.85);
+    border-left: 4px solid var(--brand-cyan);
+    border-radius: 10px;
+    color: var(--text-primary);
+    font-size: clamp(16px, 1.6vw, 17px);
+    line-height: 1.7;
+}
+
+.fg-answer-box strong {
+    color: var(--brand-cyan);
+}
+
+/* Seção de critérios de escolha da oficina */
+.fg-guide-section .rich-text-block p {
+    margin-bottom: 18px;
+}
+
+.fg-guide-list {
+    max-width: 1020px;
+    margin: 0 auto 24px;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 14px 24px;
+}
+
+.fg-guide-list li {
+    position: relative;
+    padding: 12px 16px 12px 42px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+.fg-guide-list li::before {
+    content: "\2713";
+    position: absolute;
+    left: 16px;
+    top: 12px;
+    color: var(--brand-green);
+    font-weight: 800;
+}
+
+.fg-guide-close {
+    max-width: 1020px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 16px;
+    line-height: 1.7;
+    text-align: center;
+}
+
+.fg-guide-close a {
+    color: var(--brand-cyan);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+/* Hub de guias técnicos (liga a Home ao cluster editorial) */
+.fg-hub-links {
+    max-width: 1020px;
+    margin: 0 auto;
+    padding: 0;
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 12px 20px;
+}
+
+.fg-hub-links a {
+    display: block;
+    padding: 14px 18px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    color: var(--text-secondary);
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 1.45;
+    text-decoration: none;
+    transition: background-color var(--transition-fast), border-color var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
+}
+
+.fg-hub-links a:hover,
+.fg-hub-links a:focus-visible {
+    background: var(--bg-card-hover);
+    border-color: var(--border-highlight);
+    color: var(--text-primary);
+    transform: translateY(-2px);
+}
+
+.fg-hub-links a:focus-visible {
+    outline: 2px solid var(--brand-cyan);
+    outline-offset: 2px;
+}
+
+@media (max-width: 768px) {
+    .fg-guide-list,
+    .fg-hub-links {
+        grid-template-columns: 1fr;
+    }
+
+    .fg-answer-box {
+        padding: 16px 18px;
+    }
+}
+
+@media (max-width: 480px) {
+    .fg-guide-list li,
+    .fg-hub-links a {
+        font-size: 14px;
+    }
+
+    .fg-guide-close {
+        text-align: left;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fg-hub-links a,
+    .fg-hub-links a:hover,
+    .fg-hub-links a:focus-visible {
+        transform: none;
+        transition: none;
+    }
 }
 

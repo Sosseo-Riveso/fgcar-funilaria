@@ -4,7 +4,7 @@
     <!-- 1. Página Inicial -->
     <url>
         <loc>https://funilariaosasco.com.br/</loc>
-        <lastmod>2026-11-04</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>1.0</priority>
     </url>
@@ -12,13 +12,13 @@
     <!-- 2. Páginas Institucionais -->
     <url>
         <loc>https://funilariaosasco.com.br/sobre</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/contato</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -38,37 +38,37 @@
     <!-- 3. Landing Pages de Serviços Especializados -->
     <url>
         <loc>https://funilariaosasco.com.br/funilaria-de-colisao-e-batidas</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/pintura-em-estufa-climatizada</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/martelinho-de-ouro-express</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/recuperacao-de-para-choques</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/polimento-tecnico-e-cristalizacao</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/retoques-rapidos-spot-repair</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.9</priority>
     </url>
@@ -100,7 +100,7 @@
     </url>
     <url>
         <loc>https://funilariaosasco.com.br/categoria-autoridade-local-e-intencao-de-busca</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>weekly</changefreq>
         <priority>0.8</priority>
     </url>
@@ -230,7 +230,7 @@
     <!-- 9. Artigos de Blog - Categoria 5: Guia de Oficinas em Osasco -->
     <url>
         <loc>https://funilariaosasco.com.br/oficina-de-funilaria-e-pintura-em-osasco-como-escolher</loc>
-        <lastmod>2026-10-16</lastmod>
+        <lastmod>2026-11-08</lastmod>
         <changefreq>monthly</changefreq>
         <priority>0.7</priority>
     </url>
