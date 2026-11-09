@@ -205,6 +205,32 @@
 - **Auditores:** SEO **0 problemas / 100** e GEO **0 problemas / 93%**, sem regressão. Os scripts validam
   rua, cidade e telefone (não número nem CEP), por isso não precisaram de ajuste.
 
+### Fase 11 — Amarração do Google Perfil da Empresa ao Schema.org (08/11/2026)
+- **URL curta oficial resolvida:** `https://maps.app.goo.gl/AApNdrfzaAZE6DZh7` → redireciona para a ficha
+  `/maps/place/Fg+Car+Oficina+e+Funilaria+e+Pintura/@…`, da qual foram extraídos:
+  - **CID:** `1676882558526959725` (decimal de `0x17457bcd6f0c306d`).
+  - **URL canônica por CID:** `https://www.google.com/maps?cid=1676882558526959725` (validada, HTTP 200).
+  - **Coordenadas do pino:** `-23.5516665` / `-46.7916685` (parâmetros `!3d`/`!4d`).
+  - **Feature ID:** `g/11vhqf8756`.
+- **Schema da home (`AutoBodyShop`):**
+  - `hasMap` → URL canônica por CID (substituiu a busca textual genérica).
+  - `sameAs` → Instagram + URL por CID + URL curta oficial.
+  - `geo` → coordenadas exatas do pino (antes `-23.5512` / `-46.7901`).
+  - `aggregateRating` → `ratingValue` 5.0 · `reviewCount` 4 · `bestRating` 5 · `worstRating` 1.
+- **`/sobre` (`AboutPage`) e `/contato` (`ContactPage`):** nós `AutoBodyShop` passaram a declarar
+  `@id` compartilhado (`…#autobodyshop`), `hasMap`, `sameAs` completo e `geo` — consolidando a entidade
+  no mesmo nó da home em vez de três nós paralelos. `/sobre` não tinha `geo`; foi adicionado.
+- **Correção de defeito no mapa de `/contato`:** o `iframe` usava um **place ID fictício**
+  (`1s0x94ce55a9b1c1c1c1%3A0x1`) com coordenadas fixas. Substituído pelo embed por endereço
+  (`…,3121 - Cipava, Osasco - SP, 06075-380`), o mesmo padrão já usado na home.
+- **Consistência da nota:** o texto visível ainda dizia "4.9" (title, `og:description`, `twitter:description`,
+  selo do hero e bloco de conteúdo). Corrigido para **5.0** — divergir do `aggregateRating` seria pior do que
+  não declarar nota. Nenhuma outra página usava a menção.
+- **Nota de conformidade:** o Google não exibe estrelas para *self-serving reviews* em `LocalBusiness`
+  desde 2019. O `aggregateRating` foi mantido porque o dado é real e verificável no perfil, e porque
+  motores de IA o usam para desambiguar a entidade — não como expectativa de rich snippet.
+- **Resultado:** SEO e GEO sem regressão; JSON-LD das 3 páginas validado por parse.
+
 ---
 
 ## 3. Pendências
@@ -227,16 +253,22 @@
 - [ ] Revisar títulos com mais de 60 caracteres e descrições fora de 140–155.
 
 ### SEO local — bloqueios de entidade (aberto em 08/11/2026)
-- [ ] **Google Perfil da Empresa:** preencher `sameAs` (URL do perfil) e substituir o `hasMap` genérico pela URL
-      do place com CID no schema da home. Aguarda o envio dos dados do GBP.
+- [x] **Google Perfil da Empresa amarrado ao schema (08/11/2026):** `hasMap` e `sameAs` passaram a usar a URL
+      canônica por CID (`https://www.google.com/maps?cid=1676882558526959725`) e a URL curta oficial
+      (`https://maps.app.goo.gl/AApNdrfzaAZE6DZh7`) na home, em `/sobre` e em `/contato`. Ver Fase 11.
 - [x] **NAP sincronizado com o GBP (08/11/2026):** número **3121** e CEP **06075-380** (bairro **Cipava**) aplicados
       em 95 arquivos. O valor anterior (3151 / 06080-125) apontava para o bairro Vila Osasco nos Correios e estava
       errado em todo o site. Ver Fase 10.
-- [ ] **Coordenadas:** o schema segue com `-23.5512` / `-46.7901`; confirmar o pin exato do GBP para alinhar o `geo`.
-- [ ] **Nome da entidade:** o GBP exibe "FG Car Oficina **de** Funilaria e Pintura"; o site usa "FG Car Oficina **e**
-      Funilaria e Pintura". Decidir a padronização (afeta `name` do schema, `og:site_name`, rodapé e títulos).
-- [ ] **`aggregateRating`:** só incluir no JSON-LD se a nota e a quantidade de avaliações vierem do GBP —
-      hoje "Avaliação 4.9 no Google" aparece no title, na description e no hero sem lastro estruturado.
+- [x] **Coordenadas exatas do pino (08/11/2026):** `geo` atualizado para `-23.5516665` / `-46.7916685`, extraídas
+      do parâmetro `!3d`/`!4d` da URL resolvida do perfil. Ver Fase 11.
+- [x] **`aggregateRating` (08/11/2026):** implementado com os dados reais do perfil — 5.0 · 4 avaliações · melhor 5.
+      As menções visíveis ("4.9") foram corrigidas para 5.0 no title, nas descriptions e no selo do hero.
+      **Nota:** o Google não exibe estrelas de *self-serving reviews* para `LocalBusiness`; o dado permanece
+      válido para desambiguação de entidade por motores de IA.
+- [x] **Nome da entidade:** confirmado pelo cliente que o GBP usa "FG Car Oficina **e** Funilaria e Pintura",
+      igual ao site — item encerrado sem alteração de grafia.
+- [ ] 6 landing pages de serviço e 2 artigos ainda têm nós `AutoBodyShop` com `sameAs` apenas do Instagram;
+      replicar a amarração do GBP para uniformizar todos os nós de entidade.
 
 ### Performance
 - [ ] LCP do hero: vídeo de fundo de 2,1 MB com `autoplay`; avaliar `preload="none"` e carregamento pós-`load`
