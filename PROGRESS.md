@@ -231,6 +231,26 @@
   motores de IA o usam para desambiguar a entidade — não como expectativa de rich snippet.
 - **Resultado:** SEO e GEO sem regressão; JSON-LD das 3 páginas validado por parse.
 
+### Fase 12 — Amarração de entidade nas 6 landing pages de serviço (08/11/2026)
+- **Objetivo:** uniformizar o grafo local — todas as declarações de `AutoBodyShop` do site passam a apontar
+  para o mesmo perfil do Google, com o mesmo CID e o mesmo pino.
+- **Aplicado nas 6 landing pages** (`funilaria-de-colisao-e-batidas`, `pintura-em-estufa-climatizada`,
+  `martelinho-de-ouro-express`, `recuperacao-de-para-choques`, `polimento-tecnico-e-cristalizacao`,
+  `retoques-rapidos-spot-repair`), dentro do nó `provider` de cada `Service`:
+  - `sameAs` → Instagram + URL por CID + URL curta oficial (antes só Instagram);
+  - `hasMap` → `https://www.google.com/maps?cid=1676882558526959725` (novo);
+  - `geo` → `-23.5516665` / `-46.7916685` (novo);
+  - `@id` → `https://funilariaosasco.com.br/#autobodyshop` (já existia — o nó já era compartilhado com a home).
+- **Escrita segura:** substituição aplicada só quando o bloco-alvo ocorria exatamente **1 vez** por arquivo,
+  com detecção de EOL (LF) e preservação de BOM; JSON-LD das 6 páginas revalidado por parse: **3 blocos cada,
+  0 erros**, com `provider.hasMap`, `provider.geo` e `provider.sameAs` (3 URLs) conferidos.
+- **Os 2 artigos não precisaram de alteração:** `franquia-de-seguro-…` e `recuperar-lataria-…` são `TechArticle`
+  e declaram a oficina como `about` com **referência pura por `@id`** — sem `sameAs`, sem `geo`, por design.
+  É a forma recomendada de vincular entidades distribuídas: o nó é definido uma vez (home) e referenciado
+  nas demais páginas. Duplicar ali as propriedades fragmentaria a entidade em vez de consolidá-la.
+- **Estado do grafo local:** home (`AutoBodyShop` completo + `aggregateRating`) → `/sobre` e `/contato`
+  (nós com o mesmo `@id`, `hasMap`, `sameAs` e `geo`) → 6 landing pages (idem) → 2 artigos (referência por `@id`).
+
 ---
 
 ## 3. Pendências
@@ -267,8 +287,13 @@
       válido para desambiguação de entidade por motores de IA.
 - [x] **Nome da entidade:** confirmado pelo cliente que o GBP usa "FG Car Oficina **e** Funilaria e Pintura",
       igual ao site — item encerrado sem alteração de grafia.
-- [ ] 6 landing pages de serviço e 2 artigos ainda têm nós `AutoBodyShop` com `sameAs` apenas do Instagram;
-      replicar a amarração do GBP para uniformizar todos os nós de entidade.
+- [x] **Amarração replicada nas 6 landing pages de serviço (08/11/2026):** `hasMap` por CID, `sameAs` com as
+      três URLs e `geo` exato dentro do nó `provider`/`AutoBodyShop`. Ver Fase 12.
+- [x] **Os 2 artigos já estavam corretos:** `franquia-…` e `recuperar-lataria-…` usam
+      `about: { "@type": "AutoBodyShop", "@id": "…#autobodyshop" }` — **referência pura ao nó**, sem `sameAs`
+      próprio. (A anotação anterior desta lista dizia que tinham `sameAs` só do Instagram: estava equivocada.)
+      Manter a referência por `@id` é o padrão recomendado; duplicar propriedades ali fragmentaria a entidade
+      em vez de consolidá-la.
 
 ### Performance
 - [ ] LCP do hero: vídeo de fundo de 2,1 MB com `autoplay`; avaliar `preload="none"` e carregamento pós-`load`
