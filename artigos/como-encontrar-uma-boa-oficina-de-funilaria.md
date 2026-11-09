@@ -35,7 +35,7 @@ A FG Car reúne tudo o que seu carro necessita em um só lugar. Realizamos conse
 Por lei, o proprietário do veículo tem direito de escolher qualquer oficina de sua confiança, independentemente das parcerias da seguradora. Oficinas de livre escolha como a FG Car costumam dedicar mais tempo aos detalhes e acabamento de estufa, sem a pressão de metas industriais em massa.
 
 #### 2. Qual é a região de atendimento da FG Car em Osasco?
-Estamos localizados no Cipava (Av. Visconde de Nova Granada, 3151), atendendo moradores e empresas do Centro, Vila Yara, Bela Vista, Jaguaribe, Km 18, Jardim das Flores, Rochdale, além de clientes de Barueri e Alphaville.
+Estamos localizados no Cipava (Av. Visconde de Nova Granada, 3121), atendendo moradores e empresas do Centro, Vila Yara, Bela Vista, Jaguaribe, Km 18, Jardim das Flores, Rochdale, além de clientes de Barueri e Alphaville.
 
 #### 3. Quanto tempo costuma levar um reparo comum de funilaria e pintura?
 Reparos rápidos (Spot Repair ou martelinho) levam de 1 a 2 dias úteis. Pinturas completas de peças (como porta ou para-choque) levam em média de 2 a 4 dias, dependendo do tempo de secagem em estufa e polimento técnico final.
@@ -44,4 +44,4 @@ Reparos rápidos (Spot Repair ou martelinho) levam de 1 a 2 dias úteis. Pintura
 Basta mandar uma mensagem pelo WhatsApp (11) 94772-7682 com fotos do veículo ou comparecer diretamente à oficina de segunda a sexta das 08h às 18h e aos sábados das 08h às 12h.
 
 ---
-**Encontre o Melhor Cuidado para o Seu Carro na FG Car:** Comprovamos nossa qualidade em cada detalhe. Traga seu carro para quem entende e ama o ofício de funilaria e pintura na Av. Visconde de Nova Granada, 3151 em Osasco.
+**Encontre o Melhor Cuidado para o Seu Carro na FG Car:** Comprovamos nossa qualidade em cada detalhe. Traga seu carro para quem entende e ama o ofício de funilaria e pintura na Av. Visconde de Nova Granada, 3121 em Osasco.

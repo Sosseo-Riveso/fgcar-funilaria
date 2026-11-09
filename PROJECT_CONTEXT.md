@@ -144,8 +144,8 @@ Todos seguem: `H1 > H2.subtitulo-banner > barra de autoria azul`, 2 imagens 16:9
 
 ```
 FG Car Oficina e Funilaria e Pintura
-Av. Visconde de Nova Granada, 3151 — Cipava
-Osasco / SP — CEP 06080-125
+Av. Visconde de Nova Granada, 3121 — Cipava
+Osasco / SP — CEP 06075-380
 Telefone / WhatsApp: +55 11 94772-7682
 Link: https://wa.me/5511947727682
 Segunda a sexta: 08:00–18:00 · Sábado: 08:00–12:00

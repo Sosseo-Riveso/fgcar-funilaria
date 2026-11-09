@@ -16,7 +16,7 @@
 | **Repositório** | `https://github.com/Sosseo-Riveso/fgcar-funilaria.git` (branch `main`) |
 | **Hospedagem/Deploy** | Cloudflare Pages (100% estático) — deploy via `git add` + `git commit` + `git push` |
 | **WhatsApp** | +55 11 94772-7682 (`wa.me/5511947727682`) |
-| **Endereço** | Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP — CEP 06080-125 |
+| **Endereço** | Av. Visconde de Nova Granada, 3121 — Cipava, Osasco/SP — CEP 06075-380 |
 | **Diferenciais técnicos** | Cabine pintura pressurizada/climatizada (60–65°C), colorimetria computadorizada, martelinho de ouro (PDR), repuxo com spotter, recuperação de para-choques (termofusão), polimento/cristalização, spot repair |
 | **Regiões atendidas** | Osasco (Cipava, Bela Vista, Jaguaribe, Centro, Km 18, Vila Yara, Rochdale, Quitaúna), Carapicuíba, Barueri/Alphaville, Cotia e zona oeste de SP |
 ---

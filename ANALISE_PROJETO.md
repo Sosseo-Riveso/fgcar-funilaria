@@ -116,7 +116,7 @@ Exemplos: `diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro.html`, `qu
 
 ## 5. SEO / GEO / AEO (Estratégia de Conteúdo)
 
-- **Entidade local REAL:** schema `AutoBodyShop` na home com **endereço físico verdadeiro** (Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP, CEP 06080-125), **telefone real**, **geo (lat/long)**, **horários**, **Instagram** (`@fgcar_oficina`) e **OfferCatalog** com serviços. — **Correto e legítimo** (diferente dos pilotos de câmbio, aqui o negócio é real e o contrato está fechado).
+- **Entidade local REAL:** schema `AutoBodyShop` na home com **endereço físico verdadeiro** (Av. Visconde de Nova Granada, 3121 — Cipava, Osasco/SP, CEP 06075-380), **telefone real**, **geo (lat/long)**, **horários**, **Instagram** (`@fgcar_oficina`) e **OfferCatalog** com serviços. — **Correto e legítimo** (diferente dos pilotos de câmbio, aqui o negócio é real e o contrato está fechado).
 - **Schema por página de serviço:** `Service` + `provider` (`AutoBodyShop`) com NAP completo + `areaServed`.
 - **Schema por artigo:** `Article` + `author`/`publisher` (FG Car) + `FAQPage` em muitos artigos.
 - **GEO:** `llms.txt` + `llms-full.txt` (dossiê técnico mais extenso dos projetos: ficha NAP, protocolos técnicos de estufa/colorimetria/martelinho PDR/para-choques, FAQ).
@@ -174,5 +174,5 @@ Regra obrigatória em `.agent/rules/metadados_artigos.md`: artigos devem ter a *
 - **Deploy:** `git push` → Cloudflare Pages (sem build, estático puro). Sobe apenas o que está versionado.
 - **Não versionar** (`gitignore`/`assetsignore`): `scratch/`, `*.docx`, `~$*`, `Imagens-GMN-Geotag/`, `artigos/*.html`. Essas pastas/arquivos ficam só no disco local.
 - **`artigos/`:** manter somente `.md` (fonte de edição); a raiz é a fonte publicada.
-- **GMN:** "FG Car Oficina e Funilaria e Pintura" — verificado; NAP do site deve bater 100% (nome, Av. Visconde de Nova Granada 3151, CEP 06080-125, tel +55 11 94772-7682).
+- **GMN:** "FG Car Oficina e Funilaria e Pintura" — verificado; NAP do site deve bater 100% (nome, Av. Visconde de Nova Granada 3121, CEP 06075-380, tel +55 11 94772-7682).
 - **Skill aplicável:** `blog_fgcar_automotivo` para novos artigos; `redator_geo_seo` como base.

@@ -20,7 +20,7 @@
 | **JS global** | `script.js` (lead gate, máscara de telefone, UTMs, envio de leads) |
 | **Fontes** | Google Fonts — Plus Jakarta Sans + Space Grotesk (artigos); Montserrat/Inter nos tokens base |
 | **Leads** | `https://sosseo-crm.sosseosites.workers.dev/api/fgcar-leads` + Google Sheets (`GOOGLE-APPS-SCRIPT-CRM.js`) |
-| **NAP** | FG Car Oficina e Funilaria e Pintura · Av. Visconde de Nova Granada, 3151 — Cipava, Osasco/SP — CEP 06080-125 · +55 11 94772-7682 |
+| **NAP** | FG Car Oficina e Funilaria e Pintura · Av. Visconde de Nova Granada, 3121 — Cipava, Osasco/SP — CEP 06075-380 · +55 11 94772-7682 |
 
 **Horário:** seg–sex 08:00–18:00 · sáb 08:00–12:00.
 

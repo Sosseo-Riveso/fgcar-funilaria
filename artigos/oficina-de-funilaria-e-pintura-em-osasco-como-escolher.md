@@ -35,7 +35,7 @@ Na FG Car, além dos reparos de colisão pesada atendidos pela nossa [Funilaria 
 Ao visitar o local, peça para conhecer a área de pintura. Uma cabine de verdade é uma estrutura fechada e iluminada, com portas vedadas por borracha, piso com grelhas de sucção e painel elétrico de controle de temperatura. Se houver cortinas plásticas improvisadas, não é uma cabine pressurizada.
 
 #### 2. Qual é a localização da FG Car em Osasco?
-A oficina está estrategicamente localizada na **Av. Visconde de Nova Granada, 3151 - Cipava, Osasco - SP**, com fácil acesso para quem vem do Centro de Osasco, Bela Vista, Jaguaribe, Km 18, Vila Yara e da região de Barueri e Alphaville.
+A oficina está estrategicamente localizada na **Av. Visconde de Nova Granada, 3121 - Cipava, Osasco - SP**, com fácil acesso para quem vem do Centro de Osasco, Bela Vista, Jaguaribe, Km 18, Vila Yara e da região de Barueri e Alphaville.
 
 #### 3. É possível obter um orçamento preliminar sem levar o carro até a oficina?
 Sim! Pelo WhatsApp da FG Car (11) 94772-7682 você envia fotos com boa iluminação da parte danificada e de diferentes distâncias. Nossos técnicos emitem uma faixa estimativa de valor e prazo em poucos minutos.
@@ -44,4 +44,4 @@ Sim! Pelo WhatsApp da FG Car (11) 94772-7682 você envia fotos com boa iluminaç
 Sim, fornecemos garantia formal contra descascamento de verniz, perda precoce de brilho, empenamentos ou desalinhamento de peças reparadas, utilizando materiais de padrão internacional (Sherwin-Williams, PPG e Glasurit).
 
 ---
-**Venha Conhecer a Estrutura da FG Car:** Transparência, estufa pressurizada profissional e respeito pelo seu veículo na Av. Visconde de Nova Granada, 3151 em Osasco. Faça uma visita ou adiante seu atendimento agora mesmo no WhatsApp!
+**Venha Conhecer a Estrutura da FG Car:** Transparência, estufa pressurizada profissional e respeito pelo seu veículo na Av. Visconde de Nova Granada, 3121 em Osasco. Faça uma visita ou adiante seu atendimento agora mesmo no WhatsApp!

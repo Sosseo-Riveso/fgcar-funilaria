@@ -157,7 +157,7 @@
 - **Densidade final (mensurada por script, 3.009 palavras de conteúdo principal):** `funilaria e pintura em Osasco`
   **12× (0,40%)**, `funilaria em osasco` **5× (0,17%)**, `oficina de funilaria e pintura em osasco` **6× (0,20%)**,
   `funilaria` **32× (1,06%)**, `osasco` **41× (1,36%)**.
-- **Schema da Home:** `streetAddress` com bairro (`3151 - Cipava`), `FAQPage` ligado ao `#webpage` via
+- **Schema da Home:** `streetAddress` com bairro (`3121 - Cipava`), `FAQPage` ligado ao `#webpage` via
   `mainEntityOfPage`, e `slogan`, `knowsAbout`, `paymentAccepted` e `currenciesAccepted` adicionados ao
   `AutoBodyShop`. Espelhamento FAQ visível × schema reconferido: **8 × 8, zero divergências**.
   `sameAs` e `hasMap` permanecem intocados até a definição da URL/CID do Google Perfil da Empresa.
@@ -178,6 +178,32 @@
 - **Resultado:** SEO **100/100 com 1 aviso** (o de `termos-de-uso`, dispensado por decisão editorial) e
   GEO **93% com 46 avisos**, ambos inalterados em relação à fase anterior — a entrega é de profundidade
   competitiva, não de conformidade técnica.
+
+### Fase 10 — Sincronização do NAP oficial do Google Perfil da Empresa (08/11/2026)
+- **Origem:** dados confirmados diretamente no GBP pelo cliente.
+  - Número correto: **3121** (o site declarava 3151).
+  - CEP correto: **06075-380** (o site declarava 06080-125).
+  - Bairro oficial: **Cipava**.
+- **Diagnóstico da divergência:** o CEP antigo (06080-125) corresponde ao bairro **Vila Osasco** nas bases dos
+  Correios, enquanto o CEP novo (06075-380) retorna **Cipava** — confirmando que a divergência de NAP era real
+  e não apenas um erro de digitação no número.
+- **Substituição cirúrgica e auditada:** 230 valores trocados em **95 arquivos**
+  (`3151` → `3121`: 198 ocorrências · `06080-125` → `06075-380`: 32 ocorrências), incluindo:
+  - **Home:** `streetAddress`, `postalCode`, `hasMap`, texto do `FAQPage`, resposta direta, CTA da triagem,
+    rodapé, links do Google Maps e do Waze e o `iframe` do mapa incorporado.
+  - **Páginas:** `contato.html`, `sobre.html`, `politica-de-privacidade.html`, `termos-de-uso.html`,
+    6 landing pages de serviço, 5 categorias e os 31 artigos publicados.
+  - **Templates:** `template-post-padrao`, `template-post-cuidados-e-prevencao`,
+    `template-post-restauracao-de-veiculos` e `template-artigo`.
+  - **GEO/IA:** `llms.txt` e `llms-full.txt`.
+  - **Governança:** `.clinerules` (tabelas e CTA final), `PROJECT_CONTEXT.md`, `ANALISE_PROJETO.md`,
+    `PLANO_CONTEUDO_BLOG_FGCAR.md`, `_MEMORIA_PROJETO.md` e `PROGRESS.md`.
+  - **Rascunhos:** os `.md` de `artigos/`, para evitar recontaminação em futuras publicações.
+- **Integridade da escrita:** reescrita feita em UTF-8 com preservação do BOM por arquivo; varredura de
+  U+FFFD em todos os arquivos alterados retornou **zero caractere de substituição** (nenhum acento corrompido).
+- **Verificação final:** **0 ocorrências** de `3151`, `06080-125` ou `06080125` em todo o repositório.
+- **Auditores:** SEO **0 problemas / 100** e GEO **0 problemas / 93%**, sem regressão. Os scripts validam
+  rua, cidade e telefone (não número nem CEP), por isso não precisaram de ajuste.
 
 ---
 
@@ -203,9 +229,12 @@
 ### SEO local — bloqueios de entidade (aberto em 08/11/2026)
 - [ ] **Google Perfil da Empresa:** preencher `sameAs` (URL do perfil) e substituir o `hasMap` genérico pela URL
       do place com CID no schema da home. Aguarda o envio dos dados do GBP.
-- [ ] **NAP:** confirmar bairro e CEP oficiais com o GBP. O CEP `06080-125` retorna **Vila Osasco** nas bases dos
-      Correios, enquanto todo o site declara **Cipava**; conferir também as coordenadas do schema
-      (`-23.5512` / `-46.7901`) contra o pin do perfil, que divergem ~2 km do centroide do CEP.
+- [x] **NAP sincronizado com o GBP (08/11/2026):** número **3121** e CEP **06075-380** (bairro **Cipava**) aplicados
+      em 95 arquivos. O valor anterior (3151 / 06080-125) apontava para o bairro Vila Osasco nos Correios e estava
+      errado em todo o site. Ver Fase 10.
+- [ ] **Coordenadas:** o schema segue com `-23.5512` / `-46.7901`; confirmar o pin exato do GBP para alinhar o `geo`.
+- [ ] **Nome da entidade:** o GBP exibe "FG Car Oficina **de** Funilaria e Pintura"; o site usa "FG Car Oficina **e**
+      Funilaria e Pintura". Decidir a padronização (afeta `name` do schema, `og:site_name`, rodapé e títulos).
 - [ ] **`aggregateRating`:** só incluir no JSON-LD se a nota e a quantidade de avaliações vierem do GBP —
       hoje "Avaliação 4.9 no Google" aparece no title, na description e no hero sem lastro estruturado.
 
