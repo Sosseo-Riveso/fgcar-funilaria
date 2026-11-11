@@ -1,2 +1,127 @@
-/teste301 /sobre 301
+# ==========================================================================
+# _redirects - FG Car Oficina Funilaria e Pintura
+# Cloudflare Pages - gerado por scripts/generate_redirects.py
+#
+# 1) Normalizacao de host (www e dominio provisorio para o apex oficial)
+# 2) Home: /index.html, /index e /index/ -> /  (301)
+# 3) Extensao: /<slug>.html -> /<slug>  (301, forced)
+# 4) Barra final: /<slug>/ -> /<slug>  (301, forced)
+#
+# O sufixo ! (forced) e obrigatorio: sem ele o Pages ignora a regra quando
+# o arquivo .html existe e responde 308 pela normalizacao padrao.
+# Nenhum destino termina em .html e nenhum destino e origem de outra regra,
+# entao nao existe cadeia nem loop de redirecionamento.
+#
+# IMPORTANTE: sem splat no meio do caminho (/*.html nao e suportado pelo
+# parser do Pages e invalida o arquivo inteiro) e sem caracteres acentuados
+# nos comentarios. Toda pagina publicada precisa de regra explicita.
+# ==========================================================================
 
+# 1) Host canonico
+https://www.funilariaosasco.com.br/* https://funilariaosasco.com.br/:splat 301!
+http://www.funilariaosasco.com.br/* https://funilariaosasco.com.br/:splat 301!
+https://fgcar-funilaria.pages.dev/* https://funilariaosasco.com.br/:splat 301!
+http://fgcar-funilaria.pages.dev/* https://funilariaosasco.com.br/:splat 301!
+
+# 2) Home
+/index.html / 301!
+/index / 301!
+/index/ / 301!
+
+# 3) Remove a extensao .html (URL canonica sem extensao)
+/sobre.html /sobre 301!
+/contato.html /contato 301!
+/politica-de-privacidade.html /politica-de-privacidade 301!
+/termos-de-uso.html /termos-de-uso 301!
+/funilaria-de-colisao-e-batidas.html /funilaria-de-colisao-e-batidas 301!
+/pintura-em-estufa-climatizada.html /pintura-em-estufa-climatizada 301!
+/martelinho-de-ouro-express.html /martelinho-de-ouro-express 301!
+/recuperacao-de-para-choques.html /recuperacao-de-para-choques 301!
+/polimento-tecnico-e-cristalizacao.html /polimento-tecnico-e-cristalizacao 301!
+/retoques-rapidos-spot-repair.html /retoques-rapidos-spot-repair 301!
+/categoria-reparos-e-manutencao.html /categoria-reparos-e-manutencao 301!
+/categoria-pintura-automotiva-e-estetica.html /categoria-pintura-automotiva-e-estetica 301!
+/categoria-restauracao-de-veiculos.html /categoria-restauracao-de-veiculos 301!
+/categoria-cuidados-e-prevencao.html /categoria-cuidados-e-prevencao 301!
+/categoria-autoridade-local-e-intencao-de-busca.html /categoria-autoridade-local-e-intencao-de-busca 301!
+/franquia-de-seguro-ou-conserto-particular-quando-compensa.html /franquia-de-seguro-ou-conserto-particular-quando-compensa 301!
+/recuperar-lataria-ou-trocar-peca-criterios-tecnicos.html /recuperar-lataria-ou-trocar-peca-criterios-tecnicos 301!
+/diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro.html /diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro 301!
+/por-que-adiar-reparo-de-funilaria-sai-mais-caro.html /por-que-adiar-reparo-de-funilaria-sai-mais-caro 301!
+/pequenos-amassados-que-precisam-de-funilaria.html /pequenos-amassados-que-precisam-de-funilaria 301!
+/o-que-e-repuxo-automotivo-e-quando-fazer.html /o-que-e-repuxo-automotivo-e-quando-fazer 301!
+/conserto-apos-batida-passo-a-passo-completo.html /conserto-apos-batida-passo-a-passo-completo 301!
+/pintura-automotiva-completa-ou-parcial-qual-escolher.html /pintura-automotiva-completa-ou-parcial-qual-escolher 301!
+/como-manter-o-brilho-da-pintura-do-carro.html /como-manter-o-brilho-da-pintura-do-carro 301!
+/erros-que-danificam-a-pintura-do-carro.html /erros-que-danificam-a-pintura-do-carro 301!
+/diferenca-entre-pintura-simples-e-restauracao-completa.html /diferenca-entre-pintura-simples-e-restauracao-completa 301!
+/como-funciona-o-processo-completo-de-restauracao-automotiva.html /como-funciona-o-processo-completo-de-restauracao-automotiva 301!
+/quanto-custa-restaurar-um-carro-antigo.html /quanto-custa-restaurar-um-carro-antigo 301!
+/etapas-de-uma-restauracao-automotiva.html /etapas-de-uma-restauracao-automotiva 301!
+/antes-e-depois-de-uma-restauracao-profissional.html /antes-e-depois-de-uma-restauracao-profissional 301!
+/como-proteger-o-carro-do-sol-e-da-chuva.html /como-proteger-o-carro-do-sol-e-da-chuva 301!
+/manchas-na-pintura-causas-e-como-remover.html /manchas-na-pintura-causas-e-como-remover 301!
+/cuidados-basicos-para-evitar-ferrugem-na-lataria.html /cuidados-basicos-para-evitar-ferrugem-na-lataria 301!
+/de-quanto-em-quanto-tempo-polir-o-carro.html /de-quanto-em-quanto-tempo-polir-o-carro 301!
+/oficina-de-funilaria-e-pintura-em-osasco-como-escolher.html /oficina-de-funilaria-e-pintura-em-osasco-como-escolher 301!
+/como-saber-se-a-oficina-de-pintura-e-confiavel.html /como-saber-se-a-oficina-de-pintura-e-confiavel 301!
+/o-que-avaliar-em-um-orcamento-de-funilaria-e-pintura.html /o-que-avaliar-em-um-orcamento-de-funilaria-e-pintura 301!
+/como-encontrar-uma-boa-oficina-de-funilaria.html /como-encontrar-uma-boa-oficina-de-funilaria 301!
+/arrumar-funilaria-antes-de-vender-ou-negociar-assim-mesmo.html /arrumar-funilaria-antes-de-vender-ou-negociar-assim-mesmo 301!
+/por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda.html /por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda 301!
+/tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica.html /tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica 301!
+/o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo.html /o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo 301!
+/materiais-premium-secagem-em-estufa-repintura-excelencia.html /materiais-premium-secagem-em-estufa-repintura-excelencia 301!
+/colorimetria-digital-acerto-exato-da-cor-original.html /colorimetria-digital-acerto-exato-da-cor-original 301!
+/muito-alem-da-estetica-tintas-alta-performance-protegem-lataria.html /muito-alem-da-estetica-tintas-alta-performance-protegem-lataria 301!
+/porta-nao-fecha-batida-estrutural.html /porta-nao-fecha-batida-estrutural 301!
+/painel-leads.html /painel-leads 301!
+
+# 4) Remove a barra final (evita 404 e loops de trailing slash)
+/sobre/ /sobre 301!
+/contato/ /contato 301!
+/politica-de-privacidade/ /politica-de-privacidade 301!
+/termos-de-uso/ /termos-de-uso 301!
+/funilaria-de-colisao-e-batidas/ /funilaria-de-colisao-e-batidas 301!
+/pintura-em-estufa-climatizada/ /pintura-em-estufa-climatizada 301!
+/martelinho-de-ouro-express/ /martelinho-de-ouro-express 301!
+/recuperacao-de-para-choques/ /recuperacao-de-para-choques 301!
+/polimento-tecnico-e-cristalizacao/ /polimento-tecnico-e-cristalizacao 301!
+/retoques-rapidos-spot-repair/ /retoques-rapidos-spot-repair 301!
+/categoria-reparos-e-manutencao/ /categoria-reparos-e-manutencao 301!
+/categoria-pintura-automotiva-e-estetica/ /categoria-pintura-automotiva-e-estetica 301!
+/categoria-restauracao-de-veiculos/ /categoria-restauracao-de-veiculos 301!
+/categoria-cuidados-e-prevencao/ /categoria-cuidados-e-prevencao 301!
+/categoria-autoridade-local-e-intencao-de-busca/ /categoria-autoridade-local-e-intencao-de-busca 301!
+/franquia-de-seguro-ou-conserto-particular-quando-compensa/ /franquia-de-seguro-ou-conserto-particular-quando-compensa 301!
+/recuperar-lataria-ou-trocar-peca-criterios-tecnicos/ /recuperar-lataria-ou-trocar-peca-criterios-tecnicos 301!
+/diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro/ /diferenca-entre-funilaria-tradicional-e-martelinho-de-ouro 301!
+/por-que-adiar-reparo-de-funilaria-sai-mais-caro/ /por-que-adiar-reparo-de-funilaria-sai-mais-caro 301!
+/pequenos-amassados-que-precisam-de-funilaria/ /pequenos-amassados-que-precisam-de-funilaria 301!
+/o-que-e-repuxo-automotivo-e-quando-fazer/ /o-que-e-repuxo-automotivo-e-quando-fazer 301!
+/conserto-apos-batida-passo-a-passo-completo/ /conserto-apos-batida-passo-a-passo-completo 301!
+/pintura-automotiva-completa-ou-parcial-qual-escolher/ /pintura-automotiva-completa-ou-parcial-qual-escolher 301!
+/como-manter-o-brilho-da-pintura-do-carro/ /como-manter-o-brilho-da-pintura-do-carro 301!
+/erros-que-danificam-a-pintura-do-carro/ /erros-que-danificam-a-pintura-do-carro 301!
+/diferenca-entre-pintura-simples-e-restauracao-completa/ /diferenca-entre-pintura-simples-e-restauracao-completa 301!
+/como-funciona-o-processo-completo-de-restauracao-automotiva/ /como-funciona-o-processo-completo-de-restauracao-automotiva 301!
+/quanto-custa-restaurar-um-carro-antigo/ /quanto-custa-restaurar-um-carro-antigo 301!
+/etapas-de-uma-restauracao-automotiva/ /etapas-de-uma-restauracao-automotiva 301!
+/antes-e-depois-de-uma-restauracao-profissional/ /antes-e-depois-de-uma-restauracao-profissional 301!
+/como-proteger-o-carro-do-sol-e-da-chuva/ /como-proteger-o-carro-do-sol-e-da-chuva 301!
+/manchas-na-pintura-causas-e-como-remover/ /manchas-na-pintura-causas-e-como-remover 301!
+/cuidados-basicos-para-evitar-ferrugem-na-lataria/ /cuidados-basicos-para-evitar-ferrugem-na-lataria 301!
+/de-quanto-em-quanto-tempo-polir-o-carro/ /de-quanto-em-quanto-tempo-polir-o-carro 301!
+/oficina-de-funilaria-e-pintura-em-osasco-como-escolher/ /oficina-de-funilaria-e-pintura-em-osasco-como-escolher 301!
+/como-saber-se-a-oficina-de-pintura-e-confiavel/ /como-saber-se-a-oficina-de-pintura-e-confiavel 301!
+/o-que-avaliar-em-um-orcamento-de-funilaria-e-pintura/ /o-que-avaliar-em-um-orcamento-de-funilaria-e-pintura 301!
+/como-encontrar-uma-boa-oficina-de-funilaria/ /como-encontrar-uma-boa-oficina-de-funilaria 301!
+/arrumar-funilaria-antes-de-vender-ou-negociar-assim-mesmo/ /arrumar-funilaria-antes-de-vender-ou-negociar-assim-mesmo 301!
+/por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda/ /por-que-um-bom-servico-de-pintura-valoriza-seu-carro-na-revenda 301!
+/tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica/ /tecnicas-modernas-de-pintura-automotiva-acabamento-de-fabrica 301!
+/o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo/ /o-barato-que-custa-caro-riscos-pintura-automotiva-baixo-custo 301!
+/materiais-premium-secagem-em-estufa-repintura-excelencia/ /materiais-premium-secagem-em-estufa-repintura-excelencia 301!
+/colorimetria-digital-acerto-exato-da-cor-original/ /colorimetria-digital-acerto-exato-da-cor-original 301!
+/muito-alem-da-estetica-tintas-alta-performance-protegem-lataria/ /muito-alem-da-estetica-tintas-alta-performance-protegem-lataria 301!
+/porta-nao-fecha-batida-estrutural/ /porta-nao-fecha-batida-estrutural 301!
+/painel-leads/ /painel-leads 301!

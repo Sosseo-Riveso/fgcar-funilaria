@@ -105,7 +105,14 @@ node_modules/
 Thumbs.db
 
 # --------------------------------------------------------------------------
-# 8) AUDITORES LOCAIS (scripts de apoio — nunca vão para o deploy)
+# 9) FUNCTIONS (codigo de borda) - o Pages compila esta pasta separadamente,
+#    entao ela nao precisa ser servida como asset estatico.
+#    `functions/_middleware.js` garante o 301 de .html e de barra final.
+# --------------------------------------------------------------------------
+functions/
+
+# --------------------------------------------------------------------------
+# 9.1) AUDITORES LOCAIS (scripts de apoio - nunca vao para o deploy)
 #    scripts/seo_checker.py e scripts/geo_checker.py rodam apenas na máquina.
 # --------------------------------------------------------------------------
 scripts/
