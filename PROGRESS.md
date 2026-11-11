@@ -325,9 +325,39 @@
   **301** → URL limpa; rotas limpas **200** com `canonical` correto; seguir os redirects termina em **200**
   em **1 salto** (sem loop); `/style.css`, `/script.js`, `/sitemap.xml`, `/robots.txt`, `/llms.txt` e as
   imagens seguem **200**. SEO **0 problemas / 100** e GEO **0 problemas / 93%** (avisos pré-existentes).
-- **Ponto aberto (fora do escopo desta fase):** `www.funilariaosasco.com.br` responde 200 com o mesmo
-  conteúdo (as regras de host do `_redirects` não estão sendo aplicadas nesse projeto). A consolidação
-  `www` → apex precisa de uma Redirect Rule na zona ou de uma checagem no próprio middleware.
+- **Ponto aberto resolvido na Fase 15:** `www.funilariaosasco.com.br` respondia 200 com o mesmo conteúdo;
+  a consolidação para o apex passou a ser feita pelo próprio middleware.
+
+
+### Fase 15 — Consolidação www → apex no middleware (11/11/2026)
+- **Problema:** `https://www.funilariaosasco.com.br/...` respondia **200** com o mesmo conteúdo do apex
+  (duplicidade de host). As regras de host do `_redirects` não são aplicadas nesse projeto — só as de path.
+- **Solução em `functions/_middleware.js`:** checagem de host no início do `onRequest`. Quando o host é
+  exatamente `www.funilariaosasco.com.br`, responde **301** para `https://funilariaosasco.com.br` +
+  caminho **já limpo** + query string. Como a rota sai limpa do próprio middleware, `www/sobre.html` chega
+  ao apex em **um único salto** (sem cadeia): `https://funilariaosasco.com.br/sobre`.
+- **Isolamento de ambiente (regra estrita):** apenas o host `www.funilariaosasco.com.br` é interceptado.
+  `localhost`, `127.0.0.1` e qualquer `*.pages.dev` (preview de branch ou de produção) seguem apenas com a
+  regra de `.html`/barra final, em `Location` **relativo** — nunca são empurrados para o apex. Requisições
+  que não são `GET/HEAD` continuam passando por `context.next()`.
+- **Refatoração:** a normalização de rota virou a função `caminhoLimpo()` (barra final, `.html`, `/index`),
+  reaproveitada tanto no redirect de host quanto no de rota.
+- **Teste local (`scripts/middleware_test.mjs`, Node 22, sem dependências):** o arquivo é importado como ESM
+  via data URL e exercitado com `Request`/`Response` reais — **23 casos, 0 falhas**, cobrindo www (raiz, rota
+  limpa, `.html`, barra final, `index.html`, query string, http→https, artigo), apex, `localhost:8788`,
+  `127.0.0.1`, `pages.dev` (produção e preview com hash) e `POST`. Cadeia de saltos medida: **1 salto** em
+  todos os casos testados.
+- **Validação em produção (11/11/2026):**
+  - `www/` → **301** `Location: https://funilariaosasco.com.br/`
+  - `www/sobre` → **301** `Location: https://funilariaosasco.com.br/sobre`
+  - `www/sobre.html` → **301** `Location: https://funilariaosasco.com.br/sobre` (1 salto)
+  - `www/contato.html?x=9` → **301** `Location: https://funilariaosasco.com.br/contato?x=9`
+  - `www` em http → **301** para o apex em https
+  - `apex/sobre.html` → **301** `/sobre` e `apex/sobre` → **200** (regra anterior preservada)
+  - `fgcar-funilaria.pages.dev/sobre` → **200** e `.../sobre.html` → **301** `/sobre` (relativo, preview intacto)
+  - Seguindo os redirects: **200** em `https://funilariaosasco.com.br/<rota>` com **1 salto**, sem loop.
+- **Auditores:** `link_checker.py` e `redirect_test.py` seguem em **0 problemas / 0 falhas**; SEO e GEO sem
+  alteração (nenhum HTML foi tocado).
 
 
 ## 3. Pendências
