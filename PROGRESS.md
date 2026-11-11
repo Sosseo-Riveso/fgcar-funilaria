@@ -251,6 +251,39 @@
 - **Estado do grafo local:** home (`AutoBodyShop` completo + `aggregateRating`) → `/sobre` e `/contato`
   (nós com o mesmo `@id`, `hasMap`, `sameAs` e `geo`) → 6 landing pages (idem) → 2 artigos (referência por `@id`).
 
+### Fase 13 — Hero da Home: vídeo em loop substituído por imagem estática (11/11/2026)
+- **Motivo:** o `<video autoplay loop>` da primeira dobra era o maior custo de LCP da home e não passava
+  pelo cache de imagem. Trocado pela foto real da oficina (Porsche Taycan azul em restauração/pintura,
+  com a fachada da FG Car ao fundo).
+- **Processamento (`scripts/hero_image_optimize.py`, local e não publicado):** `Pillow 12.3` sobre
+  `images/Funilaria e Pintura em Osasco.png` (607×332, RGBA), achatada sobre `#060913`, upscale Lanczos +
+  `UnsharpMask` leve e saída WebP `method=6`:
+  - `images/funilaria-pintura-osasco-restauracao-porsche-fg-car.webp` — **1280×700 · 114,4 KB** (desktop);
+  - `images/funilaria-pintura-osasco-restauracao-porsche-fg-car-mobile.webp` — **768×420 · 67,8 KB** (mobile).
+- **Metadados EXIF/XMP (SEO/GEO local):** `DocumentName`, `ImageDescription` ("Restauração automotiva e
+  pintura profissional de Porsche realizada na oficina FG Car em Osasco SP."), `Artist`/`Copyright`
+  ("FG Car Funilaria e Pintura - Osasco"), `UserComment` + `XPComment` com telefone/WhatsApp
+  **+55 11 94772-7682**, endereço completo e palavras-chave; `GPSLatitude` **-23.5516665** /
+  `GPSLongitude` **-46.7916685** (mesmo pino do `AutoBodyShop`) + altitude e data. Texto do EXIF gravado em
+  Latin-1 (padrão ASCII do formato) e pacote XMP em UTF-8 com `photoshop:City`, `Iptc4xmpCore:Location`,
+  `dc:subject` e `exif:GPS*`. Verificação por releitura (`scripts/hero_image_report.py`): acentos corretos,
+  GPS e XMP presentes.
+- **HTML (`index.html`):** `<video>` removido; `<picture>` com `<source media="(max-width: 768px)">` +
+  `<img class="hero-bg-image" width="1280" height="700" loading="eager" fetchpriority="high"
+  decoding="async">` e `alt` descritivo. Dois `rel="preload" as="image"` com `media` por breakpoint
+  garantem que só o arquivo do dispositivo seja baixado.
+- **CSS (`style.css`, bloco novo no fim do arquivo):** `.video-background-wrapper picture` herda a caixa do
+  wrapper; `.hero-bg-image` com `object-fit: cover`, `object-position: 62% center` e `opacity: 0.72` no
+  desktop. Em `≤992px` e `≤640px` a imagem repete a faixa mascarada (`top`/`height` + `mask-image`) que o
+  vídeo ocupava, preservando o layout mobile sem deslocamento. Overlays (`.video-overlay`) intactos.
+- **Cache-busting:** folha de estilos da home → `style.css?v=20261111a`.
+- **Resultado:** SEO **0 problemas / 100 de média** (index 100/100) e GEO **0 problemas / 100% na home**
+  após a mudança. Nenhum `!important` novo, nenhum token de `:root` duplicado.
+- **Nota:** o antigo `videos/video-fundo.mp4` e a regra `.hero-bg-video` foram mantidos no repositório
+  (regra de não reescrever seções existentes do CSS), mas não são mais usados pela home; o `script.js`
+  já protegia o autoplay com `if (heroVideo)`, então a remoção do elemento não gerou erro.
+
+
 ---
 
 ## 3. Pendências
@@ -264,7 +297,7 @@
 ### SEO / GEO
 - [ ] Revisar `lastmod` do `sitemap.xml` após cada publicação.
 - [ ] Auditar links internos (clusters por categoria) e corrigir órfãos.
-- [ ] Monitorar Core Web Vitals (peso das capas e do vídeo de fundo da home).
+- [x] Monitorar Core Web Vitals (peso das capas e do vídeo de fundo da home). — vídeo em loop removido em 11/11/2026 (Fase 13); segue o acompanhamento das capas.
 - [ ] Validar rich results (BlogPosting/FAQ) no Search Console.
 - [ ] **`og:locale` ausente** em 44 das 45 páginas publicadas (só a home declara o locale).
 - [x] Home sem `og:site_name` (resolvido em 04/11/2026, junto com `og:image:alt` e Twitter Card); 29 artigos sem `og:image:width/height/type`.

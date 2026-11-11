@@ -36,7 +36,11 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <link rel="stylesheet" href="style.css?v=20261108a">
+    <link rel="stylesheet" href="style.css?v=20261111a">
+
+    <!-- Preload da imagem LCP da primeira dobra (Hero) — desktop e mobile -->
+    <link rel="preload" as="image" href="images/funilaria-pintura-osasco-restauracao-porsche-fg-car.webp" type="image/webp" media="(min-width: 769px)" fetchpriority="high">
+    <link rel="preload" as="image" href="images/funilaria-pintura-osasco-restauracao-porsche-fg-car-mobile.webp" type="image/webp" media="(max-width: 768px)" fetchpriority="high">
 
     <!-- Dados Estruturados Schema.org para SEO Local (AutoBodyShop) -->
     <script type="application/ld+json">
@@ -438,13 +442,19 @@
 
     <main id="conteudo">
 
-    <!-- 3. Primeira Dobra: Hero com VÍDEO DE FUNDO + Letras em Cores de Destaque -->
+    <!-- 3. Primeira Dobra: Hero com IMAGEM DE FUNDO + Letras em Cores de Destaque -->
     <section class="hero-section" id="inicio">
-        <!-- Container do Vídeo de Fundo -->
+        <!-- Container da Imagem de Fundo (foto real: Porsche em restauração na FG Car) -->
         <div class="video-background-wrapper">
-            <video autoplay muted loop playsinline preload="metadata" class="hero-bg-video" poster="images/Especialista-em-Funilaria-e-Pintura-em-Osasco.webp" id="heroVideo">
-                <source src="videos/video-fundo.mp4" type="video/mp4">
-            </video>
+            <picture>
+                <source media="(max-width: 768px)" srcset="images/funilaria-pintura-osasco-restauracao-porsche-fg-car-mobile.webp" type="image/webp">
+                <img src="images/funilaria-pintura-osasco-restauracao-porsche-fg-car.webp"
+                     class="hero-bg-image"
+                     alt="Restauração e pintura de Porsche na oficina FG Car Funilaria e Pintura em Osasco"
+                     width="1280" height="700"
+                     fetchpriority="high" loading="eager" decoding="async">
+            </picture>
+            <!-- Fim do bloco de fundo: imagem estática no lugar do antigo vídeo em loop -->
             <!-- Overlay escuro e degradê suave para contraste perfeito dos textos -->
             <div class="video-overlay"></div>
         </div>

@@ -4153,3 +4153,50 @@ body {
     }
 }
 
+
+/* ==========================================================================
+   HERO — IMAGEM ESTÁTICA DE FUNDO (substitui o vídeo em loop na home)
+   Foto real: restauração e pintura de Porsche na oficina FG Car (Osasco).
+   Bloco novo no fim do arquivo para não reescrever as regras do hero antigo.
+   ========================================================================== */
+
+/* O <picture> precisa ocupar a caixa do wrapper para o object-fit funcionar */
+.video-background-wrapper picture {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-bg-image {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: 62% center;
+    opacity: 0.72;
+}
+
+/* Mobile/tablet: mantém a faixa mascarada que o vídeo ocupava (same geometry) */
+@media (max-width: 992px) {
+    .hero-bg-image {
+        position: absolute;
+        top: 222px;
+        left: 0;
+        width: 100%;
+        height: 235px;
+        object-fit: cover;
+        object-position: center center;
+        opacity: 0.98;
+        -webkit-mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 12%, #000000 22%, #000000 80%, rgba(0, 0, 0, 0.85) 90%, transparent 100%);
+        mask-image: linear-gradient(180deg, transparent 0%, rgba(0, 0, 0, 0.85) 12%, #000000 22%, #000000 80%, rgba(0, 0, 0, 0.85) 90%, transparent 100%);
+    }
+}
+
+@media (max-width: 640px) {
+    .hero-bg-image {
+        top: 228px;
+        height: 225px;
+        object-position: center center;
+    }
+}
+
