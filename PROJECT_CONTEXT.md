@@ -157,7 +157,7 @@ O NAP do site deve bater 100% com o Google Perfil da Empresa.
 
 ## 8. Convenções técnicas
 
-- **URLs:** sem `.html` (o `_redirects` remove a extensão) e sempre com barra inicial.
+- **URLs:** sem `.html` (301 forçado no `_redirects`, regerado por `scripts/generate_redirects.py`) e sempre com barra inicial.
 - **Slugs:** minúsculas, hífens, palavra-chave no início.
 - **Imagens:** nomes em minúsculas com hífens (sem espaços/acentos), preferencialmente JPG/WebP otimizados; capas de artigo em `/images`.
 - **OG image:** JPG 1200×630 (`images/og-funilaria-pintura-osasco.jpg`).

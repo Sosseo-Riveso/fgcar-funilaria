@@ -80,6 +80,10 @@ Em caso de conflito, vale o que estiver descrito aqui.
 - Open Graph completo: `og:type`, `og:title`, `og:description`, `og:image` (JPG 1200×630 em `/images`), `og:image:width/height/type`, `og:url`, `og:site_name`, `og:locale`.
 - JSON-LD `BlogPosting` nos artigos e `BreadcrumbList` no breadcrumb; dados devem bater com o NAP.
 - Ao publicar página nova: adicionar ao `sitemap.xml` e, se for artigo, aos links da categoria correspondente.
+- **URLs limpas com 301 forçado:** toda página publicada precisa de duas regras em `_redirects`
+  (`/<slug>.html /<slug> 301!` e `/<slug>/ /<slug> 301!`) e deve entrar no `sitemap.xml` sem extensão.
+  Regenere ambos com `py scripts/generate_redirects.py` e `py scripts/generate_sitemap.py --write`
+  em vez de editar à mão (`_routes.json` não é usado: o site é estático e não tem Pages Functions).
 
 ### 5.1 Metadados obrigatórios do artigo (bloco HTML)
 
@@ -165,6 +169,9 @@ Regras do bloco:
 
 - Fluxo: `git add` → `git commit -m "..."` → `git push origin main` → build automático da Cloudflare Pages.
 - Commits em português, curtos e descritivos (ex.: `Novo artigo: <slug>`).
+- `_redirects` e `sitemap.xml` são **gerados** por scripts locais (`scripts/generate_redirects.py` e
+  `scripts/generate_sitemap.py --write`); não editar à mão. Validação: `scripts/link_checker.py` e
+  `scripts/redirect_test.py`.
 - Respeitar `.assetsignore`, `.gitignore` e `.clineignore`: mídia pesada não usada pelo site e documentos internos não são versionados.
 - Antes de finalizar: validar HTML (tags fechadas, JSON-LD válido), conferir links internos e testar no navegador quando possível.
 

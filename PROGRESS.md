@@ -286,6 +286,36 @@
 
 ---
 
+### Fase 14 — Padronização total de URLs limpas e 301 (11/11/2026)
+- **Diagnóstico em produção:** `/<slug>.html` já não era indexado em duplicidade, mas o Pages respondia
+  **308** pela normalização automática dele — e a regra genérica `/*.html /:splat 301!` existente **não era
+  aplicada** (o Pages só aceita um splat e não casa splat no meio do caminho). Resultado: o redirect
+  permanente pedido não acontecia.
+- **Conteúdo já conforme:** varredura nas 47 páginas publicadas encontrou **0 canonicals com `.html`**,
+  **0 links internos com `.html`**, **0 ocorrências em `llms.txt`/`llms-full.txt`** e sitemap 100% limpo.
+  Nada de conteúdo precisou ser reescrito.
+- **`_redirects` regerado (`scripts/generate_redirects.py`):** 102 regras estáticas geradas a partir do
+  sitemap — home (`/index.html`, `/index`, `/index/` → `/`), **47** `/<slug>.html → /<slug> 301!`,
+  **47** `/<slug>/ → /<slug> 301!` (barra final) e as 4 regras de host (`www` e `pages.dev` → apex).
+  O sufixo `!` (forced) é o que faz a regra valer sobre o arquivo existente; todos os destinos são URLs
+  limpas e nenhum destino é origem de outra regra (zero cadeia, zero loop).
+- **`sitemap.xml` regerado (`scripts/generate_sitemap.py --write`):** mesmas 47 URLs, mesmos `lastmod`,
+  `changefreq` e `priority`, seções preservadas. Correções: BOM removido, última URL (que estava comprimida
+  em uma única linha) normalizada e `</urlset>` fechado corretamente. **0 URLs com `.html`, 0 duplicatas.**
+- **Novos auditores locais (não publicados):**
+  - `scripts/link_checker.py` — 47 páginas, **3.573 links internos testados**, canonical × `og:url` ×
+    arquivo existente, sitemap × arquivos, e cobertura/compatibilidade do `_redirects` → **0 problemas**;
+  - `scripts/redirect_test.py` — simulação da semântica do Pages seguindo a cadeia de redirects:
+    **145 casos, 0 falhas**, no máximo 1 salto por URL.
+- **URLs e `_routes.json`:** não foi criado `_routes.json` nem Worker — o site é 100% estático e o Pages já
+  serve `/<slug>` a partir de `/<slug>.html`; um `_routes.json` aqui só adicionaria superfície de erro.
+- **Índice de busca:** o projeto não tem busca interna/index JSON (nenhum `fetch` de índice no `script.js`),
+  então não havia gerador de índice a ajustar; a fonte de URLs continua sendo o `sitemap.xml`.
+- **`robots.txt`:** mantém `Disallow: /painel-leads` e `/painel-leads.html` (defesa em profundidade após o 301).
+- **Resultado:** SEO **0 problemas / 100** e GEO **0 problemas / 93%** (avisos de conteúdo pré-existentes,
+  inalterados); redirect 301 validado em produção após o deploy.
+
+
 ## 3. Pendências
 
 ### Conteúdo
