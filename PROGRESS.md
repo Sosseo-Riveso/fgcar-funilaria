@@ -287,18 +287,25 @@
 ---
 
 ### Fase 14 — Padronização total de URLs limpas e 301 (11/11/2026)
-- **Diagnóstico em produção:** `/<slug>.html` já não era indexado em duplicidade, mas o Pages respondia
-  **308** pela normalização automática dele — e a regra genérica `/*.html /:splat 301!` existente **não era
-  aplicada** (o Pages só aceita um splat e não casa splat no meio do caminho). Resultado: o redirect
-  permanente pedido não acontecia.
+- **Diagnóstico em produção:** `/<slug>.html` não era indexado em duplicidade, mas o Pages respondia
+  **308** pela normalização automática de HTML — e nem a regra genérica `/*.html /:splat 301!` nem a
+  versão explícita por página mudavam isso. Teste controlado (`/teste301 /sobre 301`) provou que o
+  `_redirects` **é** lido (respondeu 301), mas a normalização de `.html` do Pages roda **antes** dele e
+  sempre devolve 308. Conclusão: `_redirects` sozinho não consegue entregar o 301 exigido.
 - **Conteúdo já conforme:** varredura nas 47 páginas publicadas encontrou **0 canonicals com `.html`**,
   **0 links internos com `.html`**, **0 ocorrências em `llms.txt`/`llms-full.txt`** e sitemap 100% limpo.
   Nada de conteúdo precisou ser reescrito.
-- **`_redirects` regerado (`scripts/generate_redirects.py`):** 102 regras estáticas geradas a partir do
-  sitemap — home (`/index.html`, `/index`, `/index/` → `/`), **47** `/<slug>.html → /<slug> 301!`,
-  **47** `/<slug>/ → /<slug> 301!` (barra final) e as 4 regras de host (`www` e `pages.dev` → apex).
-  O sufixo `!` (forced) é o que faz a regra valer sobre o arquivo existente; todos os destinos são URLs
-  limpas e nenhum destino é origem de outra regra (zero cadeia, zero loop).
+- **`functions/_middleware.js` (solução efetiva):** novo middleware de Pages Functions, sem dependências,
+  que roda **antes** do asset e devolve **301** para `*.html` e para barra final, preservando a query
+  string (`/contato.html?x=9` → `/contato?x=9`) e o `Location` relativo. `/index.html`, `/index` e `/index/`
+  caem em `/`. Requisições `POST/PUT/PATCH/DELETE` e todos os assets passam direto por `context.next()`.
+  O rewrite interno continua automático: o Pages serve `/<slug>.html` quando a rota limpa é pedida.
+- **`_redirects` mantido como fonte declarativa (`scripts/generate_redirects.py`):** 101 regras estáticas
+  geradas do sitemap — home, **47** `/<slug>.html → /<slug> 301!`, **47** `/<slug>/ → /<slug> 301!` e as 4
+  regras de host. Serve de documentação e de rede de proteção caso a normalização de HTML do Pages mude;
+  ficou **sem splat no meio do caminho** (não suportado) e com comentários em ASCII puro.
+- **`.assetsignore`:** `functions/` passa a ser ignorado no upload (o Pages compila a pasta em separado),
+  evitando expor o código do middleware como asset.
 - **`sitemap.xml` regerado (`scripts/generate_sitemap.py --write`):** mesmas 47 URLs, mesmos `lastmod`,
   `changefreq` e `priority`, seções preservadas. Correções: BOM removido, última URL (que estava comprimida
   em uma única linha) normalizada e `</urlset>` fechado corretamente. **0 URLs com `.html`, 0 duplicatas.**
@@ -307,13 +314,20 @@
     arquivo existente, sitemap × arquivos, e cobertura/compatibilidade do `_redirects` → **0 problemas**;
   - `scripts/redirect_test.py` — simulação da semântica do Pages seguindo a cadeia de redirects:
     **145 casos, 0 falhas**, no máximo 1 salto por URL.
-- **URLs e `_routes.json`:** não foi criado `_routes.json` nem Worker — o site é 100% estático e o Pages já
-  serve `/<slug>` a partir de `/<slug>.html`; um `_routes.json` aqui só adicionaria superfície de erro.
+- **`_routes.json`:** não foi criado. Ele só serve para excluir rotas de Functions em projetos grandes; aqui a
+  única função é um `_middleware.js` de borda que intercepta tudo — um `_routes.json` mal configurado
+  desativaria justamente esse middleware.
 - **Índice de busca:** o projeto não tem busca interna/index JSON (nenhum `fetch` de índice no `script.js`),
   então não havia gerador de índice a ajustar; a fonte de URLs continua sendo o `sitemap.xml`.
 - **`robots.txt`:** mantém `Disallow: /painel-leads` e `/painel-leads.html` (defesa em profundidade após o 301).
-- **Resultado:** SEO **0 problemas / 100** e GEO **0 problemas / 93%** (avisos de conteúdo pré-existentes,
-  inalterados); redirect 301 validado em produção após o deploy.
+- **Resultado em produção (11/11/2026, após deploy):** `/sobre.html` **301** → `/sobre`; `/sobre/` **301** →
+  `/sobre`; `/index.html` **301** → `/`; `/contato.html?x=9` **301** → `/contato?x=9`; artigo com `.html`
+  **301** → URL limpa; rotas limpas **200** com `canonical` correto; seguir os redirects termina em **200**
+  em **1 salto** (sem loop); `/style.css`, `/script.js`, `/sitemap.xml`, `/robots.txt`, `/llms.txt` e as
+  imagens seguem **200**. SEO **0 problemas / 100** e GEO **0 problemas / 93%** (avisos pré-existentes).
+- **Ponto aberto (fora do escopo desta fase):** `www.funilariaosasco.com.br` responde 200 com o mesmo
+  conteúdo (as regras de host do `_redirects` não estão sendo aplicadas nesse projeto). A consolidação
+  `www` → apex precisa de uma Redirect Rule na zona ou de uma checagem no próprio middleware.
 
 
 ## 3. Pendências
