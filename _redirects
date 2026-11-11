@@ -1,19 +1,23 @@
 # ==========================================================================
-# _redirects — FG Car Oficina Funilaria e Pintura
-# Cloudflare Pages · gerado por scripts/generate_redirects.py
+# _redirects - FG Car Oficina Funilaria e Pintura
+# Cloudflare Pages - gerado por scripts/generate_redirects.py
 #
-# 1) Normalização de host (www e domínio provisório → apex oficial)
-# 2) Home: /index.html, /index e /index/ → /  (301)
-# 3) Extensão: /<slug>.html → /<slug>  (301, forced)
-# 4) Barra final: /<slug>/ → /<slug>  (301, forced)
+# 1) Normalizacao de host (www e dominio provisorio para o apex oficial)
+# 2) Home: /index.html, /index e /index/ -> /  (301)
+# 3) Extensao: /<slug>.html -> /<slug>  (301, forced)
+# 4) Barra final: /<slug>/ -> /<slug>  (301, forced)
 #
-# O sufixo `!` (forced) é obrigatório: sem ele o Pages ignora a regra
-# quando o arquivo .html existe e responde 308 pela normalização padrão.
-# Nenhum destino termina em .html e nenhum destino é origem de outra
-# regra, então não existe cadeia nem loop de redirecionamento.
+# O sufixo ! (forced) e obrigatorio: sem ele o Pages ignora a regra quando
+# o arquivo .html existe e responde 308 pela normalizacao padrao.
+# Nenhum destino termina em .html e nenhum destino e origem de outra regra,
+# entao nao existe cadeia nem loop de redirecionamento.
+#
+# IMPORTANTE: sem splat no meio do caminho (/*.html nao e suportado pelo
+# parser do Pages e invalida o arquivo inteiro) e sem caracteres acentuados
+# nos comentarios. Toda pagina publicada precisa de regra explicita.
 # ==========================================================================
 
-# 1) Host canônico
+# 1) Host canonico
 https://www.funilariaosasco.com.br/* https://funilariaosasco.com.br/:splat 301!
 http://www.funilariaosasco.com.br/* https://funilariaosasco.com.br/:splat 301!
 https://fgcar-funilaria.pages.dev/* https://funilariaosasco.com.br/:splat 301!
@@ -24,7 +28,7 @@ http://fgcar-funilaria.pages.dev/* https://funilariaosasco.com.br/:splat 301!
 /index / 301!
 /index/ / 301!
 
-# 3) Remove a extensão .html (URL canônica sem extensão)
+# 3) Remove a extensao .html (URL canonica sem extensao)
 /sobre.html /sobre 301!
 /contato.html /contato 301!
 /politica-de-privacidade.html /politica-de-privacidade 301!
@@ -121,8 +125,3 @@ http://fgcar-funilaria.pages.dev/* https://funilariaosasco.com.br/:splat 301!
 /muito-alem-da-estetica-tintas-alta-performance-protegem-lataria/ /muito-alem-da-estetica-tintas-alta-performance-protegem-lataria 301!
 /porta-nao-fecha-batida-estrutural/ /porta-nao-fecha-batida-estrutural 301!
 /painel-leads/ /painel-leads 301!
-
-# 5) Rede de segurança para URLs novas ainda sem regra estática
-#    (o Pages não garante o 301 com splat no meio do caminho, por isso as
-#    regras explícitas acima são a fonte da verdade)
-/*.html /:splat 301!
