@@ -2,7 +2,7 @@
 
 > Registro cronológico de implementações, decisões e pendências do projeto.
 > **Atualize este arquivo ao final de cada entrega relevante.**
-> Última atualização: **02/11/2026**.
+> Última atualização: **14/11/2026**.
 
 ---
 
@@ -483,4 +483,57 @@ CTA comercial em um documento legal piora a experiência e o próprio enquadrame
 - Estado atual: os 2 CTAs existentes (cabeçalho e subbar mobile) permanecem intactos.
 - Consequência aceita: a média de SEO do domínio fica em **100/100 com 1 aviso informativo**, e não
   100/100 sem avisos.
+
+---
+
+## 7. Fechamento de ontologia do grafo (14/11/2026)
+
+> Executado via gatilho **Execute Ontologia** (regra global), com autorização explícita do cliente
+> para a **Opção A** (aplicar tudo). Escopo: as **47 páginas publicadas da raiz** + `llms.txt` e
+> `llms-full.txt`. `artigos/*.html`, `painel-leads.html`, `template-*.html` e `script.js` não foram tocados.
+
+### Problemas corrigidos
+
+- **Referências `@id` órfãs:** `#autobodyshop` era citado por `publisher`/`about` em 9 páginas
+  (5 categorias, `politica-de-privacidade`, `termos-de-uso`, `franquia-de-seguro...`,
+  `recuperar-lataria...`) sem estar declarado na própria página. Agora **todas as 47 páginas declaram
+  localmente** o nó completo, com o mesmo NAP.
+- **Ausência de `#website`:** criado o nó `WebSite` (`https://funilariaosasco.com.br/#website`) em todas
+  as páginas, com `publisher` → `#autobodyshop`. `isPartOf` deixou de ser um `WebSite` inline anônimo.
+- **Artigos sem nó de página:** os 31 artigos passaram a declarar `WebPage` (`<slug>#webpage`) e
+  `BlogPosting`/`TechArticle` (`<slug>#article`), com `mainEntityOfPage` resolvendo dentro da página.
+- **Publicador duplicado:** o `publisher` inline “FG Car Oficina” (sem `@id`, sem NAP) foi substituído por
+  `{"@id": ".../#autobodyshop"}`. `author` também aponta para a entidade única.
+- **NAP divergente:** unificados `name` (“FG Car Oficina e Funilaria e Pintura”), `streetAddress`
+  (“Av. Visconde de Nova Granada, 3121 - Cipava”), `telephone` (`+55-11-94772-7682`), `openingHoursSpecification`,
+  `sameAs`, `hasMap` e `areaServed` em todas as páginas.
+- **Coordenadas oficiais:** adotado `-23.5516665 / -46.7916685` como `geo` canônico (valor já usado no
+  JSON-LD da home e das páginas de serviço) e alinhados `llms.txt` e `llms-full.txt`, que traziam
+  `-23.5512 / -46.7901`.
+- **Breadcrumbs:** removido o nível “Blog” que apontava para a própria categoria e criada a hierarquia real
+  `Início → Categoria → Artigo`. Nomes dos níveis passaram a espelhar o título da categoria; a categoria
+  sem `@id` e com URL duplicada (`categoria-reparos-e-manutencao`) foi normalizada.
+- **Catálogo simétrico:** `hasOfferCatalog` com os 6 serviços passou a existir em todas as páginas (antes só
+  na home) e cada categoria declara `ItemList` com seus artigos (`numberOfItems` conferido), substituindo o
+  `hasPart` isolado.
+- **Vocabulário:** removido o `aggregateRating` auto-declarado da home (5,0 / 4 avaliações) e o texto
+  “Avaliação 5.0 no Google” segue apenas como copy visível, sem marcação de nota.
+- **`articleSection`:** padronizado com o nome real da categoria (corrigido o texto
+  “Super Dicas de Funilaria e Pintura FGCar em Osasco”).
+
+### Validação
+
+- Criado `scripts/validar_ontologia.py` (local, não versionado — igual aos demais auditores) com as
+  checagens O1–O7: JSON válido, referência `@id` resolvida, NAP simétrico (HTML/JSON-LD/`llms*`), nós
+  completos, breadcrumb real, vocabulário schema.org e catálogo simétrico.
+- Resultado: **47 páginas, 0 problemas, 0 avisos — Ontologia 100/100** (`--strict`, exit 0).
+- `seo_checker.py --strict`: **100/100**, 0 problemas, 1 aviso já documentado (`termos-de-uso`, §6).
+- `geo_checker.py --strict`: 0 problemas, 48 avisos já documentados (16 artigos com 1 `<h2>` e sem FAQ, §6).
+
+### Pendências (não bloqueantes)
+
+- [ ] Os avisos de escaneabilidade dos 16 artigos seguem no backlog editorial da §6.
+- [ ] Reprocessar `sitemap.xml` / `_redirects` apenas se novas páginas forem publicadas
+  (`py scripts/generate_sitemap.py --write` e `py scripts/generate_redirects.py`).
+
 

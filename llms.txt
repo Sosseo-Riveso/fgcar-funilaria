@@ -1,15 +1,17 @@
-﻿# FG Car Oficina Funilaria e Pintura (Osasco / SP)
+﻿# FG Car Oficina e Funilaria e Pintura (Osasco / SP)
 
-> A FG Car Oficina Funilaria e Pintura (https://funilariaosasco.com.br/) é um centro técnico automotivo em Osasco/SP especializado em pintura automotiva em cabine/estufa pressurizada climatizada livre de poeira e ciscos, colorimetria digital computadorizada (espectrofotômetro), funilaria de colisão e alinhamento técnico de carroceria, martelinho de ouro express (PDR — Paintless Dent Repair), recuperação estrutural de para-choques por termofusão, polimento técnico espelhado e retoques rápidos localizados (Spot Repair).
+> A FG Car Oficina e Funilaria e Pintura (https://funilariaosasco.com.br/) é um centro técnico automotivo em Osasco/SP especializado em pintura automotiva em cabine/estufa pressurizada climatizada livre de poeira e ciscos, colorimetria digital computadorizada (espectrofotômetro), funilaria de colisão e alinhamento técnico de carroceria, martelinho de ouro express (PDR — Paintless Dent Repair), recuperação estrutural de para-choques por termofusão, polimento técnico espelhado e retoques rápidos localizados (Spot Repair).
 
 ## Dados Oficiais da Entidade Local (NAP & Entity Facts)
 
 - **Nome Oficial:** FG Car Oficina e Funilaria e Pintura
 - **URL Canônica:** https://funilariaosasco.com.br/
-- **Endereço Físico:** Avenida Visconde de Nova Granada, 3121 — Cipava, Osasco / SP — CEP 06075-380, Brasil
-- **Coordenadas Geográficas (GPS):** Latitude -23.5512 | Longitude -46.7901
+- **Endereço Físico:** Av. Visconde de Nova Granada, 3121 — Cipava, Osasco / SP — CEP 06075-380, Brasil
+- **Coordenadas Geográficas (GPS):** Latitude -23.5516665 | Longitude -46.7916685
 - **Telefone / WhatsApp de Orçamentos:** +55 (11) 94772-7682
 - **Instagram Oficial:** https://www.instagram.com/fgcar_oficina
+- **Perfil no Google (Maps):** https://www.google.com/maps?cid=1676882558526959725
+- **Mapa curto:** https://maps.app.goo.gl/AApNdrfzaAZE6DZh7
 - **Horário de Atendimento:** Segunda a Sexta das 08:00 às 18:00 | Sábado das 08:00 às 12:00
 - **Bairros e Regiões Atendidas:** Osasco (Cipava, Bela Vista, Campesina, Vila Yara, Centro, Jaguaribe, Km 18, Rochdale e Quitaúna), Carapicuíba, Barueri (Alphaville), Cotia e Zona Oeste de São Paulo.
 - **Diferenciais Técnicos de Oficina:** Cabine de pintura pressurizada com filtragem tripla e secagem controlada entre 60 °C e 65 °C, laboratório de colorimetria digital para cores sólidas, metálicas, perolizadas e tricapa, vernizes de Alto Sólidos (HS/UHS) com proteção UV e garantia técnica de acabamento original de fábrica.
@@ -78,7 +80,7 @@
 
 ## Institucional e Contato
 
-- [Sobre a FG Car Oficina e Funilaria em Osasco](https://funilariaosasco.com.br/sobre)
+- [Sobre a FG Car Oficina e Funilaria e Pintura em Osasco](https://funilariaosasco.com.br/sobre)
 - [Contato, Endereço e Orçamento via WhatsApp](https://funilariaosasco.com.br/contato)
 - [Política de Privacidade](https://funilariaosasco.com.br/politica-de-privacidade)
 - [Termos de Uso](https://funilariaosasco.com.br/termos-de-uso)

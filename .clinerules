@@ -202,12 +202,16 @@ Regras do bloco:
 
 - `scripts/seo_checker.py` — auditoria de SEO on-page (title, description, canonical, OG, H1, alt, NAP, CTA).
 - `scripts/geo_checker.py` — auditoria de preparo para IA (JSON-LD, autoria, datas, FAQ, blocos extraíveis).
+- `scripts/validar_ontologia.py` — auditoria do grafo de entidades (O1 JSON válido, O2 `@id` resolvido,
+  O3 NAP simétrico JSON-LD × `llms*`, O4 nós completos, O5 breadcrumb real, O6 vocabulário schema.org,
+  O7 catálogo `hasOfferCatalog`/`ItemList`). Exige 100/100 com 0 problemas e 0 avisos.
 - Rodar sempre pela raiz do projeto:
   ```
-  py scripts/seo_checker.py .
-  py scripts/geo_checker.py .
+  py scripts/seo_checker.py . --strict
+  py scripts/geo_checker.py . --strict
+  py scripts/validar_ontologia.py . --strict
   ```
-- Ambos ignoram `template-*.html`, `painel-leads.html`, `artigos/`, `scratch/` e pastas de mídia.
+- Todos ignoram `template-*.html`, `painel-leads.html`, `artigos/`, `scratch/` e pastas de mídia.
 - Os scripts são ferramentas de apoio: **não editam arquivos**. O diagnóstico serve para orientar correções manuais.
 - `scripts/`, `*.py` e `__pycache__/` **não são versionados nem publicados**
   (listados em `.gitignore`, `.assetsignore` e `.clineignore`).

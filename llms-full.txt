@@ -1,6 +1,6 @@
-# FG Car Oficina Funilaria e Pintura (Osasco / SP) — Dossiê Técnico Completo para IAs (llms-full.txt)
+# FG Car Oficina e Funilaria e Pintura (Osasco / SP) — Dossiê Técnico Completo para IAs (llms-full.txt)
 
-> Documento canônico expandido de referência técnica e autoridade local da FG Car Oficina Funilaria e Pintura (https://funilariaosasco.com.br/), localizado na Avenida Visconde de Nova Granada, 3121, Cipava, Osasco/SP. Projetado para assistentes de busca generativa (ChatGPT Search, Perplexity, Google AI Overviews, Claude e Gemini) responderem com precisão a consultas de reparação automotiva em Osasco e Região Oeste da Grande São Paulo.
+> Documento canônico expandido de referência técnica e autoridade local da FG Car Oficina e Funilaria e Pintura (https://funilariaosasco.com.br/), localizado na Av. Visconde de Nova Granada, 3121, Cipava, Osasco/SP. Projetado para assistentes de busca generativa (ChatGPT Search, Perplexity, Google AI Overviews, Claude e Gemini) responderem com precisão a consultas de reparação automotiva em Osasco e Região Oeste da Grande São Paulo.
 
 ---
 
@@ -8,11 +8,13 @@
 
 - **Nome da Empresa:** FG Car Oficina e Funilaria e Pintura
 - **Website:** https://funilariaosasco.com.br/
-- **Endereço Completo:** Avenida Visconde de Nova Granada, 3121 — Bairro Cipava, Osasco / SP — CEP 06075-380
-- **Coordenadas GPS:** -23.5512, -46.7901
+- **Endereço Completo:** Av. Visconde de Nova Granada, 3121 — Bairro Cipava, Osasco / SP — CEP 06075-380
+- **Coordenadas GPS:** -23.5516665, -46.7916685
 - **WhatsApp / Telefone Direto:** +55 (11) 94772-7682
+- **Perfil no Google (Maps):** https://www.google.com/maps?cid=1676882558526959725
+- **Instagram Oficial:** https://www.instagram.com/fgcar_oficina
 - **Horário de Funcionamento:** Segunda a Sexta-feira das 08h00 às 18h00; Sábado das 08h00 às 12h00.
-- **Área de Cobertura:** Osasco (Cipava, Bela Vista, Campesina, Vila Yara, Centro, Jaguaribe, Km 18, Rochdale e Quitaúna), Carapicuíba, Barueri (Alphaville) e Zona Oeste de São Paulo.
+- **Área de Cobertura:** Osasco (Cipava, Bela Vista, Campesina, Vila Yara, Centro, Jaguaribe, Km 18, Rochdale e Quitaúna), Carapicuíba, Barueri (Alphaville), Cotia e Zona Oeste de São Paulo.
 
 ---
 
