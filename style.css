@@ -4200,3 +4200,156 @@ body {
     }
 }
 
+
+/* ==========================================================================
+   BANNER DE COOKIES / CONSENTIMENTO LGPD — GA4 (G-716HE8LM4J)
+   Criado em 17/11/2026. Consumido por analytics.js (todas as páginas públicas).
+   ========================================================================== */
+.fg-cookie-banner {
+    position: fixed;
+    left: 16px;
+    right: 16px;
+    bottom: 16px;
+    z-index: 9999;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 16px 24px;
+    max-width: 1040px;
+    margin: 0 auto;
+    padding: 18px 22px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--brand-cyan);
+    border-radius: 12px;
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.45);
+    color: var(--text-secondary);
+    font-size: 14px;
+    line-height: 1.55;
+    animation: fgCookieFadeIn 0.25s ease-out;
+}
+
+.fg-cookie-banner__content {
+    flex: 1 1 460px;
+    min-width: 0;
+}
+
+.fg-cookie-banner__title {
+    margin: 0 0 4px;
+    font-family: 'Montserrat', 'Space Grotesk', sans-serif;
+    font-size: 15px;
+    font-weight: 800;
+    color: #ffffff;
+}
+
+.fg-cookie-banner__text {
+    margin: 0;
+    color: var(--text-secondary);
+}
+
+.fg-cookie-banner__text a {
+    color: var(--brand-cyan);
+    font-weight: 700;
+    text-decoration: underline;
+}
+
+.fg-cookie-banner__actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.fg-cookie-banner__btn {
+    padding: 11px 18px;
+    border: 1px solid transparent;
+    border-radius: 8px;
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: background-color 0.2s ease, border-color 0.2s ease, color 0.2s ease;
+}
+
+.fg-cookie-banner__btn--primary {
+    background: var(--brand-cyan);
+    color: #06121f;
+}
+
+.fg-cookie-banner__btn--primary:hover {
+    background: #7dd3fc;
+}
+
+.fg-cookie-banner__btn--ghost {
+    background: transparent;
+    border-color: var(--border-color);
+    color: var(--text-secondary);
+}
+
+.fg-cookie-banner__btn--ghost:hover {
+    border-color: var(--brand-cyan);
+    color: #ffffff;
+}
+
+.fg-cookie-banner__btn:focus-visible,
+.fg-cookie-prefs-btn:focus-visible {
+    outline: 2px solid var(--brand-gold);
+    outline-offset: 2px;
+}
+
+.fg-cookie-prefs-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 18px;
+    padding: 12px 20px;
+    border: 1px solid var(--brand-cyan);
+    border-radius: 8px;
+    background: transparent;
+    color: var(--brand-cyan);
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+.fg-cookie-prefs-btn:hover {
+    background: rgba(56, 189, 248, 0.12);
+    color: #ffffff;
+}
+
+@keyframes fgCookieFadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(12px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@media (max-width: 768px) {
+    .fg-cookie-banner {
+        left: 10px;
+        right: 10px;
+        bottom: 10px;
+        padding: 16px;
+        gap: 14px;
+    }
+
+    .fg-cookie-banner__actions {
+        width: 100%;
+    }
+
+    .fg-cookie-banner__btn {
+        flex: 1 1 150px;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .fg-cookie-banner {
+        animation: none;
+    }
+}
+

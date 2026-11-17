@@ -13,6 +13,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics 4 (G-716HE8LM4J) — Consent Mode v2, medição anônima e filtro de tráfego interno -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        (function () {
+            var CONSENT_KEY = 'fgcar_cookie_consent';
+            var INTERNAL_KEY = 'fgcar_internal_traffic';
+            var consent = null;
+            var isInternal = false;
+
+            try { consent = window.localStorage.getItem(CONSENT_KEY); } catch (err) { consent = null; }
+            try { isInternal = window.localStorage.getItem(INTERNAL_KEY) === '1'; } catch (err) { isInternal = false; }
+
+            /* Filtro de tráfego interno da agência: ?interno=sosseo ativa; ?interno=0 remove a marcação. */
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.has('interno')) {
+                    isInternal = params.get('interno') === 'sosseo';
+                    if (isInternal) {
+                        window.localStorage.setItem(INTERNAL_KEY, '1');
+                    } else {
+                        window.localStorage.removeItem(INTERNAL_KEY);
+                    }
+                    params.delete('interno');
+                    var restQuery = params.toString();
+                    window.history.replaceState(null, '', window.location.pathname + (restQuery ? '?' + restQuery : '') + window.location.hash);
+                }
+            } catch (err) {}
+
+            /* Consent Mode v2 (LGPD): estatística anônima por padrão; publicidade bloqueada até o aceite. */
+            gtag('consent', 'default', {
+                analytics_storage: consent === 'denied' ? 'denied' : 'granted',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+            });
+
+            /* Visitante que já aceitou: libera os quatro sinais antes do config. */
+            if (consent === 'accepted') {
+                gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted'
+                });
+            }
+
+            gtag('js', new Date());
+
+            var gaConfig = {
+                anonymize_ip: true,
+                send_page_view: true
+            };
+            if (isInternal) {
+                gaConfig.traffic_type = 'internal';
+            }
+            gtag('config', 'G-716HE8LM4J', gaConfig);
+
+            /* Loader único do gtag.js — nenhum outro carregamento na página. */
+            var gaLoader = document.createElement('script');
+            gaLoader.async = true;
+            gaLoader.src = 'https://www.googletagmanager.com/gtag/js?id=G-716HE8LM4J';
+            document.head.appendChild(gaLoader);
+        })();
+    </script>
     <title>Como Encontrar uma Boa Oficina de Funilaria e Pintura</title>
     <meta name="description" content="Guia prático para encontrar uma oficina de funilaria e pintura confiável e competente em Osasco e região. Estrutura, prazos e qualidade garantida.">
     <meta name="robots" content="index, follow">
@@ -42,7 +109,7 @@
     <link rel="icon" type="image/x-icon" href="favicon.ico">
     <link rel="apple-touch-icon" href="favicon.png">
 
-    <link rel="stylesheet" href="style.css?v=20261020c">
+    <link rel="stylesheet" href="style.css?v=20261117a">
 
     <!-- Schema.org BlogPosting -->
 
@@ -786,6 +853,7 @@
         </div>
     </footer>
 
+    <script src="analytics.js?v=20261117a"></script>
     <script src="script.js?v=20261020a"></script>
 </body>
 </html>

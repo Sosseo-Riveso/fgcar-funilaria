@@ -2,7 +2,7 @@
 
 > Registro cronológico de implementações, decisões e pendências do projeto.
 > **Atualize este arquivo ao final de cada entrega relevante.**
-> Última atualização: **14/11/2026**.
+> Última atualização: **17/11/2026**.
 
 ---
 
@@ -17,6 +17,7 @@
 | Captura de leads (lead gate + Worker central + Google Sheets) | ✅ Em produção |
 | Conteúdo do blog | 🔄 Em expansão (pauta prioritária em `PLANO_CONTEUDO_BLOG_FGCAR.md`) |
 | Governança de projeto (cline rules, context, progress, templates) | ✅ Criada em 02/11/2026 |
+| Analytics (GA4 `G-716HE8LM4J` + Consent Mode v2 + filtro interno) | ✅ Instalado em 17/11/2026 |
 
 ---
 
@@ -535,5 +536,51 @@ CTA comercial em um documento legal piora a experiência e o próprio enquadrame
 - [ ] Os avisos de escaneabilidade dos 16 artigos seguem no backlog editorial da §6.
 - [ ] Reprocessar `sitemap.xml` / `_redirects` apenas se novas páginas forem publicadas
   (`py scripts/generate_sitemap.py --write` e `py scripts/generate_redirects.py`).
+
+
+---
+
+## 8. Google Analytics 4 com Consent Mode v2 (17/11/2026)
+
+> Ativação do GA4 (`G-716HE8LM4J`) no padrão da agência: bootstrap inline síncrono no `<head>`,
+> Consent Mode v2, filtro de tráfego interno e banner de consentimento LGPD. O conteúdo e o SEO das
+> páginas existentes não foram alterados — apenas o `<head>` e a Política de Privacidade.
+
+### O que foi implementado
+
+- **Bootstrap inline do GA4** logo após o `<meta name="viewport">`, nas **47 páginas públicas da raiz**
+  e nos **4 `template-*.html`** (`painel-leads.html` ficou de fora): `window.dataLayer`,
+  `function gtag()`, `gtag('consent','default', ...)`, `gtag('js')`, **um único**
+  `gtag('config', 'G-716HE8LM4J', { anonymize_ip: true, send_page_view: true })` e **um único** loader
+  assíncrono do `gtag.js`. Nenhum disparo manual de `page_view`.
+- **Consent Mode v2:** `analytics_storage` inicia `granted` (medição anônima por legítimo interesse, com IP
+  anonimizado); `ad_storage`, `ad_user_data` e `ad_personalization` permanecem `denied` até o aceite, com
+  `wait_for_update: 500`. Quem já recusou (`fgcar_cookie_consent = 'denied'`) inicia com o analítico negado;
+  quem já aceitou recebe `gtag('consent','update', ...)` liberando os 4 sinais **antes** do `config`.
+- **Filtro de tráfego interno:** `?interno=sosseo` grava `fgcar_internal_traffic = '1'`, envia
+  `traffic_type: 'internal'` no `config` e remove o parâmetro da URL com `history.replaceState`;
+  `?interno=0` limpa a marcação.
+- **Banner de cookies (`analytics.js` + bloco CSS `.fg-cookie-banner` em `style.css`):** texto coerente com o
+  comportamento real. “Aceitar todos” emite **um** `consent update` com os 4 sinais liberados;
+  “Recusar / Só o essencial” nega os 4 sinais (inclusive o analítico). Nenhum dos botões reemite `config`
+  nem dispara `page_view`.
+- **Política de Privacidade:** seção 6 reescrita (medição anônima ativa por padrão, publicidade só após o aceite
+  e recusa desativando também a medição), base legal do Art. 7º, IX incluída na seção 3, botão
+  “Revisar preferências de cookies” (`data-cookie-preferences`) e `dateModified` para 17/11/2026.
+- `.assetsignore` recebeu `!analytics.js` para garantir o arquivo no deploy.
+
+### Validação
+
+- `node scripts/analytics_test.mjs`: **596/596 verificações**, 51 páginas, **0 falhas**
+  (estrutura do head + simulação do consentimento, do banner e do filtro interno).
+- `seo_checker.py . --strict`: **100/100** — 0 problemas, 1 aviso já documentado (`termos-de-uso`, §6).
+- `geo_checker.py . --strict`: **93%** — 0 problemas, 48 avisos já documentados (backlog editorial, §6).
+- `validar_ontologia.py . --strict`: **100/100** — 0 problemas, 0 avisos.
+- `validar_grafo.py` não existe nesta pasta `scripts/` (checagem coberta pelo validador de ontologia).
+
+### Pendências
+
+- [ ] Criar a dimensão personalizada `traffic_type` (escopo sessão) no painel do GA4 para ler o filtro interno nos relatórios.
+- [ ] Cadastrar o tráfego interno nas definições de coleta do GA4 (Administrador → Fluxos de dados → Definir tráfego interno).
 
 

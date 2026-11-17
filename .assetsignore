@@ -15,6 +15,7 @@
 # CSS / JS da raiz e de pastas de includes/plugins
 !style.css
 !script.js
+!analytics.js
 !includes/**
 !plugins/**
 !assets/**

@@ -168,6 +168,23 @@ Regras do bloco:
 - `defer`/`loading` conscientes; não bloquear a renderização com scripts novos.
 - Nunca inserir `noindex` em páginas do domínio oficial (o `noindex` do `_headers` é só para `.pages.dev`).
 
+### 7.1 Analytics e consentimento (GA4 `G-716HE8LM4J`)
+
+- Toda página pública da raiz (e todo `template-*.html`) carrega, **logo após o `<meta name="viewport">`**,
+  o bootstrap inline do GA4 com `window.dataLayer`, `function gtag()`, `gtag('consent','default', ...)`,
+  `gtag('js')` e **um único** `gtag('config', 'G-716HE8LM4J', ...)`, que injeta um **único** loader
+  `https://www.googletagmanager.com/gtag/js?id=G-716HE8LM4J`. Não adicionar segundo snippet, nem `page_view` manual.
+- **Consent Mode v2 (LGPD):** `analytics_storage` inicia `granted` (medição anônima por legítimo interesse),
+  salvo recusa anterior em `localStorage` (`fgcar_cookie_consent = 'denied'`). Sinais de publicidade
+  (`ad_storage`, `ad_user_data`, `ad_personalization`) sempre `denied` até o aceite, com `wait_for_update: 500`.
+- **Filtro de tráfego interno:** `?interno=sosseo` grava `fgcar_internal_traffic = '1'`, envia
+  `traffic_type: 'internal'` no `config` e limpa o parâmetro via `history.replaceState`; `?interno=0` remove a marcação.
+- **Banner de cookies:** UI, textos e `gtag('consent','update', ...)` ficam em `analytics.js` (raiz, publicado);
+  o CSS é o bloco `.fg-cookie-banner` no fim de `style.css`. Aceite libera os 4 sinais; recusa nega os 4
+  (inclusive o analítico). Nunca reemitir `config` nem disparar `page_view` nesses cliques.
+- O link/botão `[data-cookie-preferences]` (Política de Privacidade) reabre o banner para revisão.
+- `painel-leads.html` fica **fora** do GA4. Validação: `node scripts/analytics_test.mjs`.
+
 ## 8. Deploy e versionamento
 
 - Fluxo: `git add` → `git commit -m "..."` → `git push origin main` → build automático da Cloudflare Pages.

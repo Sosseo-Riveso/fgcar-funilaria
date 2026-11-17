@@ -3,6 +3,73 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Google Analytics 4 (G-716HE8LM4J) — Consent Mode v2, medição anônima e filtro de tráfego interno -->
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        (function () {
+            var CONSENT_KEY = 'fgcar_cookie_consent';
+            var INTERNAL_KEY = 'fgcar_internal_traffic';
+            var consent = null;
+            var isInternal = false;
+
+            try { consent = window.localStorage.getItem(CONSENT_KEY); } catch (err) { consent = null; }
+            try { isInternal = window.localStorage.getItem(INTERNAL_KEY) === '1'; } catch (err) { isInternal = false; }
+
+            /* Filtro de tráfego interno da agência: ?interno=sosseo ativa; ?interno=0 remove a marcação. */
+            try {
+                var params = new URLSearchParams(window.location.search);
+                if (params.has('interno')) {
+                    isInternal = params.get('interno') === 'sosseo';
+                    if (isInternal) {
+                        window.localStorage.setItem(INTERNAL_KEY, '1');
+                    } else {
+                        window.localStorage.removeItem(INTERNAL_KEY);
+                    }
+                    params.delete('interno');
+                    var restQuery = params.toString();
+                    window.history.replaceState(null, '', window.location.pathname + (restQuery ? '?' + restQuery : '') + window.location.hash);
+                }
+            } catch (err) {}
+
+            /* Consent Mode v2 (LGPD): estatística anônima por padrão; publicidade bloqueada até o aceite. */
+            gtag('consent', 'default', {
+                analytics_storage: consent === 'denied' ? 'denied' : 'granted',
+                ad_storage: 'denied',
+                ad_user_data: 'denied',
+                ad_personalization: 'denied',
+                wait_for_update: 500
+            });
+
+            /* Visitante que já aceitou: libera os quatro sinais antes do config. */
+            if (consent === 'accepted') {
+                gtag('consent', 'update', {
+                    analytics_storage: 'granted',
+                    ad_storage: 'granted',
+                    ad_user_data: 'granted',
+                    ad_personalization: 'granted'
+                });
+            }
+
+            gtag('js', new Date());
+
+            var gaConfig = {
+                anonymize_ip: true,
+                send_page_view: true
+            };
+            if (isInternal) {
+                gaConfig.traffic_type = 'internal';
+            }
+            gtag('config', 'G-716HE8LM4J', gaConfig);
+
+            /* Loader único do gtag.js — nenhum outro carregamento na página. */
+            var gaLoader = document.createElement('script');
+            gaLoader.async = true;
+            gaLoader.src = 'https://www.googletagmanager.com/gtag/js?id=G-716HE8LM4J';
+            document.head.appendChild(gaLoader);
+        })();
+    </script>
     <title>Política de Privacidade e Proteção de Dados (LGPD)</title>
     <meta name="description" content="Conheça a Política de Privacidade e Proteção de Dados da FG Car Oficina Funilaria e Pintura em Osasco. Transparência total conforme a Lei Geral.">
     <meta name="robots" content="index, follow">
@@ -32,7 +99,7 @@
     <link rel="apple-touch-icon" href="favicon.png">
 
     <!-- CSS Base do Site -->
-    <link rel="stylesheet" href="style.css?v=20261020c">
+    <link rel="stylesheet" href="style.css?v=20261117a">
 
 
 <script type="application/ld+json">
@@ -264,7 +331,7 @@
   "description": "Conheça a Política de Privacidade e Proteção de Dados da FG Car Oficina Funilaria e Pintura em Osasco. Transparência total conforme a Lei Geral.",
   "inLanguage": "pt-BR",
   "datePublished": "2026-10-13T09:39:22-03:00",
-  "dateModified": "2026-10-27T09:54:09-03:00",
+  "dateModified": "2026-11-17T09:00:00-03:00",
   "isPartOf": {
     "@id": "https://funilariaosasco.com.br/#website"
   },
@@ -420,7 +487,7 @@
                     A FG Car Oficina Funilaria e Pintura preza pela total transparência, integridade e respeito aos seus dados pessoais, em estrita conformidade com a <strong>Lei Geral de Proteção de Dados do Brasil (Lei nº 13.709/2018 - LGPD)</strong>.
                 </p>
                 <p style="font-size: 14px; color: #94a3b8; margin-top: 10px;">
-                    Última atualização: 13 de outubro de 2026.
+                    Última atualização: 17 de novembro de 2026.
                 </p>
             </div>
         </div>
@@ -461,7 +528,8 @@
                 </p>
                 <ul style="padding-left: 24px; margin-bottom: 20px;">
                     <li><strong>Artigo 7º, inciso V:</strong> Execução de procedimentos preliminares relacionados a contrato do qual seja parte o titular, a pedido do próprio titular dos dados (elaboração de orçamentos e cotações);</li>
-                    <li><strong>Artigo 7º, inciso I:</strong> Fornecimento de consentimento livre, informado e inequívoco pelo titular ao clicar nos botões de contato e submeter formulários.</li>
+                    <li><strong>Artigo 7º, inciso I:</strong> Fornecimento de consentimento livre, informado e inequívoco pelo titular ao clicar nos botões de contato e submeter formulários;</li>
+                    <li><strong>Artigo 7º, inciso IX:</strong> Legítimo interesse da FG Car na medição anônima de audiência do site, sempre com anonimização de IP e sem identificar o visitante.</li>
                 </ul>
 
                 <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; color: #38bdf8; margin-top: 36px; margin-bottom: 16px;">
@@ -500,18 +568,26 @@
                 </div>
 
                 <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; color: #38bdf8; margin-top: 36px; margin-bottom: 16px;">
-                    6. Cookies e Ferramentas de Estatística de Navegação
+                    6. Cookies, Medição de Acessos e Consentimento (Google Analytics 4)
                 </h2>
                 <p>
-                    Este site pode utilizar cookies essenciais e identificadores anônimos de navegação (como Google Analytics e Google Search Console) para:
+                    O site da FG Car utiliza o <strong>Google Analytics 4 (G-716HE8LM4J)</strong> apenas para medir audiência e desempenho das páginas. A coleta é organizada em duas camadas distintas: uma medição estatística anônima, ativa por padrão, e os cookies de publicidade, que só são liberados com o seu aceite.
                 </p>
-                <ul style="padding-left: 24px; margin-bottom: 20px;">
-                    <li>Mensurar a velocidade de carregamento e estabilidade técnica das páginas;</li>
-                    <li>Compreender quais páginas e serviços recebem mais visitas para aprimorar o conteúdo do blog;</li>
-                    <li>Garantir a navegação fluida em dispositivos móveis (smartphones) e computadores.</li>
-                </ul>
+                <p style="background: rgba(2, 132, 199, 0.12); border-left: 4px solid #0284c7; padding: 14px 18px; border-radius: 6px;">
+                    <strong>1) Medição anônima ativa por padrão (legítimo interesse):</strong> registramos somente dados estatísticos agregados — página visitada, origem do acesso, tipo de dispositivo, navegador e cidade aproximada — sempre com <strong>anonimização de IP</strong>. Esses registros não identificam você e não são usados para publicidade. A base legal é o legítimo interesse (Art. 7º, IX da LGPD) na melhoria contínua do conteúdo e da estabilidade do site.
+                </p>
+                <p style="background: rgba(2, 132, 199, 0.12); border-left: 4px solid #0284c7; padding: 14px 18px; border-radius: 6px;">
+                    <strong>2) Cookies e sinais de publicidade somente após o aceite:</strong> o armazenamento de anúncios, os dados de usuário para anúncios e a personalização de anúncios permanecem <strong>bloqueados</strong> até que você clique em <em>“Aceitar todos”</em> no banner de cookies. Sem esse aceite, nenhum identificador publicitário é gravado.
+                </p>
                 <p>
-                    Você pode, a qualquer tempo, desativar ou limpar os cookies diretamente nas opções de configurações ou privacidade do seu navegador de internet.
+                    <strong>A recusa desativa também a medição analítica:</strong> ao clicar em <em>“Recusar / Só o essencial”</em>, todos os sinais de consentimento são negados, inclusive o armazenamento analítico, e o site deixa de gravar cookies de estatística. Apenas os cookies estritamente necessários ao funcionamento das páginas continuam ativos.
+                </p>
+                <p>
+                    Sua escolha é guardada no próprio navegador (armazenamento local) e pode ser revista a qualquer momento pelo botão abaixo, que reabre o banner de preferências. O tratamento realizado pelo Google segue a política de privacidade da empresa, disponível em <a href="https://policies.google.com/privacy?hl=pt-BR" target="_blank" rel="noopener" style="color: #38bdf8; text-decoration: underline;">policies.google.com/privacy</a>.
+                </p>
+                <button type="button" class="fg-cookie-prefs-btn" data-cookie-preferences>Revisar preferências de cookies</button>
+                <p style="font-size: 14px; color: #94a3b8; margin-top: 16px;">
+                    Você também pode bloquear ou excluir cookies diretamente nas opções de privacidade do seu navegador. O bloqueio total de cookies pode afetar funcionalidades do site, mas não impede o contato pelos canais oficiais da oficina.
                 </p>
 
                 <h2 style="font-family: 'Space Grotesk', sans-serif; font-size: 24px; color: #38bdf8; margin-top: 36px; margin-bottom: 16px;">
@@ -540,7 +616,7 @@
     <!-- Rodapé Completo da FG Car -->
     <div class="container">
         <p class="fg-content-update" style="max-width: 1240px; margin: 0 auto 26px; padding: 10px 18px; background: rgba(13, 21, 39, 0.8); border-left: 3px solid #38bdf8; border-radius: 8px; font-size: 12.5px; font-weight: 600; color: #94a3b8;">
-            Por FG Car Oficina e Funilaria e Pintura — conteúdo revisado pela equipe técnica. Atualizado em <time datetime="2026-10-27">27/10/2026</time>.
+            Por FG Car Oficina e Funilaria e Pintura — conteúdo revisado pela equipe técnica. Atualizado em <time datetime="2026-11-17">17/11/2026</time>.
         </p>
     </div>
 
@@ -644,6 +720,7 @@
         </div>
     </footer>
 
+    <script src="analytics.js?v=20261117a"></script>
     <script src="script.js?v=20261020a"></script>
 </body>
 </html>
