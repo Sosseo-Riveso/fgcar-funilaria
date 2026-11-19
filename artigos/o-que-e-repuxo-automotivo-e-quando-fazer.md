@@ -6,7 +6,7 @@
 ---
 
 <!--
-📋 METADADOS DE CONTROLE INTERNO (Yoast SEO / Astra / WordPress)
+📋 METADADOS DE PUBLICAÇÃO
 1. subtitulo_banner (H2 do Banner): Conheça o procedimento técnico que recupera peças de chapa dupla sem cortes ou furos estruturais: saiba como o repuxo com spotter elétrico devolve o alinhamento original e quando ele substitui a troca da peça.
 2. Palavra-chave Principal: o que e repuxo automotivo
 3. Título SEO: O que é Repuxo Automotivo e Quando Fazer? | Guia Técnico

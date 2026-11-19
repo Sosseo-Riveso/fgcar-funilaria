@@ -6,7 +6,7 @@
 ---
 
 <!--
-📋 METADADOS DE CONTROLE INTERNO (Yoast SEO / Astra / WordPress)
+📋 METADADOS DE PUBLICAÇÃO
 1. subtitulo_banner (H2 do Banner): Identificar a extensão estrutural e a integridade da tinta é a chave para evitar a corrosão precoce: descubra como avaliar pequenos amassados que precisam de funilaria antes que danifiquem a chapa e desvalorizem o veículo.
 2. Palavra-chave Principal: pequenos amassados que precisam de funilaria
 3. Título SEO: Pequenos Amassados que Precisam de Funilaria: Como Avaliar

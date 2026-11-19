@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Planejar o orçamento por etapas de engenharia e insumos certificados é o caminho para blindar seu bolso contra armadilhas financeiras: descubra quanto custa restaurar um carro antigo no Brasil e saiba exatamente como investir sem desperdiçar dinheiro.
 - **2. Palavra-chave Principal:** quanto custa restaurar um carro antigo
 - **3. Título SEO:** Quanto Custa Restaurar um Carro Antigo? Guia de Custos | FG Car

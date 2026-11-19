@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Compreender a profundidade do desmonte e o tratamento químico da chapa é o segredo para investir com assertividade: entenda as diferenças fundamentais entre pintura automotiva simples e restauração completa para escolher o processo ideal para o seu projeto.
 - **2. Palavra-chave Principal:** pintura automotiva simples e restauracao completa
 - **3. Título SEO:** Pintura Simples vs Restauração Completa: Diferenças | FG Car

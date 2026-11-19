@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Eliminar hábitos destrutivos do dia a dia é o primeiro passo para blindar o verniz contra manchas e opacidade precoce: conheça os 5 erros que danificam a pintura do carro sem você perceber e aprenda como proteger a lataria do seu patrimônio.
 - **2. Palavra-chave Principal:** erros que danificam a pintura do carro
 - **3. Título SEO:** 5 Erros que Danificam a Pintura do Carro sem Você Saber | FG Car Osasco

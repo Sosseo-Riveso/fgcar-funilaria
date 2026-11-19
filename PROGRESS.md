@@ -2,7 +2,7 @@
 
 > Registro cronológico de implementações, decisões e pendências do projeto.
 > **Atualize este arquivo ao final de cada entrega relevante.**
-> Última atualização: **17/11/2026**.
+> Última atualização: **19/11/2026**.
 
 ---
 
@@ -582,5 +582,76 @@ CTA comercial em um documento legal piora a experiência e o próprio enquadrame
 
 - [ ] Criar a dimensão personalizada `traffic_type` (escopo sessão) no painel do GA4 para ler o filtro interno nos relatórios.
 - [ ] Cadastrar o tráfego interno nas definições de coleta do GA4 (Administrador → Fluxos de dados → Definir tráfego interno).
+
+---
+
+## 9. Auditoria pré-deploy da Skill de Rotina de Sites (19/11/2026)
+
+> Execução do protocolo `meu-cerebro/04_PADROES/SKILL_AUDITORIA_ROTINA_SITES.md`
+> (Pilares 1, 2 e 3) com correções aplicadas até **100/100 e 0 avisos** nos quatro
+> validadores `--strict`.
+
+### Achados e correções aplicadas
+
+- **Pilar 1 — GA4/Consent:** 1 loader `G-716HE8LM4J` por página, Consent Mode v2 na ordem
+  correta, filtro `?interno=sosseo` e `analytics.js` sem `config`/`page_view` extra
+  (`analytics_test.mjs`: 596/596). Nenhum resíduo de GTM/`UA-` e **nenhum placeholder
+  `G-SERVICO`** no código publicado (as únicas ocorrências do padrão são comentários
+  `GUIAS-TECNICOS-BLOG-SERVICO`).
+- **Pilar 2 — Imagens e dados estruturados:**
+  - FAQ de 29 artigos migrada de `<h3>/<h4>` para `<details>/<summary>` (3 a 4 perguntas por post).
+  - 16 artigos com apenas 1 `<h2>` tiveram os títulos de seção promovidos de `<h3>` para `<h2>`.
+  - 7 imagens duplicadas byte a byte removidas (3 da fachada e 4 pares do diretório `Conserto/`);
+    13 referências atualizadas para o arquivo canônico.
+  - 2 imagens de conteúdo renomeadas para kebab-case:
+    `Cabine-de-Pintura-Fg-Car-Funilaria-em-Osasco.webp` → `cabine-de-pintura-fg-car-osasco.webp`
+    e `Funilaria-e-Pintura-em-Osasco.webp` → `funilaria-e-pintura-em-osasco.webp`.
+  - A imagem não rastreada `images/Funilaria e Pintura em Osasco.png` (fonte do gerador
+    `scripts/hero_image_optimize.py`) foi **preservada**.
+  - 0 imagens quebradas, 0 `<img>` sem `alt`, sem `width/height` ou com `title` redundante.
+- **Pilar 3 — NAP, indexação e painel:** NAP idêntico em HTML, JSON-LD e `llms*`; canonical,
+  breadcrumb e `sitemap.xml` sem `.html`; `painel-leads.html` com `noindex` fora do sitemap e
+  dos `llms*`. `contato` e `sobre` receberam `datePublished`/`dateModified`; `termos-de-uso`
+  ganhou o terceiro CTA de WhatsApp.
+- **Resíduos Yoast/WordPress:** rótulos `(YOAST SEO / ASTRA / WORDPRESS)` e
+  `(Yoast SEO / Astra / WordPress)` removidos de 40 arquivos (HTML da raiz, templates,
+  `artigos/*.html`, `artigos/*.md` e `PLANO_CONTEUDO_BLOG_FGCAR.md`). O bloco de metadados de
+  8 itens foi mantido, apenas com rótulo neutro.
+- **Conteúdo incompleto:** `porta-nao-fecha-batida-estrutural.html` continha o placeholder
+  `{{BODY4}}` e terminava no meio da tabela. Foi finalizado com seções técnicas (causas, riscos,
+  etapas do reparo, custo), imagem técnica 16:9 com legenda, FAQ com 4 perguntas
+  (`FAQPage` no JSON-LD), bloco de leitura complementar e CTA final com endereço e horário.
+  O texto corrompido (`Porta nÃ£o fecha`) foi corrigido.
+
+### Validação final
+
+| Validador | Resultado |
+|---|---|
+| `seo_checker.py . --strict` | **100/100** — 0 problemas, 0 avisos |
+| `geo_checker.py . --strict` | **100%** — 0 problemas, 0 avisos |
+| `validar_ontologia.py . --strict` | **100/100** — 0 problemas, 0 avisos |
+| `scripts/analytics_test.mjs` | **596/596** — 0 falhas |
+| `scripts/link_checker.py .` | 3.582 links, **0 problemas**, 0 avisos |
+| `scripts/redirect_test.py` | **0 falhas** |
+| `scripts/middleware_test.mjs` | **0 falhas** |
+| Duplicatas SHA-256 em `images/` | **0 grupos** |
+
+### Bloqueio crítico aberto (arquivos protegidos — não alterados)
+
+- `painel-leads.html` valida a senha **no navegador** (`DEFAULT_PASS = 'fgcar2026'`, exibida em
+  texto claro no modal de configurações) e grava a senha em `localStorage`.
+- `GET https://sosseo-crm.sosseosites.workers.dev/api/fgcar-leads` devolve os leads sem
+  autenticação; o painel apenas lê a resposta.
+- `_headers` aplica `X-Robots-Tag: noindex` aos domínios `pages.dev`, mas não define
+  `Cache-Control: no-store` especificamente para o painel.
+
+Correção depende de decisão explícita (token no Worker + envio autenticado no painel e hash da
+senha), conforme precedente do site `cambioautomaticoosasco`.
+
+### Pendências
+
+- [ ] Proteger a API de leads e remover a senha em texto claro do `painel-leads.html` (requer autorização).
+- [ ] Avaliar `ImageObject`/`primaryImageOfPage` nos artigos (Pilar 2.4 da Skill).
+- [ ] Revisar as 26 imagens-fonte órfãs de `images/` (originais PNG/JPG dos WebP usados) — mantidas como masters.
 
 

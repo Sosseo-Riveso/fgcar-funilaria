@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Comprovar a superação de ferrugens severas e o retorno do alinhamento milimétrico é a prova viva da excelência artesanal: conheça casos reais de antes e depois de uma restauração profissional e veja como veículos dados como perdidos renascem impecáveis.
 - **2. Palavra-chave Principal:** antes e depois de uma restauracao profissional
 - **3. Título SEO:** Antes e Depois de uma Restauração Profissional | FG Car

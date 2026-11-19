@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Seguir uma esteira metodológica de desmontagem total e reconstrução estrutural é o que separa um projeto de sucesso do pesadelo do carro abandonado: descubra exatamente como funciona o processo completo de restauração automotiva passo a passo.
 - **2. Palavra-chave Principal:** processo completo de restauracao automotiva
 - **3. Título SEO:** Processo Completo de Restauração Automotiva Passo a Passo | FG Car

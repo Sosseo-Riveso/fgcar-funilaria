@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Equilibrar o desgaste do verniz original e o orçamento disponível é a chave para o acabamento perfeito: descubra se a pintura automotiva completa ou parcial é a escolha mais vantajosa para valorizar o seu carro sem diferenças de tonalidade.
 - **2. Palavra-chave Principal:** pintura automotiva completa ou parcial
 - **3. Título SEO:** Pintura Automotiva Completa ou Parcial: Qual Escolher? | FG Car Osasco

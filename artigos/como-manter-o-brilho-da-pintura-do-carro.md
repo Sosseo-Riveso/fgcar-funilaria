@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Adotar técnicas profissionais de descontaminação e proteção de verniz é o segredo para manter o espelhamento de showroom: aprenda como manter o brilho da pintura do carro por muito mais tempo e blindar a lataria contra o desgaste diário.
 - **2. Palavra-chave Principal:** como manter o brilho da pintura do carro
 - **3. Título SEO:** Como Manter o Brilho da Pintura do Carro: Dicas Técnicas | FG Car Osasco

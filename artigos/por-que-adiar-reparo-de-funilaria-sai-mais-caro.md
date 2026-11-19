@@ -6,7 +6,7 @@
 ---
 
 <!--
-📋 METADADOS DE CONTROLE INTERNO (Yoast SEO / Astra / WordPress)
+📋 METADADOS DE PUBLICAÇÃO
 1. subtitulo_banner (H2 do Banner): A corrosão galvânica oculta e a perda de alinhamento estrutural multiplicam os custos da oficina: descubra os 5 prejuízos silenciosos de postergar o conserto da lataria e como proteger o valor venal do seu carro.
 2. Palavra-chave Principal: por que adiar reparo de funilaria sai mais caro
 3. Título SEO: Por que Adiar Funilaria Sai Mais Caro? | FG Car Osasco

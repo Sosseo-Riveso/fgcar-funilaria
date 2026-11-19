@@ -25,11 +25,11 @@
 
 Todo novo artigo DEVE seguir o padrão dos artigos existentes:
 
-### 2.1 Metadados no topo do HTML (comentário YOAST)
+### 2.1 Metadados no topo do HTML (comentário de publicação)
 Os metadados vêm em um comentário no topo do arquivo, **8 itens, nesta ordem**:
 
 ```html
-<!-- METADADOS DE PUBLICAÇÃO (YOAST SEO / ASTRA / WORDPRESS)
+<!-- METADADOS DE PUBLICAÇÃO
 1. Título SEO: <title de até 60-65 caracteres>
 2. Slug / URL: <nome-do-arquivo-sem-espacos>
 3. Meta Descrição: <140-155 caracteres com CTA>

@@ -4,7 +4,7 @@
 
 ---
 
-## Metadados de Publicação (Yoast SEO / Astra / WordPress)
+## Metadados de Publicação 
 - **1. subtitulo_banner (H2 do Banner):** Dominar a progressão cronológica do esqueleto metálico até o espelhamento do verniz é o que garante a perfeição estética: conheça detalhadamente as etapas de uma restauração automotiva da funilaria à pintura final em estufa.
 - **2. Palavra-chave Principal:** etapas de uma restauracao automotiva
 - **3. Título SEO:** Etapas de uma Restauração Automotiva: Guia Completo | FG Car

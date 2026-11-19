@@ -6,7 +6,7 @@
 ---
 
 <!--
-📋 METADADOS DE CONTROLE INTERNO (Yoast SEO / Astra / WordPress)
+📋 METADADOS DE PUBLICAÇÃO
 1. subtitulo_banner (H2 do Banner): Entender o limite entre a preservação da pintura original e a necessidade de repuxo estrutural define o melhor custo-benefício para o seu carro: conheça as diferenças técnicas e saiba quando cada método compensa.
 2. Palavra-chave Principal: diferenca entre funilaria tradicional e martelinho de ouro
 3. Título SEO: Funilaria Tradicional ou Martelinho de Ouro: Qual Vale a Pena?
