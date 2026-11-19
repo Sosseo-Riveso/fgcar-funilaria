@@ -233,3 +233,12 @@ Regras do bloco:
 - `scripts/`, `*.py` e `__pycache__/` **não são versionados nem publicados**
   (listados em `.gitignore`, `.assetsignore` e `.clineignore`).
 
+
+## Auditoria e Rotina de Sites (meu-cerebro)
+
+- Padrão obrigatório pré-deploy: ler e aplicar
+  `../../meu-cerebro/04_PADROES/SKILL_AUDITORIA_ROTINA_SITES.md`
+  ([[SKILL_AUDITORIA_ROTINA_SITES]]).
+- Registrar o resultado em `../../meu-cerebro/01_GESTAO/INVENTARIO_SITES_ATIVOS.md`
+  com data, status dos 4 pilares e próxima ação.
+- Esta instrução complementa as regras locais deste projeto; em conflito, prevalece a regra local.
